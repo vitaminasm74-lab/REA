@@ -1,0 +1,2274 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Xabier Iriarte" />
+  <meta name="dcterms.date" content="2026-03-03" />
+  <title>Mekanika</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+</head>
+<head><script src="https://www.geogebra.org/apps/deployggb.js"></script></head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Mekanika</h1>
+<p class="author">Xabier Iriarte</p>
+<p class="date">2026-03-03</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#aldez-aurreko-matematika"
+id="toc-aldez-aurreko-matematika"><span
+class="toc-section-number">1</span> Aldez aurreko matematika</a>
+<ul>
+<li><a href="#bektoreak" id="toc-bektoreak"><span
+class="toc-section-number">1.1</span> Bektoreak</a>
+<ul>
+<li><a href="#bektoreen-ezaugarriak"
+id="toc-bektoreen-ezaugarriak"><span
+class="toc-section-number">1.1.1</span> Bektoreen ezaugarriak</a></li>
+</ul></li>
+<li><a href="#bektoreen-arteko-eragiketak"
+id="toc-bektoreen-arteko-eragiketak"><span
+class="toc-section-number">1.2</span> Bektoreen arteko eragiketak</a>
+<ul>
+<li><a href="#bektoreen-batuketa" id="toc-bektoreen-batuketa"><span
+class="toc-section-number">1.2.1</span> Bektoreen batuketa</a></li>
+<li><a href="#bektore-baten-biderkadura-eskalar-batekin"
+id="toc-bektore-baten-biderkadura-eskalar-batekin"><span
+class="toc-section-number">1.2.2</span> Bektore baten biderkadura
+eskalar batekin</a></li>
+<li><a href="#bektoreen-biderkadura-eskalarra"
+id="toc-bektoreen-biderkadura-eskalarra"><span
+class="toc-section-number">1.2.3</span> Bektoreen biderkadura
+eskalarra</a></li>
+<li><a href="#bektoreen-biderkadura-bektoriala"
+id="toc-bektoreen-biderkadura-bektoriala"><span
+class="toc-section-number">1.2.4</span> Bektoreen biderkadura
+bektoriala</a></li>
+</ul></li>
+<li><a href="#bektore-eremua-eta-baseak"
+id="toc-bektore-eremua-eta-baseak"><span
+class="toc-section-number">1.3</span> Bektore eremua eta baseak</a>
+<ul>
+<li><a href="#bektore-baten-osagaiak-base-batean"
+id="toc-bektore-baten-osagaiak-base-batean"><span
+class="toc-section-number">1.3.1</span> Bektore baten osagaiak base
+batean</a></li>
+<li><a href="#base-ortonormalak" id="toc-base-ortonormalak"><span
+class="toc-section-number">1.3.2</span> Base ortonormalak</a></li>
+<li><a href="#triedro-zuzenak" id="toc-triedro-zuzenak"><span
+class="toc-section-number">1.3.3</span> Triedro zuzenak</a></li>
+<li><a href="#bektoreak-eta-haien-osagaiak-base-batean"
+id="toc-bektoreak-eta-haien-osagaiak-base-batean"><span
+class="toc-section-number">1.3.4</span> Bektoreak eta haien osagaiak
+base batean</a></li>
+</ul></li>
+<li><a href="#bektoreen-osagaien-arteko-eragiketak"
+id="toc-bektoreen-osagaien-arteko-eragiketak"><span
+class="toc-section-number">1.4</span> Bektoreen osagaien arteko
+eragiketak</a>
+<ul>
+<li><a href="#bektoreen-batuketa-osagaiak-erabilita"
+id="toc-bektoreen-batuketa-osagaiak-erabilita"><span
+class="toc-section-number">1.4.1</span> Bektoreen batuketa osagaiak
+erabilita</a></li>
+<li><a href="#bektore-baten-biderkadura-eskalar-batekin-1"
+id="toc-bektore-baten-biderkadura-eskalar-batekin-1"><span
+class="toc-section-number">1.4.2</span> Bektore baten biderkadura
+eskalar batekin</a></li>
+<li><a href="#bi-bektoreren-arteko-bidekadura-eskalarra"
+id="toc-bi-bektoreren-arteko-bidekadura-eskalarra"><span
+class="toc-section-number">1.4.3</span> Bi bektoreren arteko bidekadura
+eskalarra</a></li>
+<li><a href="#bi-bektoreren-arteko-bidekadura-bektoriala"
+id="toc-bi-bektoreren-arteko-bidekadura-bektoriala"><span
+class="toc-section-number">1.4.4</span> Bi bektoreren arteko bidekadura
+bektoriala</a></li>
+<li><a href="#bi-bektoreren-arteko-bidekadura-bektoriala-beste-modu-bat"
+id="toc-bi-bektoreren-arteko-bidekadura-bektoriala-beste-modu-bat"><span
+class="toc-section-number">1.4.5</span> Bi bektoreren arteko bidekadura
+bektoriala (beste modu bat)</a></li>
+</ul></li>
+<li><a href="#base-baten-biraketa-elementala"
+id="toc-base-baten-biraketa-elementala"><span
+class="toc-section-number">1.5</span> Base baten biraketa
+elementala</a></li>
+<li><a href="#base-aldaketa-matrizea"
+id="toc-base-aldaketa-matrizea"><span
+class="toc-section-number">1.6</span> Base aldaketa matrizea</a></li>
+<li><a href="#base-aldaketa-matrizea-lortzeko-metodo-alternatiboa"
+id="toc-base-aldaketa-matrizea-lortzeko-metodo-alternatiboa"><span
+class="toc-section-number">1.7</span> Base aldaketa matrizea lortzeko
+metodo alternatiboa</a></li>
+<li><a href="#bektore-baten-osagaiak-bi-basetan"
+id="toc-bektore-baten-osagaiak-bi-basetan"><span
+class="toc-section-number">1.8</span> Bektore baten osagaiak bi
+basetan</a></li>
+<li><a href="#base-aldaketen-konposizioa"
+id="toc-base-aldaketen-konposizioa"><span
+class="toc-section-number">1.9</span> Base aldaketen
+konposizioa</a></li>
+<li><a href="#erreferentzi-sistemak"
+id="toc-erreferentzi-sistemak"><span
+class="toc-section-number">1.10</span> Erreferentzi sistemak</a>
+<ul>
+<li><a href="#erreferentzien-beharra"
+id="toc-erreferentzien-beharra"><span
+class="toc-section-number">1.10.1</span> Erreferentzien beharra</a></li>
+</ul></li>
+<li><a href="#bektoreen-deribatua-denborarekiko"
+id="toc-bektoreen-deribatua-denborarekiko"><span
+class="toc-section-number">1.11</span> Bektoreen deribatua
+denborarekiko</a>
+<ul>
+<li><a href="#oinarrizko-deribatua" id="toc-oinarrizko-deribatua"><span
+class="toc-section-number">1.11.1</span> Oinarrizko deribatua</a></li>
+<li><a href="#bektoreen-deribatua" id="toc-bektoreen-deribatua"><span
+class="toc-section-number">1.11.2</span> Bektoreen deribatua</a></li>
+<li><a href="#bektoreen-deribatuen-kalkulua-base-finkotan"
+id="toc-bektoreen-deribatuen-kalkulua-base-finkotan"><span
+class="toc-section-number">1.11.3</span> Bektoreen deribatuen kalkulua
+(base finkotan)</a></li>
+<li><a href="#bektoreen-deribatuen-kalkulua-base-higikorretan"
+id="toc-bektoreen-deribatuen-kalkulua-base-higikorretan"><span
+class="toc-section-number">1.11.4</span> Bektoreen deribatuen kalkulua
+(base higikorretan)</a></li>
+<li><a href="#abiadura-angeluarra" id="toc-abiadura-angeluarra"><span
+class="toc-section-number">1.11.5</span> Abiadura angeluarra</a></li>
+<li><a href="#base-higikorretan-deribatzeko-formula"
+id="toc-base-higikorretan-deribatzeko-formula"><span
+class="toc-section-number">1.11.6</span> Base higikorretan deribatzeko
+formula</a></li>
+<li><a href="#sec::base_gabe_deribazioa_base_higikorretan"
+id="toc-sec::base_gabe_deribazioa_base_higikorretan"><span
+class="toc-section-number">1.11.7</span> Base higikorretan deribatzeko
+formula baserik gabe</a></li>
+<li><a href="#sec::bektoreen_deribazioa_base_batekiko"
+id="toc-sec::bektoreen_deribazioa_base_batekiko"><span
+class="toc-section-number">1.11.8</span> Bektoreen deribazioa <em>base
+batekiko</em></a></li>
+<li><a href="#bektoreak-deribatzeko-eskema"
+id="toc-bektoreak-deribatzeko-eskema"><span
+class="toc-section-number">1.11.9</span> Bektoreak deribatzeko
+eskema</a></li>
+</ul></li>
+<li><a href="#abiadura-angeluarren-propietateak"
+id="toc-abiadura-angeluarren-propietateak"><span
+class="toc-section-number">1.12</span> Abiadura angeluarren
+propietateak</a>
+<ul>
+<li><a href="#oinarrizko-biraketa-akotatzeko-modua"
+id="toc-oinarrizko-biraketa-akotatzeko-modua"><span
+class="toc-section-number">1.12.1</span> Oinarrizko biraketa akotatzeko
+modua</a></li>
+<li><a href="#abiadura-angeluarraren-konposizioa"
+id="toc-abiadura-angeluarraren-konposizioa"><span
+class="toc-section-number">1.12.2</span> Abiadura angeluarraren
+konposizioa</a></li>
+<li><a href="#abiadura-angeluarra-behatoki-ezberdinak-erabilita"
+id="toc-abiadura-angeluarra-behatoki-ezberdinak-erabilita"><span
+class="toc-section-number">1.12.3</span> Abiadura angeluarra behatoki
+ezberdinak erabilita</a></li>
+<li><a href="#erreferentzien-abiadura-angeluarrak"
+id="toc-erreferentzien-abiadura-angeluarrak"><span
+class="toc-section-number">1.12.4</span> Erreferentzien abiadura
+angeluarrak</a></li>
+<li><a href="#biraketen-konposizioa"
+id="toc-biraketen-konposizioa"><span
+class="toc-section-number">1.12.5</span> Biraketen konposizioa</a></li>
+</ul></li>
+<li><a href="#orientazio-diagrama" id="toc-orientazio-diagrama"><span
+class="toc-section-number">1.13</span> Orientazio diagrama</a></li>
+<li><a href="#orientazio-diagrama-baten-adibidea"
+id="toc-orientazio-diagrama-baten-adibidea"><span
+class="toc-section-number">1.14</span> Orientazio diagrama baten
+adibidea</a></li>
+<li><a href="#ariketa" id="toc-ariketa"><span
+class="toc-section-number">1.15</span> Ariketa</a>
+<ul>
+<li><a href="#enuntziatua" id="toc-enuntziatua"><span
+class="toc-section-number">1.15.1</span> Enuntziatua</a></li>
+<li><a href="#ebazpena" id="toc-ebazpena"><span
+class="toc-section-number">1.15.2</span> Ebazpena</a></li>
+<li><a href="#ariketaren-jarraipena"
+id="toc-ariketaren-jarraipena"><span
+class="toc-section-number">1.15.3</span> Ariketaren jarraipena</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1 data-number="1" id="aldez-aurreko-matematika"><span
+class="header-section-number">1</span> Aldez aurreko matematika</h1>
+<p>Lehenengo atal honetan, mekanika garatzeko tresna matematikoak
+aurkeztuko ditugu. Tresnarik erabiliena <em>bektorea</em> izango da.
+Geroago bektoreen arteko eragiketak ikusiko ditugu eta baita bektoreekin
+sortzen ahal ditugun base, erreferentzia eta abar.</p>
+<h2 data-number="1.1" id="bektoreak"><span
+class="header-section-number">1.1</span> Bektoreak</h2>
+<p>Mekanikan, erabiliko ditugun izaki gehienak bektoreak izango dira.
+Hauek, posizioak, abiadurak, azelerazioak, indarrak eta momentuak
+errepresentatzeko balio dute, adibidez. Bektoreak mekanikan
+<em>geziak</em> bezala irudikatuko ditugu, nahiz eta algebraikoki esan
+nahi orokorragoa duten.</p>
+<h3 data-number="1.1.1" id="bektoreen-ezaugarriak"><span
+class="header-section-number">1.1.1</span> Bektoreen ezaugarriak</h3>
+<p>Bektoreen hiru ezaugarriak honakoak dira:</p>
+<ul>
+<li><p><em>Moduloa</em>: bektorearen luzeera markatzen du (horrela ere
+adierazten da: <span
+class="math inline">\(\lVert{\mathbf{u}}\rVert\)</span>)</p></li>
+<li><p><em>Norabidea</em>: bektorearen orientazioa markatzen du</p></li>
+<li><p><em>Norantza</em>: nondik nora doan markatzen du</p></li>
+</ul>
+<p><div id="applet_containercauw6jwx"></div>    <script type="text/javascript">var parameterscauw6jwx = {"width": 600,"height": 300,"material_id": "cauw6jwx","showFullscreenButton": true};var appletcauw6jwx = new GGBApplet(parameterscauw6jwx, true);appletcauw6jwx.inject('applet_containercauw6jwx');</script></p>
+<h2 data-number="1.2" id="bektoreen-arteko-eragiketak"><span
+class="header-section-number">1.2</span> Bektoreen arteko
+eragiketak</h2>
+<h3 data-number="1.2.1" id="bektoreen-batuketa"><span
+class="header-section-number">1.2.1</span> Bektoreen batuketa</h3>
+<p>Bektoreen arteko eragiketa simpleena batuketa da. Bi bektore batzeko,
+<em>paralelogramoaren erregela</em> erabiltzen da, bektore baten
+jatorria bestearen puntan jarrita, eta lehenengoaren jatorritik
+bigarrenaren puntara dihoan bektorea marraztuz.</p>
+<p><div id="applet_containerbmahcssg"></div>    <script type="text/javascript">var parametersbmahcssg = {"width": 600,"height": 300,"material_id": "bmahcssg","showFullscreenButton": true};var appletbmahcssg = new GGBApplet(parametersbmahcssg, true);appletbmahcssg.inject('applet_containerbmahcssg');</script>
+Bektoreen batuketak honako propietatea betetzen du (<span
+class="math inline">\({\mathbf{u}},\,{\mathbf{v}}\)</span> eta <span
+class="math inline">\({\mathbf{w}}\)</span> bektoreak):</p>
+<ul>
+<li><p><span class="math inline">\({\mathbf{u}}+{\mathbf{v}}=
+{\mathbf{v}}+{\mathbf{u}}\)</span></p></li>
+<li><p><span
+class="math inline">\({\mathbf{u}}+({\mathbf{v}}+{\mathbf{w}}) =
+({\mathbf{u}}+{\mathbf{v}})+{\mathbf{w}}\)</span></p></li>
+</ul>
+<h3 data-number="1.2.2"
+id="bektore-baten-biderkadura-eskalar-batekin"><span
+class="header-section-number">1.2.2</span> Bektore baten biderkadura
+eskalar batekin</h3>
+<p>Bektore bat eskalar batekin biderkatzen denean, bektorearen modula
+aldatzen da, eskalarraren tamainaren arabera. Eskalarra negatiboa bada,
+bidarkadurak bektorearen norantza aldatuko du. Bektore eta eskalarraren
+arteko biderkadurak honako propietateak betetzen ditu (<span
+class="math inline">\(a\)</span> eta <span
+class="math inline">\(b\)</span> eskalarrak, <span
+class="math inline">\({\mathbf{u}}\)</span> eta <span
+class="math inline">\({\mathbf{v}}\)</span> bektoreak):</p>
+<ul>
+<li><p><span class="math inline">\(a\,({\mathbf{u}}+{\mathbf{v}}) =
+a\,{\mathbf{u}}+a\,{\mathbf{v}}\)</span></p></li>
+<li><p><span class="math inline">\((a+b)\,{\mathbf{u}}= a\,{\mathbf{u}}+
+b\,{\mathbf{u}}\)</span></p></li>
+<li><p><span class="math inline">\((a\,b){\mathbf{u}}=
+a\,(b\,{\mathbf{u}})\)</span></p></li>
+</ul>
+<p><div id="applet_containertd3vbdsx"></div>    <script type="text/javascript">var parameterstd3vbdsx = {"width": 600,"height": 200,"material_id": "td3vbdsx","showFullscreenButton": true};var applettd3vbdsx = new GGBApplet(parameterstd3vbdsx, true);applettd3vbdsx.inject('applet_containertd3vbdsx');</script></p>
+<h3 data-number="1.2.3" id="bektoreen-biderkadura-eskalarra"><span
+class="header-section-number">1.2.3</span> Bektoreen biderkadura
+eskalarra</h3>
+<p>Bi bektoreen biderkadura eskalarrak, eskalar (zenbaki) bat du emaitza
+bezala. Hortaz, <span class="math inline">\({\mathbf{u}}\)</span> eta
+<span class="math inline">\({\mathbf{v}}\)</span> bektoreen arteko
+biderkadura eskalarra honela kalkulatzen da: <span
+class="math display">\[{\mathbf{u}}\cdot{\mathbf{v}}=
+\lVert{\mathbf{u}}\rVert\,\lVert{\mathbf{v}}\rVert\,\cos\alpha\]</span>
+non <span class="math inline">\(\lVert{\mathbf{u}}\rVert\)</span>
+espresioak <span class="math inline">\({\mathbf{u}}\)</span> bektorearen
+modula errepresentatzen duen, eta <span
+class="math inline">\(\alpha\)</span>-k bi bektoreen arteko angelua
+errepresentatzen duen.</p>
+<p><div id="applet_containerh5zsxdqa"></div>    <script type="text/javascript">var parametersh5zsxdqa = {"width": 600,"height": 300,"material_id": "h5zsxdqa","showFullscreenButton": true};var appleth5zsxdqa = new GGBApplet(parametersh5zsxdqa, true);appleth5zsxdqa.inject('applet_containerh5zsxdqa');</script></p>
+<p>Bektoreen arteko biderkadura eskalarrak honako propietateak betetzen
+ditu (<span class="math inline">\(a\)</span> eskalarra, <span
+class="math inline">\({\mathbf{u}}\)</span>, <span
+class="math inline">\({\mathbf{v}}\)</span> eta <span
+class="math inline">\({\mathbf{w}}\)</span> bektoreak):</p>
+<ul>
+<li><p><span class="math inline">\({\mathbf{u}}\cdot {\mathbf{v}}=
+{\mathbf{v}}\cdot {\mathbf{u}}\)</span></p></li>
+<li><p><span class="math inline">\({\mathbf{u}}\cdot ({\mathbf{v}}+
+{\mathbf{w}}) = {\mathbf{u}}\cdot {\mathbf{v}}+ {\mathbf{u}}\cdot
+{\mathbf{w}}\)</span></p></li>
+<li><p><span class="math inline">\(a\,({\mathbf{u}}\cdot{\mathbf{v}}) =
+(a\,{\mathbf{u}})\cdot{\mathbf{v}}=
+{\mathbf{u}}\cdot(a\,{\mathbf{v}})\)</span></p></li>
+</ul>
+<p><strong>Adibidea:</strong> elkartzutak (<span
+class="math inline">\(\alpha=90^o\)</span>) diren bi bektoreen arteko
+biderkadura eskalarra zero da beti. <span
+class="math display">\[{\mathbf{u}}\cdot{\mathbf{v}}=
+\lVert{\mathbf{u}}\rVert\,\lVert{\mathbf{v}}\rVert\,\cos\alpha =
+\lVert{\mathbf{u}}\rVert\,\lVert{\mathbf{v}}\rVert\,\cos(90^o) =
+0\]</span></p>
+<p><strong>Adibidea:</strong> bektore bat bere buruarengatik
+biderkatuta, emaitza bere modualoaren karratua da. <span
+class="math display">\[{\mathbf{u}}\cdot{\mathbf{u}}=
+\lVert{\mathbf{u}}\rVert\,\lVert{\mathbf{u}}\rVert\,\cos\alpha =
+\lVert{\mathbf{u}}\rVert^2\,\cos(0)  =
+\lVert{\mathbf{u}}\rVert^2\]</span></p>
+<h3 data-number="1.2.4" id="bektoreen-biderkadura-bektoriala"><span
+class="header-section-number">1.2.4</span> Bektoreen biderkadura
+bektoriala</h3>
+<p>Eragiketa hau bakarrik 3 dimentsioko bektoreen artean egin daiteke.
+Emaitza, 3 dimentsioko beste bektore bat da eta beste biekiko elkartzuta
+izango da eta <span class="math inline">\({\mathbf{u}}\)</span> bider
+<span class="math inline">\({\mathbf{v}}\)</span> horrela adieraziko
+dugu: <span class="math display">\[{\mathbf{w}}= {\mathbf{u}}\times
+{\mathbf{v}}\]</span> non <span
+class="math inline">\({\mathbf{w}}\)</span> emaitzak honako ezaugarriak
+izango ditu:</p>
+<ul>
+<li><p><span class="math inline">\({\mathbf{w}}\)</span>-ren moduloa:
+<span class="math inline">\(\lVert{\mathbf{w}}\rVert=
+\lVert{\mathbf{u}}\rVert\,\lVert{\mathbf{v}}\rVert\,\sin\alpha\)</span></p></li>
+<li><p><span class="math inline">\({\mathbf{w}}\)</span>-ren norabidea:
+<span class="math inline">\({\mathbf{u}}\)</span> eta <span
+class="math inline">\({\mathbf{v}}\)</span> bektoreek sortzen duten
+planuarekiko elkartzuta</p></li>
+<li><p><span class="math inline">\({\mathbf{w}}\)</span>-ren norantza:
+eskuineko eskuak adierazten duena</p></li>
+</ul>
+<p><div id="applet_containernajcktte"></div>    <script type="text/javascript">var parametersnajcktte = {"width": 600,"height": 300,"material_id": "najcktte","showFullscreenButton": true};var appletnajcktte = new GGBApplet(parametersnajcktte, true);appletnajcktte.inject('applet_containernajcktte');</script></p>
+<p>Bektoreen arteko biderkadura bektorialak honako propietateak betetzen
+ditu (<span class="math inline">\(a\)</span> eskalarra, <span
+class="math inline">\({\mathbf{u}}\)</span>, <span
+class="math inline">\({\mathbf{v}}\)</span> eta <span
+class="math inline">\({\mathbf{w}}\)</span> 3D-ko bektoreak):</p>
+<ul>
+<li><p><span class="math inline">\({\mathbf{u}}\times {\mathbf{v}}= -
+{\mathbf{v}}\times {\mathbf{u}}\)</span> (biderkadura bektoriala ez da
+trukakorra!)</p></li>
+<li><p><span class="math inline">\({\mathbf{u}}\times ({\mathbf{v}}+
+{\mathbf{w}}) = {\mathbf{u}}\times {\mathbf{v}}+ {\mathbf{u}}\times
+{\mathbf{w}}\)</span></p></li>
+<li><p><span class="math inline">\(a\,({\mathbf{u}}\times{\mathbf{v}}) =
+(a\,{\mathbf{u}})\times{\mathbf{v}}=
+{\mathbf{u}}\times(a\,{\mathbf{v}})\)</span></p></li>
+</ul>
+<h2 data-number="1.3" id="bektore-eremua-eta-baseak"><span
+class="header-section-number">1.3</span> Bektore eremua eta baseak</h2>
+<p><strong>Definizioa</strong>: <em>Bektore eremua</em>: Bektoreek
+batuketa eta biderkadura eskalarraren propietateak betetzen dituztenez,
+bektoreek <em>Bektore Eremu</em> bat osatzen dute. Bektore eremuari
+<span class="math inline">\(\mathcal{V}\)</span> deituko diogu.</p>
+<p><strong>Definizioa</strong>: <em>Bektore linealki askeak</em>: Izan
+bitez <span class="math inline">\({\mathbf{u}}_1, \dots,
+{\mathbf{u}}_p\)</span> bektore eremuaren bektoreak. Bektore hauek
+<em>linealki askeak</em> dira, baldin eta <span
+class="math inline">\(a_1{\mathbf{u}}_1 + \dots + a_p{\mathbf{u}}_p =
+\mathbf{0}\)</span> ekuazioaren soluzio bakarra <span
+class="math inline">\(a_1 = \dots = a_p = 0\)</span> bada.</p>
+<p>Definizio honen arabera, irudietako bektore talde hauek
+independenteak al dira?</p>
+<p><div id="applet_containerwfen5chm"></div>    <script type="text/javascript">var parameterswfen5chm = {"width": 600,"height": 400,"material_id": "wfen5chm","showFullscreenButton": true};var appletwfen5chm = new GGBApplet(parameterswfen5chm, true);appletwfen5chm.inject('applet_containerwfen5chm');</script></p>
+<p><div id="applet_containerxjwbhkhj"></div>    <script type="text/javascript">var parametersxjwbhkhj = {"width": 600,"height": 300,"material_id": "xjwbhkhj","showFullscreenButton": true};var appletxjwbhkhj = new GGBApplet(parametersxjwbhkhj, true);appletxjwbhkhj.inject('applet_containerxjwbhkhj');</script></p>
+<p><div id="applet_containeremc3wwsh"></div>    <script type="text/javascript">var parametersemc3wwsh = {"width": 600,"height": 200,"material_id": "emc3wwsh","showFullscreenButton": true};var appletemc3wwsh = new GGBApplet(parametersemc3wwsh, true);appletemc3wwsh.inject('applet_containeremc3wwsh');</script></p>
+<p><strong>Definizioa</strong>: <em>Bektore eremu baten basea</em>: Izan
+bitez <span
+class="math inline">\({\mathbf{e}}_1,{\mathbf{e}}_2,\dots,{\mathbf{e}}_n\,\in
+\mathcal{V}\)</span> bektore eremu baten <span
+class="math inline">\(n\)</span> bektore. Bektore hauek <em>eremuaren
+base bat osatzen dute</em> ondorego bi balditza hauek betetzen
+badira:</p>
+<ol>
+<li><p><span
+class="math inline">\({\mathbf{e}}_1,{\mathbf{e}}_2,\dots,{\mathbf{e}}_n\,\in
+\mathcal{V}\)</span> linealki askeak dira</p></li>
+<li><p><span class="math inline">\(\forall {\mathbf{u}}\in\mathcal{V},
+\exists a_1,\dots,a_n\in \mathbb{R} | {\mathbf{u}}= a_1\,{\mathbf{e}}_1
++ \dots + a_n\,{\mathbf{e}}_n\)</span>. Edo beste modu batez esanda:
+<span class="math inline">\({\mathbf{u}}\)</span> bektorea <span
+class="math inline">\(\mathcal{V}\)</span> bektore eremuko edozein
+bektore izanda, <span class="math inline">\({\mathbf{u}}\)</span>
+bektorea <span
+class="math inline">\({\mathbf{e}}_1,{\mathbf{e}}_2,\dots,{\mathbf{e}}_n\)</span>
+bektoreen konbinazio lineal bat bezala idatzi daiteke, <span
+class="math inline">\(a_1,\dots,a_n\)</span> koefiziente eskalar batzuk
+erabilita.</p></li>
+</ol>
+<h3 data-number="1.3.1" id="bektore-baten-osagaiak-base-batean"><span
+class="header-section-number">1.3.1</span> Bektore baten osagaiak base
+batean</h3>
+<p>Aurreko definizioak erabilita, <span
+class="math inline">\({\mathbf{e}}_1,{\mathbf{e}}_2,\dots,{\mathbf{e}}_n\)</span>
+bektoreek <span class="math inline">\(\mathcal{V}\)</span> eremuaren
+base bat osatzen badute, eta orduan:</p>
+<p><span class="math display">\[\large
+    \boxed{\begin{aligned}
+        &amp;a_1,\dots,a_n \text{ eskalarrak } {\mathbf{u}}\text{-ren}\\
+        &amp;\text{osagaiak dira } {\mathbf{e}}_1,\dots,{\mathbf{e}}_n
+\text{ basean}
+    \end{aligned}}\]</span></p>
+<p>Erlazio hau, matematikoki, modu honetan adieraziko dugu: <span
+class="math display">\[\large
+    {\left\{\begin{matrix}{\mathbf{u}}\end{matrix}\right\}}_{_{{\mathbf{e}}_1,\dots,{\mathbf{e}}_n}}={\left\{\begin{matrix}a_1
+\\ \vdots \\
+a_n\end{matrix}\right\}}_{_{{\mathbf{e}}_1,\dots,{\mathbf{e}}_n}}\]</span></p>
+<p>eta baita honako moduan ere: <span class="math display">\[\large
+    {\mathbf{u}}= a_1\,{\mathbf{e}}_1 + \dots +
+a_n\,{\mathbf{e}}_n\]</span></p>
+<p><strong>Adibidea</strong>:</p>
+<p>Beheko irudian, <span class="math inline">\({\mathbf{e}}_1\)</span>
+eta <span class="math inline">\({\mathbf{e}}_2\)</span> bektoreek <span
+class="math inline">\(\mathbb{R}^2\)</span> espazioko base bat osatzen
+dute. Hortaz, <span class="math inline">\({\mathbf{w}}\)</span> bektorea
+(hau da <span class="math inline">\(\mathbb{R}^2\)</span> espazioaren
+edozein bektore) <span class="math inline">\({\mathbf{e}}_1\)</span> eta
+<span class="math inline">\({\mathbf{e}}_2\)</span> bektoreen konbinazio
+lineal bat bezala idatzi dezakegu. Aipatzekoa da <span
+class="math inline">\({\mathbf{e}}_1\)</span> eta <span
+class="math inline">\({\mathbf{e}}_2\)</span> bektoreek <span
+class="math inline">\(\mathbb{R}^2\)</span> espazioaren base bat osatzen
+dutela, beti ere bien moduloa ezberdin zero bada, eta bi bektoreak
+lerrokatuta ez badaude. Irudian <span
+class="math inline">\({\mathbf{w}}\)</span> bektorearen osagaiak <span
+class="math inline">\({\mathbf{e}}_1{\mathbf{e}}_2\)</span> basean
+kalkulatzen dira (<span class="math inline">\(w_1\)</span> eta <span
+class="math inline">\(w_2\)</span>).</p>
+<p><div id="applet_containerw4kgqcbc"></div>    <script type="text/javascript">var parametersw4kgqcbc = {"width": 600,"height": 400,"material_id": "w4kgqcbc","showFullscreenButton": true};var appletw4kgqcbc = new GGBApplet(parametersw4kgqcbc, true);appletw4kgqcbc.inject('applet_containerw4kgqcbc');</script></p>
+<p><strong>Baseen propietateak</strong>:</p>
+<ul>
+<li><p>Eremu bektorial baten base guztiek bektore kopuru bera
+dute</p></li>
+<li><p>Kopuru hori espazioaren dimentsioa da</p></li>
+<li><p>Bektore baten osagaiak base batean bakarrak dira</p></li>
+<li><p>Mekanikan espazioak 3 dimentsio izango ditu:</p>
+<ul>
+<li><p>Bektore eremua <span
+class="math inline">\(\mathcal{V}\equiv\mathbb{R}^3\)</span> izango
+da</p></li>
+<li><p>Baseek 3 bektore izango dituzte</p></li>
+<li><p>Bektoreek 3 osagai izango dituzte</p></li>
+</ul></li>
+</ul>
+<h3 data-number="1.3.2" id="base-ortonormalak"><span
+class="header-section-number">1.3.2</span> Base ortonormalak</h3>
+<p><strong>Definizioa</strong>: <em>Base ortonormala</em>: <span
+class="math inline">\(\mathcal{V}\)</span> bektore eremuaren <span
+class="math inline">\({\mathbf{e}}_1,\dots,{\mathbf{e}}_n\)</span>
+bektoreek <span class="math inline">\(\mathcal{V}\)</span>-ren <em>base
+ortonormal</em> bat osatzen dute, baldin eta honako baldintzak betetzen
+badira:</p>
+<ul>
+<li><p>Bektore guztiak elkarrekiko elkartzutak dira: <span
+class="math inline">\({\mathbf{e}}_i\cdot {\mathbf{e}}_j = 0, \forall
+i\neq j\)</span></p></li>
+<li><p>Bektore guztien norma edo moduloa <span
+class="math inline">\(1\)</span> da: <span
+class="math inline">\({\mathbf{e}}_i\cdot{\mathbf{e}}_i = 1, \forall
+i\)</span></p></li>
+</ul>
+<p>Mekanikan, baldintzak honakoak izango dira</p>
+<ul>
+<li><p><span
+class="math inline">\({\mathbf{e}}_1,{\mathbf{e}}_2,{\mathbf{e}}_3 \in
+\mathbb{R}^3\)</span></p></li>
+<li><p><span class="math inline">\({\mathbf{e}}_1\cdot{\mathbf{e}}_2 =
+{\mathbf{e}}_2\cdot{\mathbf{e}}_3 = {\mathbf{e}}_3\cdot{\mathbf{e}}_1 =
+0\)</span></p></li>
+<li><p><span class="math inline">\({\mathbf{e}}_1\cdot{\mathbf{e}}_1 =
+{\mathbf{e}}_2\cdot{\mathbf{e}}_2 ={\mathbf{e}}_3\cdot{\mathbf{e}}_3 =
+1\)</span></p></li>
+</ul>
+<p>Hurrengo irudian base ortonormal bat agertzen da, eta bere
+orientazioa aldatu daiteke, hiru bektoreen moduloa bat izanda, eta haien
+artean elkartzuta izanda.</p>
+<p><div id="applet_containerkzva5mqs"></div>    <script type="text/javascript">var parameterskzva5mqs = {"width": 600,"height": 300,"material_id": "kzva5mqs","showFullscreenButton": true};var appletkzva5mqs = new GGBApplet(parameterskzva5mqs, true);appletkzva5mqs.inject('applet_containerkzva5mqs');</script></p>
+<h3 data-number="1.3.3" id="triedro-zuzenak"><span
+class="header-section-number">1.3.3</span> Triedro zuzenak</h3>
+<p><strong>Definizioa</strong>: <em>Triedro zuzena</em>: Hiru
+dimentsioko base ortonormal bat <em>triedro zuzena</em> izango da baldin
+eta <span class="math inline">\({\mathbf{e}}_1\times {\mathbf{e}}_2 =
+{\mathbf{e}}_3\)</span> bada.</p>
+<p>Ondorioz, honako bi berdintzak beteko dira ere: <span
+class="math inline">\({\mathbf{e}}_2\times{\mathbf{e}}_3 =
+{\mathbf{e}}_1\)</span> eta <span
+class="math inline">\({\mathbf{e}}_3\times{\mathbf{e}}_1 =
+{\mathbf{e}}_2\)</span>.</p>
+<p>Hondoko marrazkian, ezkerreko triedroa zuzena da, baina eskuinekoa
+ez.</p>
+<p><div id="applet_containerhf8xxk4m"></div>    <script type="text/javascript">var parametershf8xxk4m = {"width": 600,"height": 350,"material_id": "hf8xxk4m","showFullscreenButton": true};var applethf8xxk4m = new GGBApplet(parametershf8xxk4m, true);applethf8xxk4m.inject('applet_containerhf8xxk4m');</script></p>
+<h3 data-number="1.3.4"
+id="bektoreak-eta-haien-osagaiak-base-batean"><span
+class="header-section-number">1.3.4</span> Bektoreak eta haien osagaiak
+base batean</h3>
+<p>Izan bitez <span
+class="math inline">\({\mathbf{u}}\in\mathcal{V}\)</span> bektore bat
+eta <span
+class="math inline">\({\mathbf{e}}_1,{\mathbf{e}}_2,{\mathbf{e}}_3\in\mathcal{V}\)</span>
+base bat osatzen duten hiru bektore. Hurrengo bi espresioak baliokideak
+dira: <span class="math display">\[\large
+    \boxed{{\left\{\begin{matrix}{\mathbf{u}}\end{matrix}\right\}}_{_{{\mathbf{e}}_1{\mathbf{e}}_2{\mathbf{e}}_3}}={\left\{\begin{matrix}u_1
+\\ u_2 \\
+u_3\end{matrix}\right\}}_{_{{\mathbf{e}}_1{\mathbf{e}}_2{\mathbf{e}}_3}}  
+    \Longleftrightarrow {\mathbf{u}}=
+u_1{\mathbf{e}}_1+u_2{\mathbf{e}}_2+u_3{\mathbf{e}}_3}\]</span></p>
+<ul>
+<li><p>Hortaz, <span class="math inline">\(u_1\)</span>, <span
+class="math inline">\(u_2\)</span> eta <span
+class="math inline">\(u_3\)</span> zenbakiak <span
+class="math inline">\({\mathbf{u}}\)</span> bektorearen osagaiak dira
+<span
+class="math inline">\({\mathbf{e}}_1{\mathbf{e}}_2{\mathbf{e}}_3\)</span>
+basean.</p></li>
+<li><p><span class="math inline">\({\mathbf{u}}\)</span> bektorearen
+osagaiak biderkadura eskalarraren bitartez kalkulatu daiteze: <span
+class="math inline">\(u_1={\mathbf{u}}\cdot{\mathbf{e}}_1\)</span>.</p></li>
+</ul>
+<p>Erlazio hau frogatzeko, beheko irudia erabili daiteke, ikusteko:
+<span class="math display">\[{\mathbf{u}}\cdot{\mathbf{e}}_1 =
+\lVert{\mathbf{u}}\rVert\lVert{\mathbf{e}}_1\rVert\cos\theta=\lVert{\mathbf{u}}\rVert\cos\theta=u_1\]</span></p>
+<p><div id="applet_containerb2tm3yr2"></div>    <script type="text/javascript">var parametersb2tm3yr2 = {"width": 600,"height": 300,"material_id": "b2tm3yr2","showFullscreenButton": true};var appletb2tm3yr2 = new GGBApplet(parametersb2tm3yr2, true);appletb2tm3yr2.inject('applet_containerb2tm3yr2');</script></p>
+<h2 data-number="1.4" id="bektoreen-osagaien-arteko-eragiketak"><span
+class="header-section-number">1.4</span> Bektoreen osagaien arteko
+eragiketak</h2>
+<p>Atal honetako eragiketak adierazteko, izan bitez <span
+class="math inline">\({\mathbf{u}}\)</span> eta <span
+class="math inline">\({\mathbf{v}}\)</span> bi bektore, eta <span
+class="math inline">\(u_1,u_2,u_3\)</span> eta <span
+class="math inline">\(v_1,v_2,v_3\)</span> haien osagaiak <span
+class="math inline">\({\mathcal{B}}\equiv
+{\mathbf{e}}_1{\mathbf{e}}_2{\mathbf{e}}_3\)</span> base
+ortonormalean.</p>
+<h3 data-number="1.4.1" id="bektoreen-batuketa-osagaiak-erabilita"><span
+class="header-section-number">1.4.1</span> Bektoreen batuketa osagaiak
+erabilita</h3>
+<p><strong>Teorema</strong>: Bi bektoreen batuketa honela kalkulatu
+daiteke. <span
+class="math display">\[{\left\{\begin{matrix}{\mathbf{u}}\end{matrix}\right\}}_{_{{\mathcal{B}}}}+{\left\{\begin{matrix}{\mathbf{v}}\end{matrix}\right\}}_{_{{\mathcal{B}}}}
+=
+{\left\{\begin{matrix}u_1\\u_2\\u_3\end{matrix}\right\}}_{_{{\mathcal{B}}}}+{\left\{\begin{matrix}v_1\\v_2\\v_3\end{matrix}\right\}}_{_{{\mathcal{B}}}}
+=
+{\left\{\begin{matrix}u_1+v_1\\u_2+v_2\\u_3+v_3\end{matrix}\right\}}_{_{{\mathcal{B}}}}\]</span>
+<strong>Frogapena</strong>: <span class="math display">\[\begin{split}
+    {\mathbf{u}}+ {\mathbf{v}}&amp;= (u_1{\mathbf{e}}_1 +
+u_2{\mathbf{e}}_2 + u_3{\mathbf{e}}_3) + (v_1{\mathbf{e}}_1 +
+v_2{\mathbf{e}}_2 + v_3{\mathbf{e}}_3)\\
+                &amp;= (u_1+v_1){\mathbf{e}}_1 + (u_2+v_2){\mathbf{e}}_2
++ (u_3+v_3){\mathbf{e}}_3 =
+    \end{split}\]</span></p>
+<p><strong>Adibidea</strong>: <span
+class="math display">\[{\left\{\begin{matrix}1\\2\\3\end{matrix}\right\}}_{_{{\mathcal{B}}}}+{\left\{\begin{matrix}4\\5\\6\end{matrix}\right\}}_{_{{\mathcal{B}}}}
+=
+{\left\{\begin{matrix}5\\7\\9\end{matrix}\right\}}_{_{{\mathcal{B}}}}\]</span></p>
+<p>Oharra: bi bektoreen osagaien arteko batuketa egiteko, nahitaezkoa da
+bi bektoreak base berdinean errepresentatzea.</p>
+<h3 data-number="1.4.2"
+id="bektore-baten-biderkadura-eskalar-batekin-1"><span
+class="header-section-number">1.4.2</span> Bektore baten biderkadura
+eskalar batekin</h3>
+<p><strong>Teorema</strong>: Bektore bat bider eskalar bat (<span
+class="math inline">\(a\)</span>), honela kalkulatu daiteke. <span
+class="math display">\[{\left\{\begin{matrix}a{\mathbf{u}}\end{matrix}\right\}}_{_{{\mathcal{B}}}}={\left\{\begin{matrix}a\,u_1
+\\a\,u_2 \\a\,u_3\end{matrix}\right\}}_{_{{\mathcal{B}}}}\]</span></p>
+<p><strong>Frogapena</strong>: <span
+class="math display">\[a\,{\mathbf{u}}= a\,(u_1{\mathbf{e}}_1 +
+u_2{\mathbf{e}}_2 + u_3{\mathbf{e}}_3) = (a\,u_1){\mathbf{e}}_1 +
+(a\,u_2){\mathbf{e}}_2 + (a\,u_3){\mathbf{e}}_3\]</span></p>
+<p><strong>Adibidea</strong>: <span
+class="math display">\[3\,{\left\{\begin{matrix}1\\2\\3\end{matrix}\right\}}_{_{{\mathcal{B}}}}=
+{\left\{\begin{matrix}3\cdot 1\\3\cdot 2\\3\cdot
+3\end{matrix}\right\}}_{_{{\mathcal{B}}}}=
+{\left\{\begin{matrix}3\\6\\9\end{matrix}\right\}}_{_{{\mathcal{B}}}}\]</span></p>
+<h3 data-number="1.4.3"
+id="bi-bektoreren-arteko-bidekadura-eskalarra"><span
+class="header-section-number">1.4.3</span> Bi bektoreren arteko
+bidekadura eskalarra</h3>
+<p><strong>Teorema</strong>: Bi bektoreren arteko biderkadura eskalarra
+honela kalkulatu daiteke. <span
+class="math display">\[{\left\{\begin{matrix}{\mathbf{u}}\end{matrix}\right\}}_{_{{\mathcal{B}}}}\cdot
+{\left\{\begin{matrix}{\mathbf{v}}\end{matrix}\right\}}_{_{{\mathcal{B}}}}=u_1
+v_1 + u_2 v_2 + u_3 v_3\]</span></p>
+<p><strong>Frogapena</strong>: <span
+class="math display">\[\begin{split}
+    {\mathbf{u}}\cdot{\mathbf{v}}&amp;=  (u_1{\mathbf{e}}_1 +
+u_2{\mathbf{e}}_2 + u_3{\mathbf{e}}_3) \cdot (v_1{\mathbf{e}}_1 +
+v_2{\mathbf{e}}_2 + v_3{\mathbf{e}}_3)\\
+                &amp;= \sum_i^3 u_i
+v_i({\mathbf{e}}_i\cdot{\mathbf{e}}_i) + \sum_{i\neq j} u_i v_j
+(\cancel{{\mathbf{e}}_i\cdot{\mathbf{e}}_j})=\\
+                &amp;= \sum_i^3 u_i v_i (1)= u_1 v_1 + u_2 v_2 + u_3 v_3
+\end{split}\]</span></p>
+<p><strong>Adibidea</strong>: <span
+class="math display">\[{\left\{\begin{matrix}1\\2\\3\end{matrix}\right\}}_{_{{\mathcal{B}}}}\cdot
+{\left\{\begin{matrix}4\\5\\6\end{matrix}\right\}}_{_{{\mathcal{B}}}} =
+4 + 10 + 18 = 32\]</span></p>
+<p><strong>Oharra</strong>: erlazio hau egia da edozein <span
+class="math inline">\({\mathcal{B}}\)</span> base erabiltzen delarik.
+Izatez, bi base ezberdin erabiltzen baditugu ere, emaitza berdina da.
+<span
+class="math display">\[{\left\{\begin{matrix}{\mathbf{u}}\end{matrix}\right\}}_{_{{\mathcal{B}}}}\!\!\!\cdot\!
+{\left\{\begin{matrix}{\mathbf{v}}\end{matrix}\right\}}_{_{{\mathcal{B}}}}\!=\!u_1
+v_1 + u_2 v_2 + u_3 v_3\!=\!u_1&#39; v&#39;_1 + u&#39;_2 v&#39;_2 +
+u&#39;_3
+v&#39;_3\!=\!{\left\{\begin{matrix}{\mathbf{u}}\end{matrix}\right\}}_{_{\mathcal{B&#39;}}}\!\!\!\cdot\!
+{\left\{\begin{matrix}{\mathbf{v}}\end{matrix}\right\}}_{_{\mathcal{B&#39;}}}\]</span>
+non <span class="math inline">\(u_1&#39;,u_2&#39;,u_3&#39;\)</span> eta
+<span class="math inline">\(v_1&#39;,v_2&#39;,v_3&#39;\)</span>
+zenbakiak, <span class="math inline">\({\mathbf{u}}\)</span> eta <span
+class="math inline">\({\mathbf{v}}\)</span> bektoreen osagaiak diren
+<span class="math inline">\({\mathcal{B}&#39;}\)</span> basean.</p>
+<h3 data-number="1.4.4"
+id="bi-bektoreren-arteko-bidekadura-bektoriala"><span
+class="header-section-number">1.4.4</span> Bi bektoreren arteko
+bidekadura bektoriala</h3>
+<p>Eragiketa honek zentzua dauka bakarrik hiru dimentsioko bektoreen
+artean, eta emaitza bezala ere hiru dimentsioko bektore bat emanten du.
+Hau da, kasu honetan: <span
+class="math inline">\({\mathbf{u}},{\mathbf{v}},{\mathbf{w}}\in\mathbb{R}^3\)</span>.</p>
+<p><strong>Teorema</strong>: Bi bektoreren arteko biderkadura bektoriala
+honela kalkulatu daiteke. <span
+class="math display">\[{\left\{\begin{matrix}{\mathbf{w}}\end{matrix}\right\}}_{_{{\mathcal{B}}}}={\left\{\begin{matrix}{\mathbf{u}}\end{matrix}\right\}}_{_{{\mathcal{B}}}}\times
+{\left\{\begin{matrix}{\mathbf{v}}\end{matrix}\right\}}_{_{{\mathcal{B}}}}=
+    {\left\{\begin{matrix}u_1\\u_2\\u_3\end{matrix}\right\}}_{_{{\mathcal{B}}}}\times
+{\left\{\begin{matrix}v_1\\v_2\\v_3\end{matrix}\right\}}_{_{{\mathcal{B}}}}
+=
+    {\left\{\begin{matrix}u_2 v_3-u_3 v_2\\-u_1 v_3 + u_3 v_1\\u_1 v_2 -
+u_2 v_1\end{matrix}\right\}}_{_{{\mathcal{B}}}}\]</span></p>
+<p>Espresio honetaz oroitzeko, honako eskema baliogarria izan daiteke:
+<span
+class="math display">\[{\left\{\begin{matrix}{\mathbf{u}}\end{matrix}\right\}}_{_{{\mathcal{B}}}}\times
+{\left\{\begin{matrix}{\mathbf{v}}\end{matrix}\right\}}_{_{{\mathcal{B}}}}=
+    {\left\{\begin{matrix}  \left\{\begin{matrix}\xcancel{u_1}\\
+{\textcolor{blue}{u_2}}\\ {\textcolor{red}{u_3}}
+\end{matrix}\right\}\times \left\{\begin{matrix}\xcancel{v_1}\\
+{\textcolor{red}{v_2}}\\ {\textcolor{blue}{v_3}} \end{matrix}\right\} \\
+            \left\{\begin{matrix}{\textcolor{red}{u_1}}\\
+\xcancel{u_2}\\ {\textcolor{blue}{u_3}}\end{matrix}\right\}\times
+\left\{\begin{matrix}{\textcolor{blue}{v_1}}\\\xcancel{v_2}\\
+{\textcolor{red}{v_3}}\end{matrix}\right\} \\
+            \left\{\begin{matrix}{\textcolor{blue}{u_1}}\\{\textcolor{red}{u_2}}\\\xcancel{u_3}\end{matrix}\right\}\times
+\left\{\begin{matrix}{\textcolor{red}{v_1}}\\{\textcolor{blue}{v_2}}\\\xcancel{v_3}\end{matrix}\right\}\end{matrix}\right\}}_{_{{\mathcal{B}}}}
+=
+            {\left\{\begin{matrix}{\textcolor{blue}{u_2
+v_3}}-{\textcolor{red}{u_3 v_2}}\\ -{\textcolor{red}{u_1 v_3}} +
+{\textcolor{blue}{u_3 v_1}}\\ {\textcolor{blue}{u_1 v_2}} -
+{\textcolor{red}{u_2
+v_1}}\end{matrix}\right\}}_{_{{\mathcal{B}}}}\]</span></p>
+<p><strong>Frogapena</strong>: <span
+class="math display">\[\begin{split}
+{\mathbf{u}}\times{\mathbf{v}}&amp;=  (u_1{\mathbf{e}}_1 +
+u_2{\mathbf{e}}_2 + u_3{\mathbf{e}}_3) \times (v_1{\mathbf{e}}_1 +
+v_2{\mathbf{e}}_2 + v_3{\mathbf{e}}_3)\\
+    &amp;= u_1 v_1{\mathbf{e}}_1\times{\mathbf{e}}_1 + u_1
+v_2{\mathbf{e}}_1\times{\mathbf{e}}_2 + u_1
+v_3{\mathbf{e}}_1\times{\mathbf{e}}_3\\
+    &amp;+ u_2 v_1{\mathbf{e}}_2\times{\mathbf{e}}_1 + u_2
+v_2{\mathbf{e}}_2\times{\mathbf{e}}_2 + u_2
+v_3{\mathbf{e}}_2\times{\mathbf{e}}_3\\
+    &amp;+ u_3 v_1{\mathbf{e}}_3\times{\mathbf{e}}_1 + u_3
+v_3{\mathbf{e}}_2\times{\mathbf{e}}_2 + u_3
+v_3{\mathbf{e}}_2\times{\mathbf{e}}_3\\
+    &amp;= \phantom{u_1 v_1{\mathbf{e}}_1\times{\mathbf{e}}_1} + u_1
+v_2{\textcolor{blue}{{\mathbf{e}}_3}}\phantom{\times {\mathbf{e}}_1}\, -
+u_1 v_3{\textcolor{red}{{\mathbf{e}}_2}}\phantom{\times
+{\mathbf{e}}_1}\\
+    &amp;- u_2 v_1{\textcolor{red}{{\mathbf{e}}_3}}\phantom{\times
+{\mathbf{e}}_1} \phantom{+ u_2
+v_2{\mathbf{e}}_2\times{\mathbf{e}}_2}\,\,\,\,+ u_2
+v_3{\textcolor{blue}{{\mathbf{e}}_1}}\phantom{\times {\mathbf{e}}_1}\\
+    &amp;+ u_3 v_1{\textcolor{blue}{{\mathbf{e}}_2}}\phantom{\times
+{\mathbf{e}}_1} \,\,\,- u_3
+v_2{\textcolor{red}{{\mathbf{e}}_1}}\phantom{\times {\mathbf{e}}_1}
+\phantom{+ u_3 v_3{\mathbf{e}}_2\times{\mathbf{e}}_3}\\
+    &amp;=({\textcolor{blue}{u_2 v_3}}-{\textcolor{red}{u_3
+v_2}}){\mathbf{e}}_1 + ({\textcolor{blue}{u_3 v_1}}-{\textcolor{red}{u_1
+v_3}}){\mathbf{e}}_2 + ({\textcolor{blue}{u_1 v_2}} -
+{\textcolor{red}{u_2 v_1}}){\mathbf{e}}_3
+\end{split}\]</span></p>
+<p><strong>Adibidea</strong>: <span
+class="math display">\[{\left\{\begin{matrix}1\\2\\3\end{matrix}\right\}}_{_{{\mathcal{B}}}}\times
+{\left\{\begin{matrix}4\\5\\6\end{matrix}\right\}}_{_{{\mathcal{B}}}} =
+    {\left\{\begin{matrix}2\cdot 6-3\cdot 5\\3\cdot 4 - 1\cdot 6\\
+1\cdot 5 - 2\cdot 4\end{matrix}\right\}}_{_{{\mathcal{B}}}} =
+{\left\{\begin{matrix}-3\\\phantom{-}6\\-3\end{matrix}\right\}}_{_{{\mathcal{B}}}}\]</span></p>
+<p><strong>Oharra</strong>: biderkadura bektorialaren eragiketa, menore
+printzipalez baliatuta egin daiteke ere. Mekanikako ariketen ebazpenean
+horrelako eragiketa asko egingo ditugunez garapen luzeen erdian,
+gomendagarria da eragiketa irakatsitako modu honetan egitea.</p>
+<h3 data-number="1.4.5"
+id="bi-bektoreren-arteko-bidekadura-bektoriala-beste-modu-bat"><span
+class="header-section-number">1.4.5</span> Bi bektoreren arteko
+bidekadura bektoriala (beste modu bat)</h3>
+<p>Biderkadura bektoriala, matrize-bider-bektore bezala ere idatzi
+daiteke, bektore eta matrizearen osagaie hondoko erlazioa betetzen
+badute: <span class="math display">\[\begin{split}
+    {\left\{\begin{matrix}{\mathbf{w}}\end{matrix}\right\}}_{_{{\mathcal{B}}}}&amp;={\left\{\begin{matrix}{\mathbf{u}}\end{matrix}\right\}}_{_{{\mathcal{B}}}}\times
+{\left\{\begin{matrix}{\mathbf{v}}\end{matrix}\right\}}_{_{{\mathcal{B}}}}=
+    {\left\{\begin{matrix}u_1\\u_2\\u_3\end{matrix}\right\}}_{_{{\mathcal{B}}}}\times
+{\left\{\begin{matrix}v_1\\v_2\\v_3\end{matrix}\right\}}_{_{{\mathcal{B}}}}
+=
+    {\left\{\begin{matrix}u_2 v_3-u_3 v_2\\-u_1 v_3 + u_3 v_1\\u_1 v_2 -
+u_2 v_1\end{matrix}\right\}}_{_{{\mathcal{B}}}} \\
+    &amp;=
+    \begin{bmatrix}
+        0 &amp; -u_3 &amp; u_2 \\
+        u_3 &amp; 0 &amp; -u_1 \\
+        -u_2 &amp; u_1 &amp; 0
+    \end{bmatrix}{\left\{\begin{matrix}v_1\\v_2\\v_3\end{matrix}\right\}}_{_{{\mathcal{B}}}}
+=
+{\left\{\begin{matrix}\tilde{{\mathbf{u}}}{\mathbf{v}}\end{matrix}\right\}}_{_{{\mathcal{B}}}}
+\end{split}\]</span> non <span
+class="math inline">\(\tilde{{\mathbf{u}}}\)</span> matrizeari,
+<em>matrize antisimetrikoa</em> deitzen zaion (ingeleraz <em>skew
+matrix</em>). <span
+class="math display">\[\label{eq::matrize_antisimetrikoa}
+    \big[\tilde{{\mathbf{u}}}\big] =
+    \begin{bmatrix}
+        0 &amp; -u_3 &amp; u_2 \\
+        u_3 &amp; 0 &amp; -u_1 \\
+        -u_2 &amp; u_1 &amp; 0
+    \end{bmatrix}\]</span></p>
+<p><strong>Adibidea</strong>: <span
+class="math display">\[{\left\{\begin{matrix}1\\2\\3\end{matrix}\right\}}_{_{{\mathcal{B}}}}\times
+{\left\{\begin{matrix}4\\5\\6\end{matrix}\right\}}_{_{{\mathcal{B}}}} =
+    {\left\{\begin{matrix}2\cdot 6-3\cdot 5\\3\cdot 4 - 1\cdot 6\\
+1\cdot 5 - 2\cdot 4\end{matrix}\right\}}_{_{{\mathcal{B}}}} =
+    \begin{bmatrix}
+        0 &amp; -3 &amp; 2 \\
+        3 &amp; 0 &amp; -1 \\
+        -2 &amp; 1 &amp; 0
+    \end{bmatrix}{\left\{\begin{matrix}4\\5\\6\end{matrix}\right\}}_{_{{\mathcal{B}}}}\]</span></p>
+<h2 data-number="1.5" id="base-baten-biraketa-elementala"><span
+class="header-section-number">1.5</span> Base baten biraketa
+elementala</h2>
+<p>Base bat bere ardatz batekiko biratzen badugu, <em>biraketa
+elemental</em> bat egin dugula esango dugu. Baseak sortzeko, ikasgai
+honetan, <em>biraketa elementalak</em> erabiliko ditugu. Base berria
+lortzeko, biraketa <span class="math inline">\({\mathbf{e}}_i\)</span>
+ardatzarekiko egiten badugu, orduan sortutako baseak eta jatorrizko
+baseak <span class="math inline">\({\mathbf{e}}_i\)</span> ardatza
+amankomuna izango dute.</p>
+<p><strong>Adibidea</strong>: hurrengo irudian, <span
+class="math inline">\(123\)</span> basea, <span
+class="math inline">\(xyz\)</span> basearen biraketa elemental baten
+bitartez sortzen dugu, biraketa angelua <span
+class="math inline">\(\theta\)</span> izanda, eta biraketa ardatza <span
+class="math inline">\(z\)</span> ardatza izanda. Sortutako baseak eta
+jatorrizko baseak <span class="math inline">\(z\equiv 3\)</span>
+ardatzak izango dituzte amankomunean.</p>
+<p><div id="applet_containersjyd2mqw"></div>    <script type="text/javascript">var parameterssjyd2mqw = {"width": 600,"height": 300,"material_id": "sjyd2mqw","showFullscreenButton": true};var appletsjyd2mqw = new GGBApplet(parameterssjyd2mqw, true);appletsjyd2mqw.inject('applet_containersjyd2mqw');</script></p>
+<h2 data-number="1.6" id="base-aldaketa-matrizea"><span
+class="header-section-number">1.6</span> Base aldaketa matrizea</h2>
+<p>Askotan gertatuko zaigu, bi bektoreen arteko eragiketa bat egin nahi
+dugula, baina bektore bakoitzaren osagaiak base ezberdin batean
+ditugula. Eragiketa egin ahal izateko, bi bektoreak base berdinean
+idatzi beharko ditugu, eta horretarako bektore bat basez aldatu beharko
+dugu.</p>
+<p><strong>Adibidea</strong>: <span
+class="math display">\[{\left\{\begin{matrix}{\mathbf{u}}\end{matrix}\right\}}_{_{{\mathcal{B}}}}={\left\{\begin{matrix}1\\2\\3\end{matrix}\right\}}_{_{{\mathcal{B}}}},
+{\left\{\begin{matrix}{\mathbf{v}}\end{matrix}\right\}}_{_{\mathcal{B&#39;}}}={\left\{\begin{matrix}4\\5\\6\end{matrix}\right\}}_{_{\mathcal{B&#39;}}}
+\rightarrow \text{zenbat da }
+{\mathbf{u}}+{\mathbf{v}}\text{?}\]</span></p>
+<p><strong>Definizioa</strong>: Izan bitez bi base ortonormal <span
+class="math inline">\({\mathcal{B}}\equiv
+{\mathbf{e}}_1,{\mathbf{e}}_2,{\mathbf{e}}_3\)</span> eta <span
+class="math inline">\(\mathcal{B&#39;}\equiv
+{\mathbf{e}}_1&#39;,{\mathbf{e}}_2&#39;,{\mathbf{e}}_3&#39;\)</span>,
+eta beste aldetik <span
+class="math inline">\({\mathbf{u}}\in\mathcal{V}\)</span> bektore bat,
+non <span class="math inline">\({\mathbf{u}}\)</span>-ren osagaiek bi
+baseetan honakoa betetzen duten: <span
+class="math display">\[\begin{split}
+        {\mathbf{u}}&amp;= u_1{\mathbf{e}}_1 + u_2{\mathbf{e}}_2 +
+u_3{\mathbf{e}}_3 \\
+        {\mathbf{u}}&amp;= u_1&#39;{\mathbf{e}}_1&#39; +
+u_2&#39;{\mathbf{e}}_2&#39; + u_3&#39;{\mathbf{e}}_3&#39;
+    \end{split}\]</span> edo beste modu batez: <span
+class="math display">\[{\left\{\begin{matrix}{\mathbf{u}}\end{matrix}\right\}}_{_{{\mathcal{B}}}}={\left\{\begin{matrix}u_1\\u_2\\u_3\end{matrix}\right\}}_{_{{\mathcal{B}}}}\quad
+\text{ eta }\quad
+{\left\{\begin{matrix}{\mathbf{u}}\end{matrix}\right\}}_{_{\mathcal{B&#39;}}}={\left\{\begin{matrix}u_1&#39;\\u_2&#39;\\u_3&#39;\end{matrix}\right\}}_{_{\mathcal{B&#39;}}}\]</span>
+Base aldaketa matrizea <span
+class="math inline">\((\left[\mathbf{1}\right]_{_{{\mathcal{B}}}}^{^{{\mathcal{B}&#39;}}})\)</span>
+honela definituko dugu: <span
+class="math display">\[\left[\mathbf{1}\right]_{_{{\mathcal{B}}}}^{^{{\mathcal{B}&#39;}}}=
+    \begin{bmatrix}
+        {\left\{\begin{matrix}{\mathbf{e}}_1&#39;\end{matrix}\right\}}_{_{{\mathcal{B}}}}|{\left\{\begin{matrix}{\mathbf{e}}_2&#39;\end{matrix}\right\}}_{_{{\mathcal{B}}}}|{\left\{\begin{matrix}{\mathbf{e}}_3&#39;\end{matrix}\right\}}_{_{{\mathcal{B}}}}
+    \end{bmatrix}_{{\mathcal{B}}}^{\mathcal{B&#39;}}\]</span> eta
+honakoa beteko du: <span
+class="math display">\[{\left\{\begin{matrix}{\mathbf{u}}\end{matrix}\right\}}_{_{{\mathcal{B}}}}=\left[\mathbf{1}\right]_{_{{\mathcal{B}}}}^{^{{\mathcal{B}&#39;}}}{\left\{\begin{matrix}{\mathbf{u}}\end{matrix}\right\}}_{_{{\mathcal{B}&#39;}}}\]</span></p>
+<p>Hortaz, <span class="math inline">\({\mathbf{u}}\)</span>-ren
+osagaiak <span class="math inline">\({\mathcal{B}&#39;}\)</span> basean
+ezagututa, bere osagaiak <span
+class="math inline">\({\mathcal{B}}\)</span> basean ezagutzea
+ahalbidetzen digu.</p>
+<p>Matrize honen alderantzizkoaren bitartez, gainera, aurkako aldaketa
+ere egit ahalko dugu. Hau da: <span
+class="math display">\[{\left\{\begin{matrix}{\mathbf{u}}\end{matrix}\right\}}_{_{{\mathcal{B}&#39;}}}=\left(\left[\mathbf{1}\right]_{_{{\mathcal{B}}}}^{^{{\mathcal{B}&#39;}}}\right)^{-1}{\left\{\begin{matrix}{\mathbf{u}}\end{matrix}\right\}}_{_{{\mathcal{B}}}}
+    =
+\left[\mathbf{1}\right]_{_{{\mathcal{B}&#39;}}}^{^{{\mathcal{B}}}}{\left\{\begin{matrix}{\mathbf{u}}\end{matrix}\right\}}_{_{{\mathcal{B}}}}\]</span></p>
+<p>Zorionez, <span class="math inline">\({\mathcal{B}}\)</span> eta
+<span class="math inline">\({\mathcal{B}&#39;}\)</span> baseak
+ortonormalak direnez, bien arteko base aldaketa matrizea ere
+<em>ortonormala</em> izango da eta honakoa beteko du: <span
+class="math display">\[\left(\left[\mathbf{1}\right]_{_{{\mathcal{B}}}}^{^{{\mathcal{B}&#39;}}}\right)^{-1}=
+\left(\left[\mathbf{1}\right]_{_{{\mathcal{B}}}}^{^{{\mathcal{B}&#39;}}}\right)&#39;\]</span>
+<em>Matrize ortonormal baten alderantzikoa eta trasposatua berdinak
+dira</em>.</p>
+<p><strong>Adibidea</strong>: honako matrizea ortonormala denez, bere
+alderantzizkoa eta trasposatua berdinak dira. <span
+class="math display">\[\begin{bmatrix}
+        1   &amp;               0       &amp;           0 \\
+        0   &amp;   \frac{\sqrt{2}}{2}  &amp;   -\frac{\sqrt{2}}{2} \\
+        0   &amp;   \frac{\sqrt{2}}{2}  &amp;   \phantom{-}\frac{\sqrt{2}}{2}
+    \end{bmatrix}^{-1} =
+    \begin{bmatrix}
+        1   &amp;               0                   &amp;           0 \\
+        0   &amp;   \phantom{-}\frac{\sqrt{2}}{2}   &amp;   \frac{\sqrt{2}}{2}
+\\
+        0   &amp;   -\frac{\sqrt{2}}{2}             &amp;   \frac{\sqrt{2}}{2}
+    \end{bmatrix}\]</span></p>
+<p><strong>Adibidea</strong>: Hurrengo marrazkiko <span
+class="math inline">\({\mathbf{e}}_1,{\mathbf{e}}_2,{\mathbf{e}}_3\)</span>
+baseko bektoreak, <span
+class="math inline">\({\mathbf{e}}_x,{\mathbf{e}}_y,{\mathbf{e}}_z\)</span>
+baseko bektoreen menpe honela idatzi daitezke: <span
+class="math display">\[\begin{split}
+        {\mathbf{e}}_1 &amp;= \phantom{-}\cos\theta \,{\mathbf{e}}_x +
+\sin\theta\,{\mathbf{e}}_y \\
+        {\mathbf{e}}_2 &amp;= -\sin\theta \, {\mathbf{e}}_x +
+\cos\theta\,{\mathbf{e}}_y \\
+        {\mathbf{e}}_3 &amp;= \phantom{-\sin\theta\,}{\mathbf{e}}_z
+    \end{split}\]</span></p>
+<p><div id="applet_containerhmapczu9"></div>    <script type="text/javascript">var parametershmapczu9 = {"width": 600,"height": 200,"material_id": "hmapczu9","showFullscreenButton": true};var applethmapczu9 = new GGBApplet(parametershmapczu9, true);applethmapczu9.inject('applet_containerhmapczu9');</script></p>
+<p>Bi baseen arteko base aldaketa matrizea honakoa da beraz: <span
+class="math display">\[{\Large\left[\mathbf{1}\right]_{_{xyz}}^{^{123}}}=
+    \begin{bmatrix}
+        \cos\theta &amp; -\sin\theta &amp; 0 \\
+        \sin\theta &amp; \phantom{-}\cos\theta &amp; 0 \\
+        0           &amp; 0         &amp;   1
+    \end{bmatrix}_{xyz}^{123}\]</span></p>
+<p>Bektore baten osagaiak basez aldatzeko, matrize hau erabili dezakegu.
+Adibidez, kalkulatu dezakegu <span
+class="math inline">\({\mathbf{e}}_1\)</span> bektorearen osagaiak <span
+class="math inline">\({\mathbf{e}}_x,{\mathbf{e}}_y,{\mathbf{e}}_z\)</span>
+basean: <span
+class="math display">\[{\left\{\begin{matrix}{\mathbf{e}}_1\end{matrix}\right\}}_{_{xyz}}=\left[\mathbf{1}\right]_{_{xyz}}^{^{123}}{\left\{\begin{matrix}{\mathbf{e}}_1\end{matrix}\right\}}_{_{123}}=
+    \begin{bmatrix}
+        \cos\theta &amp; -\sin\theta &amp; 0 \\
+        \sin\theta &amp; \phantom{-}\cos\theta &amp; 0 \\
+        0           &amp; 0         &amp;   1
+    \end{bmatrix}_{xyz}^{123}{\left\{\begin{matrix}1\\0\\0\end{matrix}\right\}}_{_{123}}
+= {\left\{\begin{matrix}\cos\theta \\ \sin\theta \\
+0\end{matrix}\right\}}_{_{xyz}}\]</span></p>
+<h2 data-number="1.7"
+id="base-aldaketa-matrizea-lortzeko-metodo-alternatiboa"><span
+class="header-section-number">1.7</span> Base aldaketa matrizea lortzeko
+metodo alternatiboa</h2>
+<p>Baseak biraketa elementalen bitartez definitzen ditugunean, base
+aldaketa matrizeek egitura berezi bat izango dituzte. Kasu hauetan, eta
+ikasgai honetan beti egingo dugun moduan, base aldaketa matrizeak modu
+erraz batean kalkulatu daitezke (goiko adibidea jarraituz):</p>
+<ul>
+<li><p>Baseen arteko biraketa elementala <span
+class="math inline">\(i\)</span> ardatzarekiko egiten bada, orduan base
+aldaketa matrizearen <span class="math inline">\(ii\)</span> elementua
+<span class="math inline">\(1\)</span> izango da, eta elementu honen
+zutabe eta errenkadako beste termino guztiak <span
+class="math inline">\(0\)</span> izango dira. <span
+class="math display">\[\begin{bmatrix}
+            \phantom{\cos\theta} &amp; \phantom{-\sin\theta} &amp;
+{\textcolor{blue}{0}} \\
+            \phantom{\sin\theta} &amp; \phantom{-\cos\theta} &amp;
+{\textcolor{blue}{0}} \\
+            {\textcolor{blue}{0}}             &amp;
+{\textcolor{blue}{0}}              &amp;   {\textcolor{blue}{1}}
+    \end{bmatrix}\]</span></p></li>
+<li><p>Matrizearen diagonaleko beste terminoetan, biraketa angeluaren
+kosinua agertuko da, eta geratzen diren bi terminoetan, angeluaren
+sinua. <span class="math display">\[\begin{bmatrix}
+        {\textcolor{blue}{\cos\theta}} &amp;
+{\textcolor{blue}{\sin\theta}} &amp; 0 \\
+        {\textcolor{blue}{\sin\theta}} &amp;
+{\textcolor{blue}{\cos\theta}} &amp; 0 \\
+        0          &amp; 0         &amp;   1
+    \end{bmatrix}\]</span></p></li>
+<li><p>Azkenik, bi sinuetako baten zeinua positibo izango da eta bestea
+negatibo. Probatzeko bektore bat jarrita asmatu dezakegu zein den
+negatiboa dena eta zein positiboa. <span
+class="math display">\[{\textcolor{blue}{{\left\{\begin{matrix}\cos\theta
+\\ \sin\theta \\ 0\end{matrix}\right\}}_{_{xyz}}}} =
+        \begin{bmatrix}
+            \cos\theta &amp; {\textcolor{blue}{\textbf{-}}}\sin\theta
+&amp; 0 \\
+            \sin\theta &amp; \phantom{-}\cos\theta &amp; 0 \\
+            0          &amp; 0              &amp;   1
+    \end{bmatrix} {\textcolor{blue}{{\left\{\begin{matrix}1 \\ 0 \\
+0\end{matrix}\right\}}_{_{123}}}}\]</span></p></li>
+</ul>
+<h2 data-number="1.8" id="bektore-baten-osagaiak-bi-basetan"><span
+class="header-section-number">1.8</span> Bektore baten osagaiak bi
+basetan</h2>
+<p>Hurrengo irudian ikusi daiteke bektore bakar baten proiekzioak (<span
+class="math inline">\({\mathbf{v}}\)</span>-ren proiekzioak), bi base
+ezberdinetan (<span class="math inline">\(123\)</span> eta <span
+class="math inline">\(abc\)</span>), osagai ezberdinak dituztela (<span
+class="math inline">\(v_1,v_2,v_3\)</span> eta <span
+class="math inline">\(v_a,v_b,v_c\)</span>).</p>
+<p><div id="applet_containerufrmhxc6"></div>    <script type="text/javascript">var parametersufrmhxc6 = {"width": 600,"height": 350,"material_id": "ufrmhxc6","showFullscreenButton": true};var appletufrmhxc6 = new GGBApplet(parametersufrmhxc6, true);appletufrmhxc6.inject('applet_containerufrmhxc6');</script></p>
+<h2 data-number="1.9" id="base-aldaketen-konposizioa"><span
+class="header-section-number">1.9</span> Base aldaketen konposizioa</h2>
+<p>Gertatuko zaigu batzuetan, hiru base (edo gehiago) erabiliko
+ditugula, hurrenez-hurren egindako bi biraketa elementalen bitartez
+definituta. Kasu hauetan, lehenengo basean idatzitako bektore baten
+osagaiak hirugarren basean idatzi nahi baditugu, bi base aldaketen
+konposizioa egin beharko dugu, bi base aldaketak hurrenez-hurren
+aplikatuz.</p>
+<p>Horrela, demagun <span
+class="math inline">\({\mathcal{B}},\,{\mathcal{B}&#39;},\,{\mathcal{B}&#39;&#39;}\)</span>
+baseak ditugula. Honela, erlazionatu ditzagun <span
+class="math inline">\({\mathbf{u}}\)</span>-ren osagaiak <span
+class="math inline">\(123\)</span> eta <span
+class="math inline">\(1&#39;&#39;2&#39;&#39;3&#39;&#39;\)</span>
+basetan: <span class="math display">\[\large
+    \begin{split}
+        {\left\{\begin{matrix}{\mathbf{u}}\end{matrix}\right\}}_{_{{\mathcal{B}}}}=\left[\mathbf{1}\right]_{_{{\mathcal{B}}}}^{^{{\mathcal{B}&#39;}}}{\left\{\begin{matrix}{\mathbf{u}}\end{matrix}\right\}}_{_{{\mathcal{B}&#39;}}}
+        =
+\left[\mathbf{1}\right]_{_{{\mathcal{B}}}}^{^{{\mathcal{B}&#39;}}}\big(\left[\mathbf{1}\right]_{_{{\mathcal{B}&#39;}}}^{^{{\mathcal{B}&#39;&#39;}}}{\left\{\begin{matrix}{\mathbf{u}}\end{matrix}\right\}}_{_{{\mathcal{B}&#39;&#39;}}}\big)
+    \end{split}\]</span> Hortaz, honakoa ondorioztatu dezakegu: <span
+class="math display">\[\boxed{\large\left[\mathbf{1}\right]_{_{{\mathcal{B}}}}^{^{{\mathcal{B}&#39;&#39;}}}=\left[\mathbf{1}\right]_{_{{\mathcal{B}}}}^{^{{\mathcal{B}&#39;}}}\left[\mathbf{1}\right]_{_{{\mathcal{B}&#39;}}}^{^{{\mathcal{B}&#39;&#39;}}}}\]</span></p>
+<p><strong>Adibidea</strong>: Hurrengo marrazkian 3 base irudikatzen
+dira: <span class="math inline">\(xyz\)</span>, <span
+class="math inline">\(123\)</span> eta <span
+class="math inline">\(1&#39;2&#39;3&#39;\)</span> baseak. <span
+class="math inline">\(123\)</span> basea <span
+class="math inline">\(z\equiv 3\)</span> ardatzarekiko biraketa
+elemental baten bitartez definituta dago. Aldiz, <span
+class="math inline">\(1&#39;2&#39;3&#39;\)</span> basea, <span
+class="math inline">\(1\equiv 1&#39;\)</span> ardatzarekiko biraketa
+elemental baten bitartez. <span
+class="math inline">\({\mathbf{v}}\)</span> bektorea <span
+class="math inline">\(1&#39;\)</span> ardatzaren norabidean dihoa eta
+bere moduloa <span class="math inline">\(v\)</span> da. Zeintzuk dira
+<span class="math inline">\({\mathbf{v}}\)</span> bektorearen osagaiak
+<span class="math inline">\(xyz\)</span> basean?</p>
+<p><div id="applet_containercg7fuyud"></div>    <script type="text/javascript">var parameterscg7fuyud = {"width": 600,"height": 300,"material_id": "cg7fuyud","showFullscreenButton": true};var appletcg7fuyud = new GGBApplet(parameterscg7fuyud, true);appletcg7fuyud.inject('applet_containercg7fuyud');</script></p>
+<p>Ariketa hau ebazteko, baseen arteko base aldaketa matrizeak kalkulatu
+beharko ditugu, eta gero <span
+class="math inline">\({\mathbf{v}}\)</span> bektorearen osagaiak
+kalkulatu. Hasteko, oso erraza da ikustea <span
+class="math inline">\({\mathbf{v}}\)</span>-ren osagaiak <span
+class="math inline">\(1&#39;2&#39;3&#39;\)</span> basean honakoak
+direla: <span
+class="math display">\[{\left\{\begin{matrix}{\mathbf{v}}\end{matrix}\right\}}_{_{1&#39;2&#39;3&#39;}}={\left\{\begin{matrix}0
+\\ v \\ 0\end{matrix}\right\}}_{_{1&#39;2&#39;3&#39;}}\]</span></p>
+<p>Orain kalkulatu ditzagun base aldaketa matrizeak:</p>
+<p><span
+class="math display">\[\left[\mathbf{1}\right]_{_{xyz}}^{^{123}}=
+    \begin{bmatrix}
+            \cos\theta &amp; -\sin\theta &amp; 0 \\
+            \sin\theta &amp; \phantom{-}\cos\theta &amp; 0 \\
+            0          &amp; 0              &amp;   1
+    \end{bmatrix}_{xyz}^{123}\]</span></p>
+<p><span
+class="math display">\[\left[\mathbf{1}\right]_{_{123}}^{^{1&#39;2&#39;3&#39;}}=
+    \begin{bmatrix}
+                1       &amp;     0                 &amp;  0            \\
+                0       &amp;     \cos\varphi       &amp;  -\sin\varphi
+\\
+                0       &amp;      \sin\varphi      &amp;  \phantom{-}\cos\varphi
+\\
+    \end{bmatrix}_{123}^{1&#39;2&#39;3&#39;}\]</span></p>
+<p>Beraz, <span class="math inline">\({\mathbf{v}}\)</span>-ren osagaiak
+kalkulatzeko, honako kalkulua egingo dugu: <span
+class="math display">\[\begin{split}
+    {\left\{\begin{matrix}{\mathbf{v}}\end{matrix}\right\}}_{_{xyz}}&amp;=%identityb{123}{xyz}\identityb{1&#39;2&#39;3&#39;}{123}\vectb{\vv}{1&#39;2&#39;3&#39;}=
+    \begin{bmatrix}
+            \cos\theta &amp; -\sin\theta &amp; 0 \\
+            \sin\theta &amp; \phantom{-}\cos\theta &amp; 0 \\
+            0          &amp; 0              &amp;   1
+    \end{bmatrix}_{xyz}^{123}
+    \begin{bmatrix}
+                1       &amp;     0                 &amp;  0            \\
+                0       &amp;     \cos\varphi       &amp;  -\sin\varphi
+\\
+                0       &amp;      \sin\varphi      &amp;  \phantom{-}\cos\varphi
+\\
+    \end{bmatrix}_{123}^{1&#39;2&#39;3&#39;}
+    {\left\{\begin{matrix}0 \\ v \\
+0\end{matrix}\right\}}_{_{1&#39;2&#39;3&#39;}}\\
+    &amp;=  \begin{bmatrix}
+            \cos\theta &amp; -\sin\theta &amp; 0 \\
+            \sin\theta &amp; \phantom{-}\cos\theta &amp; 0 \\
+            0          &amp; 0              &amp;   1
+        \end{bmatrix}_{xyz}^{123}
+        {\left\{\begin{matrix}0 \\ v\cos\varphi \\
+v\sin\varphi\end{matrix}\right\}}_{_{123}}\!\!=
+        
+    {\left\{\begin{matrix}-v\cos\varphi\sin\theta \\
+\phantom{-}v\cos\varphi\cos\theta \\
+v\sin\varphi\end{matrix}\right\}}_{_{xyz}}
+\end{split}\]</span></p>
+<p><strong>Ariketa</strong>: aurreko adibidean, kalkulatu <span
+class="math inline">\({\left\{\begin{matrix}{\mathbf{e}}_3&#39;\end{matrix}\right\}}_{_{123}}\)</span>
+eta <span
+class="math inline">\({\left\{\begin{matrix}{\mathbf{e}}_y\end{matrix}\right\}}_{_{1&#39;2&#39;3&#39;}}\)</span>.</p>
+<h2 data-number="1.10" id="erreferentzi-sistemak"><span
+class="header-section-number">1.10</span> Erreferentzi sistemak</h2>
+<p><strong>Definizioa</strong>: puntu batek eta base batek osatzen
+dute.</p>
+<ul>
+<li><p>Puntua (<span class="math inline">\(\textbf{O}\)</span>):
+bakarrik trasladatzen de izakia (biraketarik ez).</p></li>
+<li><p>Basea (<span class="math inline">\({\mathcal{B}}\)</span>):
+bakarrik biratzen duen izakia (traslaziorik ez).</p></li>
+<li><p><strong>Erreferentzia</strong> (<span
+class="math inline">\({\mathcal{R}}\)</span>): trasladatzen eta biratzen
+den izakia.</p></li>
+</ul>
+<p>Laburtzeko, <span class="math inline">\({\mathcal{R}}\)</span>
+erreferentzia <span class="math inline">\({\mathcal{B}}\)</span>
+basearen eta <span class="math inline">\(\textbf{O}\)</span> puntuaren
+bitartez definitzen bada, honakoa esango dugu: <span
+class="math display">\[{\mathcal{R}}=
+\mathbf{O}+{\mathcal{B}}\]</span></p>
+<p>Honako irudian mugitu ditzakezu puntua, basearen orientazioa eta
+erreferentziaren jatorria eta orientazioa.</p>
+<p><div id="applet_containeryrqpayzd"></div>    <script type="text/javascript">var parametersyrqpayzd = {"width": 600,"height": 200,"material_id": "yrqpayzd","showFullscreenButton": true};var appletyrqpayzd = new GGBApplet(parametersyrqpayzd, true);appletyrqpayzd.inject('applet_containeryrqpayzd');</script></p>
+<h3 data-number="1.10.1" id="erreferentzien-beharra"><span
+class="header-section-number">1.10.1</span> Erreferentzien beharra</h3>
+<p>Behatokiek eta solidiek ezaugarri berdinak dituzte: orietazioak eta
+posizioak garrantzia dute. Horrekal solido edo behatoki bati buruz ari
+garenean, beharrezkoa da <em>erreferentziaren</em> kontzeptua
+erabiltzea.</p>
+<p>Demagun bi erreferentzia ezberdin ditugula: <span
+class="math inline">\({\mathcal{R}}=\mathbf{O} + {\mathcal{B}}\)</span>
+eta <span class="math inline">\({\mathcal{R}&#39;}=\mathbf{O}&#39; +
+{\mathcal{B}&#39;}\)</span>. Orduan, <span
+class="math inline">\({\mathcal{R}}\)</span> eta <span
+class="math inline">\({\mathcal{R}&#39;}\)</span> ezberdin mugitzen
+badira, beste mugimenduak haietatik ikusita ezberdinak izango dira.</p>
+<figure>
+<img src="./figs/erreferentzien_beharra_v2.png" style="width:100.0%" />
+</figure>
+<h2 data-number="1.11" id="bektoreen-deribatua-denborarekiko"><span
+class="header-section-number">1.11</span> Bektoreen deribatua
+denborarekiko</h2>
+<p>Mekanika ez da estatikoa, eta entitate guztiak denborarekin aldatzen
+dira: <span class="math inline">\(\theta = \theta(t)\)</span>, <span
+class="math inline">\({\mathbf{u}}={\mathbf{u}}(t)\)</span>, <span
+class="math inline">\({\mathbf{e}}_1={\mathbf{e}}_1(t)\)</span>, <span
+class="math inline">\(\left[\mathbf{1}\right]_{_{{\mathcal{B}&#39;}}}^{^{{\mathcal{B}}}}=
+\left[\mathbf{1}\right]_{_{{\mathcal{B}&#39;}}}^{^{{\mathcal{B}}}}(t)\)</span>.</p>
+<p>Denboran zehar gertatzen diren aldaketak deskribatzeko, denborarekiko
+deribatua ezinbestekoa da.</p>
+<h3 data-number="1.11.1" id="oinarrizko-deribatua"><span
+class="header-section-number">1.11.1</span> Oinarrizko deribatua</h3>
+<p>Funtzio (eskalarren) deribazioa: ez dago erreferentziaren menpe.
+Askotan <em>katearen erregela</em> erabiliko dugu: <span
+class="math display">\[\frac{d}{dt}f(g(t)) =
+\frac{df}{dg}\frac{dg}{dt}\]</span></p>
+<p><strong>Adibidea</strong>: <span
+class="math display">\[\frac{d}{dt}\sin(\theta) =
+\frac{d}{dt}\sin(\theta(t)) = \frac{d}{dt}\sin(\theta)
+\,\frac{d\theta}{dt}=\dot{\theta}\,\cos(\theta)\]</span></p>
+<p>Aldagaien denborarekiko deribatuak laburrago idazteko, puntuaren
+notazioa erabiliko dugu: <span
+class="math display">\[\frac{d\theta}{dt}=\dot{\theta}, \quad
+\frac{d^2\theta}{dt^2}=\ddot{\theta}\]</span></p>
+<p><strong>Oharra</strong>: Sinuak eta kosinuak dituen biderkadura bat
+idaztean, eraman itzazu hauek bukaerara, ezberdinak diren espresioak ez
+nahasteko: <span
+class="math display">\[(\cos\theta)\dot{\theta}  \stackrel{\text{\normalsize
+?}}{=} \cos\theta\dot\theta \stackrel{\text{\normalsize ?}}{=}
+\cos(\theta\dot\theta)
+    \quad \rightarrow \quad \dot{\theta}\cos\theta\]</span></p>
+<h3 data-number="1.11.2" id="bektoreen-deribatua"><span
+class="header-section-number">1.11.2</span> Bektoreen deribatua</h3>
+<p>Ikasi dugu jadanik bektore baten aldaketa behatzailearen menpekoa
+dela, beraz <span
+class="math inline">\(\frac{d}{dt}{\mathbf{u}}\)</span> espresioak ez
+digu esaten zehaztasunez <span
+class="math inline">\({\mathbf{u}}\)</span>-ren aldaketa nolakoa
+den.</p>
+<p><strong>Definizioa</strong>: <span
+class="math inline">\({\mathbf{u}}\)</span> bektorearen deribatua
+denborarekiko, <span class="math inline">\({\mathcal{R}}\)</span>
+erreferentziatik ikusita, honela adierazten da: <span
+class="math display">\[\Large
+    \frac{d}{dt}\left.{\mathbf{u}}
+\right|_{_{{\mathcal{R}}}}\]</span></p>
+<p>Bektoreen deribatuak kalkulatzeko, baseak eta erreferentziak definitu
+beharko ditugu.</p>
+<p>Izan bitez <span class="math inline">\({\mathcal{B}}\equiv
+{\mathbf{e}}_1,{\mathbf{e}}_2,{\mathbf{e}}_3\)</span> basea, <span
+class="math inline">\(\mathbf{O}\)</span> puntua eta biek sortzen duten
+erreferentzia <span
+class="math inline">\({\mathcal{R}}=\mathbf{O}+{\mathcal{B}}\)</span>.
+Halaber, izan bitez <span
+class="math inline">\(\mathcal{B&#39;}&#39;\equiv
+{\mathbf{e}}_1&#39;,{\mathbf{e}}_2&#39;,{\mathbf{e}}_3&#39;\)</span>
+basea, <span class="math inline">\(\mathbf{O}&#39;\)</span> puntua eta
+<span
+class="math inline">\({\mathcal{R}&#39;}=\mathbf{O}&#39;+{\mathcal{B}&#39;}\)</span>
+erreferentzia. Demagun <span class="math inline">\({\mathbf{u}}\)</span>
+bektorearen osagaiak <span class="math inline">\({\mathcal{B}}\)</span>
+basan ezagunak direla: <span
+class="math display">\[{\left\{\begin{matrix}{\mathbf{u}}\end{matrix}\right\}}_{_{{\mathcal{B}}}}={\left\{\begin{matrix}u_1\\u_2\\u_3\end{matrix}\right\}}_{_{{\mathcal{B}}}}
+\Longleftrightarrow
+{\mathbf{u}}=u_1{\mathbf{e}}_1+u_2{\mathbf{e}}_2+u_3{\mathbf{e}}_3\]</span></p>
+<h3 data-number="1.11.3"
+id="bektoreen-deribatuen-kalkulua-base-finkotan"><span
+class="header-section-number">1.11.3</span> Bektoreen deribatuen
+kalkulua (base finkotan)</h3>
+<p>Base finkotan deribatzeak esan nahi duena da, <span
+class="math inline">\({\mathcal{R}}\)</span>-rekiko deribatzen dugula
+eta emaitza <span class="math inline">\({\mathcal{B}}\)</span> basean
+idazten dugula, <span class="math inline">\({\mathcal{R}}\)</span> eta
+<span class="math inline">\({\mathcal{B}}\)</span> elkarrekin biratzen
+dutelarik. Hau da, <em>proiektatzeko basea finkoa da deribatzeko
+erreferentziarekiko</em>.</p>
+<p>Kalkulatu dezagun <span class="math inline">\({\mathbf{u}}\)</span>
+bektorearen deribatua denborarekiko eta <span
+class="math inline">\({\mathcal{R}}\)</span>-rekiko <span
+class="math inline">\({\mathcal{B}}\)</span> basean. <span
+class="math display">\[\begin{split}
+     \frac{d}{dt}\left.{\mathbf{u}}
+\right|_{_{{\mathcal{R}}}}&amp;=\frac{d}{dt}\left.\big(
+u_1{\mathbf{e}}_1+u_2{\mathbf{e}}_2+u_3{\mathbf{e}}_3 \big)
+\right|_{_{{\mathcal{R}}}}
+    = \big(\frac{d}{dt}u_1\big){\mathbf{e}}_1 +
+u_1\frac{d}{dt}\left.{\mathbf{e}}_1 \right|_{_{{\mathcal{R}}}}\\
+    &amp;+  \big(\frac{d}{dt}u_2\big){\mathbf{e}}_2 +
+u_2\frac{d}{dt}\left.{\mathbf{e}}_2 \right|_{_{{\mathcal{R}}}}
+    +  \big(\frac{d}{dt}u_3\big){\mathbf{e}}_3 +
+u_3\frac{d}{dt}\left.{\mathbf{e}}_3 \right|_{_{{\mathcal{R}}}}\\
+    &amp;= \sum_{i=1}^3 \big(\frac{d}{dt}u_i\big){\mathbf{e}}_i +
+\sum_{i=1}^3  u_i
+{\textcolor{red}{\cancel{\frac{d}{dt}\left.{\mathbf{e}}_i
+\right|_{_{{\mathcal{R}}}}}}}\\
+    &amp; = \dot{u}_1{\mathbf{e}}_1 + \dot{u}_2{\mathbf{e}}_2 +
+\dot{u}_3{\mathbf{e}}_3
+\end{split}\]</span> Gorriz dagoen terminoan gertatzen dena da, <span
+class="math inline">\({\mathcal{B}}\)</span> basea <span
+class="math inline">\({\mathcal{R}}\)</span> erreferentzia definitzeko
+erabili dugula, eta beraz, <span
+class="math inline">\({\mathbf{e}}_i\)</span> bektoreak ez dira aldatzen
+bere buruarekiko, eta hortaz termino hori zero da.</p>
+<p>Aurreko espresioa beste modu batez ere idatzi dezakegu: <span
+class="math display">\[{\Large{\left\{\begin{matrix}\frac{d}{dt}\left.{\mathbf{u}}
+\right|_{_{{\mathcal{R}}}}\end{matrix}\right\}}_{_{{\mathcal{B}}}}}={\left\{\begin{matrix}\dot{u}_1\\
+\dot{u}_2\\ \dot{u}_3\end{matrix}\right\}}_{_{{\mathcal{B}}}}\stackrel{
+\small
+\triangle}{=}{\textcolor{blue}{\frac{d}{dt}{\left\{\begin{matrix}{u}_1\\
+{u}_2\\ {u}_3\end{matrix}\right\}}_{_{{\mathcal{B}}}} }}\]</span>
+Azkeneko terminoa (urdinez dagoena) espresio bera idazteko beste modu
+bat da. Espresio hau bakarrik erabili daiteke baldin eta <span
+class="math inline">\({\mathcal{R}}\)</span> eta <span
+class="math inline">\({\mathcal{B}}\)</span> elkarrekin biratzen
+dutenean; hau da, <em>base finkotan</em> deribatzen dugunean.</p>
+<p><strong>Adibidea</strong>: Hurrengo irudian <span
+class="math inline">\({\mathbf{u}}\)</span> bektorearen deribatua
+denborarekiko eta <span
+class="math inline">\(\mathcal{R}\)</span>-rekiko azaltzen da. Kasu
+honetan, <span class="math inline">\(123\)</span> baseak eta <span
+class="math inline">\({\mathcal{R}}\)</span> erreferentziak elkarrekin
+biratzen dutenez (<span class="math inline">\(123\)</span> erabili da
+<span class="math inline">\({\mathcal{R}}\)</span> definitzeko)
+deribatua base finkotan egin dezakegu:</p>
+<p><span class="math display">\[\large
+{\left\{\begin{matrix}{\mathbf{u}}\end{matrix}\right\}}_{_{123}}={\left\{\begin{matrix}2t\\
+2\\ 0\end{matrix}\right\}}_{_{123}} \Longrightarrow
+    {\left\{\begin{matrix}\frac{d}{dt}\left.{\mathbf{u}}
+\right|_{_{{\mathcal{R}}}}\end{matrix}\right\}}_{_{123}}\!\!\!={\left\{\begin{matrix}\frac{d}{dt}(2t)\\
+\frac{d}{dt}(2)\\ \frac{d}{dt}(0)\end{matrix}\right\}}_{_{123}} \!\!\!\!
+= \!
+    {\left\{\begin{matrix}2\\ 0 \\
+0\end{matrix}\right\}}_{_{123}}\]</span></p>
+<p><div id="applet_containeruuttssgg"></div>    <script type="text/javascript">var parametersuuttssgg = {"width": 600,"height": 350,"material_id": "uuttssgg","showFullscreenButton": true};var appletuuttssgg = new GGBApplet(parametersuuttssgg, true);appletuuttssgg.inject('applet_containeruuttssgg');</script></p>
+<p>Hala ere, kasu batzuetan, deribatu behar dugun <span
+class="math inline">\({\mathbf{u}}\)</span> bektorearen osagaiak <span
+class="math inline">\({\mathcal{B}&#39;}\)</span> basean dauzkagu, baina
+deribatua <span class="math inline">\({\mathcal{R}}\)</span>
+erreferentziarekiko egin behar dugu, <span
+class="math inline">\({\mathcal{B}&#39;}\)</span> baseak <span
+class="math inline">\({\mathcal{R}}\)</span>-rekiko biratzen
+duelarik.</p>
+<p>Nola kalkulatzen da deribatua kasu hauetan?</p>
+<p>Erabili daitekeen estrategia bat honakoa da.</p>
+<ul>
+<li><p><span class="math inline">\({\mathbf{u}}\)</span> bektorea <span
+class="math inline">\({\mathcal{B}&#39;}\)</span> basetik <span
+class="math inline">\({\mathcal{B}}\)</span> basera pasatu</p></li>
+<li><p><span class="math inline">\({\mathbf{u}}\)</span>-ren deribatua
+<span class="math inline">\({\mathcal{R}}\)</span>-rekiko <span
+class="math inline">\({\mathcal{B}}\)</span> basean kalkulatu (base
+finkotan)</p></li>
+<li><p><span class="math inline">\({\mathbf{u}}\)</span>-ren deribatua
+berriz basez aldatu, <span class="math inline">\({\mathcal{B}}\)</span>
+basetik <span class="math inline">\({\mathcal{B}&#39;}\)</span>
+basera.</p></li>
+</ul>
+<p>Hala ere, hainbeste lan egitea ekiditu dezakegu deribatua <em>base
+higikorretan</em> eginda. Ikusi dezagun nola egin daitekeen kalkulu
+hau.</p>
+<h3 data-number="1.11.4"
+id="bektoreen-deribatuen-kalkulua-base-higikorretan"><span
+class="header-section-number">1.11.4</span> Bektoreen deribatuen
+kalkulua (base higikorretan)</h3>
+<p><strong>Teorema</strong>: Orain arte egin dugun bezala, izan bitez
+<span
+class="math inline">\({\mathcal{R}}=\mathbf{O}+{\mathcal{B}}\)</span>
+eta <span
+class="math inline">\({\mathcal{R}&#39;}=\mathbf{O}&#39;+{\mathcal{B}&#39;}\)</span>
+bi base ortonormalekin sortutako erreferentziak.</p>
+<p>Bektore baten deribatua denborarekiko eta erreferentzia batekiko
+(baseak eta erreferentziak elkarrekiko mugitzen direnean) horrela
+kalkulatzen da: <span class="math display">\[\Large
+    \boxed{{\left\{\begin{matrix}\frac{d}{dt}\left.{\mathbf{u}}
+\right|_{_{{\mathcal{R}}}}\end{matrix}\right\}}_{_{{\mathcal{B}&#39;}}}
+= {\left\{\begin{matrix}\frac{d}{dt}\left.{\mathbf{u}}
+\right|_{_{{\mathcal{R}&#39;}}}\end{matrix}\right\}}_{_{{\mathcal{B}&#39;}}}
+    +
+\left[\mathbf{1}\right]_{_{{\mathcal{B}&#39;}}}^{^{{\mathcal{B}}}}{\dot{\left[\mathbf{1}\right]}}\!\phantom{]}_{_{{\mathcal{B}}}}^{^{{\mathcal{B}&#39;}}}{\left\{\begin{matrix}{\mathbf{u}}\end{matrix}\right\}}_{_{{\mathcal{B}&#39;}}}
+}\]</span></p>
+<p><strong>Frogapena</strong>: Bi baserekin lan egiten gaudenez, <span
+class="math inline">\({\mathbf{u}}\)</span> eta <span
+class="math inline">\(\frac{d}{dt}\left.{\mathbf{u}}
+\right|_{_{{\mathcal{R}}}}\)</span> bektoreak base batetik bestera
+pasatu ditzakegu base aldaketa matrizeak erabilita: <span
+class="math display">\[%         \Large
+    \begin{split}
+        {\left\{\begin{matrix}{\mathbf{u}}\end{matrix}\right\}}_{_{{\mathcal{B}}}}&amp;=\left[\mathbf{1}\right]_{_{{\mathcal{B}}}}^{^{{\mathcal{B}&#39;}}}{\left\{\begin{matrix}{\mathbf{u}}\end{matrix}\right\}}_{_{{\mathcal{B}&#39;}}}\\
+        {\left\{\begin{matrix}\frac{d}{dt}\left.{\mathbf{u}}
+\right|_{_{{\mathcal{R}}}}\end{matrix}\right\}}_{_{{\mathcal{B}}}}&amp;=\left[\mathbf{1}\right]_{_{{\mathcal{B}}}}^{^{{\mathcal{B}&#39;}}}{\left\{\begin{matrix}\frac{d}{dt}\left.{\mathbf{u}}
+\right|_{_{{\mathcal{R}}}}\end{matrix}\right\}}_{_{{\mathcal{B}&#39;}}}
+    \end{split}\]</span></p>
+<p>Deribatuaren kalkulua egiteko, alde batetik, idatzi dezagun <span
+class="math inline">\({\mathbf{u}}\)</span>-ren deribatua <span
+class="math inline">\({\mathcal{R}}\)</span>-rekiko: <span
+class="math display">\[{\left\{\begin{matrix}\frac{d}{dt}\left.{\mathbf{u}}
+\right|_{_{{\mathcal{R}}}}\end{matrix}\right\}}_{_{{\mathcal{B}}}} =
+\frac{d}{dt}{\left\{\begin{matrix}{\mathbf{u}}\end{matrix}\right\}}_{_{{\mathcal{B}}}}
+=
+    \frac{d}{dt}\big(
+\left[\mathbf{1}\right]_{_{{\mathcal{B}}}}^{^{{\mathcal{B}&#39;}}}
+{\left\{\begin{matrix}{\mathbf{u}}\end{matrix}\right\}}_{_{{\mathcal{B}&#39;}}}  \big)
+=
+    {\dot{\left[\mathbf{1}\right]}}\!\phantom{]}_{_{{\mathcal{B}}}}^{^{{\mathcal{B}&#39;}}}{\left\{\begin{matrix}{\mathbf{u}}\end{matrix}\right\}}_{_{{\mathcal{B}&#39;}}}
++
+\left[\mathbf{1}\right]_{_{{\mathcal{B}}}}^{^{{\mathcal{B}&#39;}}}{\left\{\begin{matrix}\frac{d}{dt}\left.{\mathbf{u}}
+\right|_{_{{\mathcal{R}&#39;}}}\end{matrix}\right\}}_{_{{\mathcal{B}&#39;}}}\]</span>
+Azkeneko espresio honetan, biderkaduraren deribatuaren formula erabili
+dugu: <span
+class="math inline">\(\frac{d}{dt}(f\,g)=\frac{df}{dt}\,g+f\,\frac{dg}{dt}\)</span>.</p>
+<p>Beste aldetik, kalkulatu nahi dugun deribatua idatziko dugu: <span
+class="math display">\[{\left\{\begin{matrix}\frac{d}{dt}\left.{\mathbf{u}}
+\right|_{_{{\mathcal{R}}}}\end{matrix}\right\}}_{_{{\mathcal{B}&#39;}}}
+=
+\left[\mathbf{1}\right]_{_{{\mathcal{B}&#39;}}}^{^{{\mathcal{B}}}}{\left\{\begin{matrix}\frac{d}{dt}\left.{\mathbf{u}}
+\right|_{_{{\mathcal{R}}}}\end{matrix}\right\}}_{_{{\mathcal{B}}}}\]</span>
+Goiko espresioa bertan ordezkatuz, honako espresioa lortzen da:</p>
+<p><span class="math display">\[\begin{split}
+         {\left\{\begin{matrix}\frac{d}{dt}\left.{\mathbf{u}}
+\right|_{_{{\mathcal{R}}}}\end{matrix}\right\}}_{_{{\mathcal{B}&#39;}}}
+    &amp;=\left[\mathbf{1}\right]_{_{{\mathcal{B}&#39;}}}^{^{{\mathcal{B}}}}\big(  {\dot{\left[\mathbf{1}\right]}}\!\phantom{]}_{_{{\mathcal{B}}}}^{^{{\mathcal{B}&#39;}}}{\left\{\begin{matrix}{\mathbf{u}}\end{matrix}\right\}}_{_{{\mathcal{B}&#39;}}}
++
+\left[\mathbf{1}\right]_{_{{\mathcal{B}}}}^{^{{\mathcal{B}&#39;}}}{\left\{\begin{matrix}\frac{d}{dt}\left.{\mathbf{u}}
+\right|_{_{{\mathcal{R}&#39;}}}\end{matrix}\right\}}_{_{{\mathcal{B}&#39;}}}  \big)
+\\
+    &amp;=
+\left[\mathbf{1}\right]_{_{{\mathcal{B}&#39;}}}^{^{{\mathcal{B}}}}
+{\dot{\left[\mathbf{1}\right]}}\!\phantom{]}_{_{{\mathcal{B}}}}^{^{{\mathcal{B}&#39;}}}{\left\{\begin{matrix}{\mathbf{u}}\end{matrix}\right\}}_{_{{\mathcal{B}&#39;}}}
+    +\cancel{\left[\mathbf{1}\right]_{_{{\mathcal{B}&#39;}}}^{^{{\mathcal{B}}}}}
+\cancel{\left[\mathbf{1}\right]_{_{{\mathcal{B}}}}^{^{{\mathcal{B}&#39;}}}}{\left\{\begin{matrix}\frac{d}{dt}\left.{\mathbf{u}}
+\right|_{_{{\mathcal{R}&#39;}}}\end{matrix}\right\}}_{_{{\mathcal{B}&#39;}}}\\
+    {\left\{\begin{matrix}\frac{d}{dt}\left.{\mathbf{u}}
+\right|_{_{{\mathcal{R}}}}\end{matrix}\right\}}_{_{{\mathcal{B}&#39;}}}
+&amp;={\left\{\begin{matrix}\frac{d}{dt}\left.{\mathbf{u}}
+\right|_{_{{\mathcal{R}&#39;}}}\end{matrix}\right\}}_{_{{\mathcal{B}&#39;}}}
++ \left[\mathbf{1}\right]_{_{{\mathcal{B}&#39;}}}^{^{{\mathcal{B}}}}
+{\dot{\left[\mathbf{1}\right]}}\!\phantom{]}_{_{{\mathcal{B}}}}^{^{{\mathcal{B}&#39;}}}{\left\{\begin{matrix}{\mathbf{u}}\end{matrix}\right\}}_{_{{\mathcal{B}&#39;}}}
+    \end{split}\]</span> Frogatu nahi genuen bezala.</p>
+<p><strong>Teorema</strong>: <span
+class="math inline">\(\big(\left[\mathbf{1}\right]_{_{{\mathcal{B}&#39;}}}^{^{{\mathcal{B}}}}
+{\dot{\left[\mathbf{1}\right]}}\!\phantom{]}_{_{{\mathcal{B}}}}^{^{{\mathcal{B}&#39;}}}\big)\)</span>
+terminoa <em>matrizea antisimetrikoa</em> da.</p>
+<p>Matrize bat <em>antisimetrikoa</em> izango da, bere transposatua
+berdin bere negatiboa denean. Hau da: <span
+class="math inline">\(\mathbf{M}\)</span> antisimetrikoa da baldin eta
+<span class="math inline">\(\mathbf{M}=-\mathbf{M}&#39;\)</span>
+bada.</p>
+<p><strong>Frogapena</strong>: Notazioa errazteko, <span
+class="math inline">\(\mathbf{S}=\left[\mathbf{1}\right]_{_{{\mathcal{B}&#39;}}}^{^{{\mathcal{B}}}}\)</span>
+izen aldaketa erabiliko dugu. <span
+class="math inline">\(\mathbf{S}\)</span> matrizea <em>base aldaketa
+matrize</em> bat denez, ortonormala da eta hortaz <span
+class="math inline">\(\mathbf{S}\mathbf{S}&#39;=\mathbf{1}\)</span>
+izango da. Matrizeen produktu hau denborarekiko deribatzen badugu
+(eskuin aldeko terminoa konstantea denez) emaitza <span
+class="math inline">\(\mathbf{0}\)</span> matrizea izango da. Hori
+erabilita, garatu dezagun espresioa: <span
+class="math display">\[\mathbf{0}=\frac{d}{dt}\big(\mathbf{S}&#39;\mathbf{S}\big)=\frac{d}{dt}\big(\mathbf{S}&#39;\big)\mathbf{S}+\mathbf{S}&#39;\frac{d}{dt}\big(\mathbf{S}\big)=\dot{\mathbf{S}}&#39;\mathbf{S}+\mathbf{S}&#39;\dot{\mathbf{S}}=\mathbf{0}\]</span></p>
+<p>Azkeneko terminoaren eskuineko zatia beste aldera pasatuta, honakoa
+izango dugu: <span
+class="math display">\[\dot{\mathbf{S}}&#39;\mathbf{S} = -
+\mathbf{S}&#39;\dot{\mathbf{S}} = -\big(\dot{\mathbf{S}}&#39;\mathbf{S}
+\big)&#39;\]</span> azkeneko berdintzan honako propietate algebraikoa
+erabili dugularik: <span
+class="math display">\[\big(\mathbf{AB}\big)&#39;=\mathbf{B}&#39;\mathbf{A}&#39;\]</span>
+Hau da: <em>produktuaren trasposatua berdin trasposatuen produktua
+aurkako ordenean</em>.</p>
+<p>Beraz onako emaitza lortu dugunez <span
+class="math display">\[\dot{\mathbf{S}}&#39;\mathbf{S} =
+-\big(\dot{\mathbf{S}}&#39;\mathbf{S} \big)&#39;\]</span> frogatu dugu
+<span
+class="math inline">\(\big(\left[\mathbf{1}\right]_{_{{\mathcal{B}&#39;}}}^{^{{\mathcal{B}}}}
+{\dot{\left[\mathbf{1}\right]}}\!\phantom{]}_{_{{\mathcal{B}}}}^{^{{\mathcal{B}&#39;}}}\big)\)</span>
+terminoa <em>matrizea antisimetrikoa</em> dela.</p>
+<p><strong>Adibidea</strong>: Base aldaketa matrize bat aukeratuko dugu
+eta <span
+class="math inline">\(\left[\mathbf{1}\right]_{_{{\mathcal{B}&#39;}}}^{^{{\mathcal{B}}}}
+{\dot{\left[\mathbf{1}\right]}}\!\phantom{]}_{_{{\mathcal{B}}}}^{^{{\mathcal{B}&#39;}}}\)</span>
+terminoa kalkulatuko dugu ikusteko antisimetrikoa dela: <span
+class="math display">\[{\Large\left[\mathbf{1}\right]_{_{{\mathcal{B}&#39;}}}^{^{{\mathcal{B}}}}}=
+    \begin{bmatrix}
+        \phantom{-}\cos\theta &amp; \sin\theta &amp; 0 \\
+        -\sin\theta &amp; \cos\theta &amp; 0 \\
+        0           &amp; 0         &amp;   1
+    \end{bmatrix}_{{\mathcal{B}&#39;}}^{{\mathcal{B}}};
+    \quad
+    {\Large{\dot{\left[\mathbf{1}\right]}}\!\phantom{]}_{_{{\mathcal{B}}}}^{^{{\mathcal{B}&#39;}}}}=
+    \begin{bmatrix}
+        -{\dot{\theta}}\sin\theta &amp; -{\dot{\theta}}\cos\theta &amp;
+0 \\
+        \phantom{-}{\dot{\theta}}\cos\theta &amp;
+-{\dot{\theta}}\sin\theta &amp; 0 \\
+        0           &amp; 0         &amp;   0
+    \end{bmatrix}_{{\mathcal{B}}}^{{\mathcal{B}&#39;}}\]</span> Hortaz,
+bien biderkadurak honakoa ematen du: <span
+class="math display">\[\begin{bmatrix}
+        \phantom{-}\cos\theta &amp; \sin\theta &amp; 0 \\
+        -\sin\theta &amp; \cos\theta &amp; 0 \\
+        0           &amp; 0         &amp;   1
+    \end{bmatrix}_{{\mathcal{B}&#39;}}^{{\mathcal{B}}}
+    \begin{bmatrix}
+        -{\dot{\theta}}\sin\theta &amp; -{\dot{\theta}}\cos\theta &amp;
+0 \\
+        \phantom{-}{\dot{\theta}}\cos\theta &amp;
+-{\dot{\theta}}\sin\theta &amp; 0 \\
+        0           &amp; 0         &amp;   0
+    \end{bmatrix}_{{\mathcal{B}}}^{{\mathcal{B}&#39;}}=
+    \begin{bmatrix}
+        0 &amp; -{\dot{\theta}}&amp; 0 \\
+        {\dot{\theta}}&amp; \phantom{-}0 &amp; 0 \\
+        0           &amp; \phantom{-}0         &amp;   0
+    \end{bmatrix}\]</span> Eta ikusten dugu nola emaitza antisimetrikoa
+den.</p>
+<h3 data-number="1.11.5" id="abiadura-angeluarra"><span
+class="header-section-number">1.11.5</span> Abiadura angeluarra</h3>
+<p>Abiadura angeluarraren kontzeptuak adierazten duena da nola
+erreferentzia (edo base) batek bere orientazioa aldatzen duen beste
+erreferentzia (edo base) batekiko. Bektore baten deribatuan bezala,
+funtsezkoa da jakitea zein den abiadura hori ikusteko behatokia; hau da,
+abiadura angeluarra <em>zein erreferentziatik</em> edo <em>zein
+erreferentziarekiko</em> ikusten dugun.</p>
+<p>Matematikoki, <span class="math inline">\({\mathcal{B}&#39;}\)</span>
+basearen abiadura angeluarra <span
+class="math inline">\({\mathcal{B}}\)</span> basearekiko horrela
+adieraziko dugu: <span
+class="math inline">\(\boldsymbol{\Omega}_{_{{\mathcal{B}}}}{\small
+({\mathcal{B}&#39;})}\)</span>. Abiadura angeluarra hiru dimentsioko
+bektore bat izango da, eta beste bektore guztiak bezala tratatuko
+dugu.</p>
+<p>Aurreko garapenekin lotuta, <span
+class="math inline">\({\mathcal{B}&#39;}\)</span> basearen abiadura
+angeluarra <span class="math inline">\({\mathcal{B}}\)</span>
+basearekiko horrela definitu dezakegu: <span
+class="math display">\[{\Large
+    \boxed{
+    \left\{\boldsymbol{\Omega}_{_{{\mathcal{B}}}}{\small
+({\mathcal{B}&#39;})}\right\}_{_{{\mathcal{B}&#39;}}}\times
+{\left\{\begin{matrix}{\mathbf{v}}\end{matrix}\right\}}_{_{{\mathcal{B}&#39;}}}
+=
+\left[\mathbf{1}\right]_{_{{\mathcal{B}&#39;}}}^{^{{\mathcal{B}}}}{\dot{\left[\mathbf{1}\right]}}\!\phantom{]}_{_{{\mathcal{B}}}}^{^{{\mathcal{B}&#39;}}}{\left\{\begin{matrix}{\mathbf{v}}\end{matrix}\right\}}_{_{{\mathcal{B}&#39;}}},
+\quad \forall {\mathbf{v}}\in \mathcal{V}
+    }}\]</span> Espresio honekin adierazi nahi duguna da, <span
+class="math inline">\(\left\{\boldsymbol{\Omega}_{_{{\mathcal{B}}}}{\small
+({\mathcal{B}&#39;})}\right\}_{_{{\mathcal{B}&#39;}}}\)</span> bektorea
+beste bektore batekin <em>bektorialki</em> biderkatzen badugu, lortuko
+dugun emaitza izango dela, eskuin aldeko matrizea bider bektore
+berarekin lortuko dugunaren berdina. Izatez, <span
+class="math inline">\(\left[\mathbf{1}\right]_{_{{\mathcal{B}&#39;}}}^{^{{\mathcal{B}}}}{\dot{\left[\mathbf{1}\right]}}\!\phantom{]}_{_{{\mathcal{B}}}}^{^{{\mathcal{B}&#39;}}}\)</span>
+matrizea antisimetrikoa denez, aurreko adibidearen sistemarentzat,
+honako espresioa ere idazten ahal dugu: <span
+class="math display">\[{\Large
+    \boxed{
+    \tilde{\boldsymbol{\Omega}}_{_{{\mathcal{B}}}}{\small
+({\mathcal{B}&#39;})}=
+\left[\mathbf{1}\right]_{_{{\mathcal{B}&#39;}}}^{^{{\mathcal{B}}}}{\dot{\left[\mathbf{1}\right]}}\!\phantom{]}_{_{{\mathcal{B}}}}^{^{{\mathcal{B}&#39;}}}
+    }}\]</span></p>
+<p>Eta matrize antisimetrikoaren definizioa erabilita ere: <span
+class="math display">\[\large
+        \left[\mathbf{1}\right]_{_{{\mathcal{B}&#39;}}}^{^{{\mathcal{B}}}}{\dot{\left[\mathbf{1}\right]}}\!\phantom{]}_{_{{\mathcal{B}}}}^{^{{\mathcal{B}&#39;}}}
+=
+        \begin{bmatrix}
+            0 &amp; -{\dot{\theta}}&amp; 0 \\
+            {\dot{\theta}}&amp; \phantom{-}0 &amp; 0 \\
+            0           &amp; \phantom{-}0         &amp;   0
+        \end{bmatrix} \Longrightarrow
+        \left\{\boldsymbol{\Omega}_{_{{\mathcal{B}}}}{\small
+({\mathcal{B}&#39;})}\right\}_{_{{\mathcal{B}&#39;}}} =
+{\left\{\begin{matrix}0\\0\\
+{\dot{\theta}}\end{matrix}\right\}}_{_{{\mathcal{B}&#39;}}}\]</span></p>
+<p><strong>Adibidea:</strong> Beheko irudian, <span
+class="math inline">\(123\)</span> basearen abiadura angeluarra <span
+class="math inline">\(xyz\)</span> basearekiko irudikatzen da bektore
+urdin batez. Beraz, adierazten den bektorea <span
+class="math inline">\(\boldsymbol{\Omega}_{_{xyz}}{\small
+(123)}\)</span> da.</p>
+<p><div id="applet_containerac5dhnn6"></div>    <script type="text/javascript">var parametersac5dhnn6 = {"width": 600,"height": 350,"material_id": "ac5dhnn6","showFullscreenButton": true};var appletac5dhnn6 = new GGBApplet(parametersac5dhnn6, true);appletac5dhnn6.inject('applet_containerac5dhnn6');</script></p>
+<h3 data-number="1.11.6"
+id="base-higikorretan-deribatzeko-formula"><span
+class="header-section-number">1.11.6</span> Base higikorretan
+deribatzeko formula</h3>
+<p>Abiadura angeluarraren definizioa ikusita, <em>base higikorretan
+deribatzeko formula</em> beste modu konpaktuagoan idatzi daiteke:</p>
+<p><span class="math display">\[\boxed{\boxed{
+    \Large
+    {\left\{\begin{matrix}\frac{d}{dt}\left.{\mathbf{u}}
+\right|_{_{{\mathcal{R}}}}\end{matrix}\right\}}_{_{{\mathcal{B}&#39;}}}
+={\left\{\begin{matrix}\frac{d}{dt}\left.{\mathbf{u}}
+\right|_{_{{\mathcal{R}&#39;}}}\end{matrix}\right\}}_{_{{\mathcal{B}&#39;}}}
++ \left\{\boldsymbol{\Omega}_{_{{\mathcal{B}}}}{\small
+({\mathcal{B}&#39;})}\right\}_{_{{\mathcal{B}&#39;}}}\times
+{\left\{\begin{matrix}{\mathbf{u}}\end{matrix}\right\}}_{_{{\mathcal{B}&#39;}}}
+}}\]</span></p>
+<p><strong>Adibidea:</strong> Demagun <span
+class="math inline">\({\mathbf{u}}\)</span> bektorearen deribatua <span
+class="math inline">\({\mathcal{R}}\)</span> erreferentziarekiko
+kalkulatu nahi dugula. <span
+class="math inline">\({\mathbf{u}}\)</span>-ren osagaiak <span
+class="math inline">\(123\)</span> basean oso errazak dira: <span
+class="math display">\[{\left\{\begin{matrix}{\mathbf{u}}\end{matrix}\right\}}_{_{123}}={\left\{\begin{matrix}u
+\\ 0 \\ 0\end{matrix}\right\}}_{_{123}}\]</span> eta bektorearen moduloa
+konstantea da eta <span class="math inline">\(u\)</span> balio du.</p>
+<p>Deribatua <span class="math inline">\({\mathcal{R}}\)</span>-rekiko
+kalkulatu nahi dugu, baina <span class="math inline">\(123\)</span>
+baseak <span class="math inline">\({\mathcal{R}}\)</span>-rekiko
+biratzen du. <span
+class="math inline">\({\mathcal{R}}=\mathbf{O}+\mathbf{xyz}\)</span>.
+Aldiz, <span class="math inline">\(123\)</span> basearekin biratzen duen
+erreferentzia <span class="math inline">\({\mathcal{R}&#39;}\)</span>
+izango da. <span
+class="math inline">\({\mathcal{R}&#39;}=\mathbf{O}+\mathbf{123}\)</span>.
+Hortaz, base higikorretan deribatu beharko dugu.</p>
+<p><span
+class="math display">\[{\left\{\begin{matrix}\frac{d}{dt}\left.{\mathbf{u}}
+\right|_{_{{\mathcal{R}}}}\end{matrix}\right\}}_{_{123}} =
+{\left\{\begin{matrix}\frac{d}{dt}\left.{\mathbf{u}}
+\right|_{_{{\mathcal{R}&#39;}}}\end{matrix}\right\}}_{_{123}} +
+\left\{\boldsymbol{\Omega}_{_{xyz}}{\small (123)}\right\}_{_{123}}\times
+{\left\{\begin{matrix}{\mathbf{u}}\end{matrix}\right\}}_{_{123}}\]</span>
+Base higikorretan deribatzeko formularen eskuin aldeko lenenengo
+terminoa base finkotan deribatu daiteke (<span
+class="math inline">\({\mathcal{R}&#39;}\)</span> eta <span
+class="math inline">\(123\)</span> elkarrekin biratzen dutelako).
+Gainera, <span class="math inline">\(123\)</span>-ren mugimendua
+ikusita, <span class="math inline">\(xyz\)</span>-rekiko biratzen duela
+ikusten da, biraketaren norantza positiboa <span
+class="math inline">\(z\equiv 3\)</span> ardatzan delarik. Hortaz
+deribatua honela kalkulatuko dugu: <span class="math display">\[{\large
+{\left\{\begin{matrix}\frac{d}{dt}\left.{\mathbf{u}}
+\right|_{_{{\mathcal{R}}}}\end{matrix}\right\}}_{_{123}}} =
+\frac{d}{dt}{\left\{\begin{matrix}u \\ 0 \\
+0\end{matrix}\right\}}_{_{123}} + {\left\{\begin{matrix}0 \\ 0 \\
+{\dot{\theta}}\end{matrix}\right\}}_{_{123}}\times
+{\left\{\begin{matrix}u\\0\\0\end{matrix}\right\}}_{_{123}} =
+{\left\{\begin{matrix}0\\
+u{\dot{\theta}}\\0\end{matrix}\right\}}_{_{123}}\]</span></p>
+<p><div id="applet_containerw8c2q2en"></div>    <script type="text/javascript">var parametersw8c2q2en = {"width": 600,"height": 500,"material_id": "w8c2q2en","showFullscreenButton": true};var appletw8c2q2en = new GGBApplet(parametersw8c2q2en, true);appletw8c2q2en.inject('applet_containerw8c2q2en');</script></p>
+<p><span class="math inline">\(123\)</span> basearen abiadura
+angeluarraren moduloa (<span class="math inline">\(xyz\)</span>-rekiko)
+<span class="math inline">\(\lVert\boldsymbol{\Omega}_{_{xyz}}{\small
+(123)}\rVert={\dot{\theta}}\)</span> denez, bere moduloa haunditzen
+badugu, orduan <span class="math inline">\(123\)</span> baseak azkarrago
+biratzen du eta bere deribatuaren moduloa ere haundiagoa izango da.</p>
+<p>Ariketa hau ebazteko, bektorea base finkotan deribatu genezake.
+Lehenengo pausua bektorea <span class="math inline">\(xyz\)</span>
+basean idaztea izango litzateke (<span
+class="math inline">\(123\)</span> basetik <span
+class="math inline">\(xyz\)</span> basera pasatu); bigarren pausoa base
+finkotan deribatzea izango litzateke, eta azkenekoa (nahi izanez gero)
+emaitza berriz <span class="math inline">\(123\)</span> basera pasatzea.
+Bide hau luzeagoa da eta akatsak egiteko probabilidadea haunditzen du.
+Hortaz, base higikorretan deribatzea oso gomendagarria da.</p>
+<h3 data-number="1.11.7"
+id="sec::base_gabe_deribazioa_base_higikorretan"><span
+class="header-section-number">1.11.7</span> Base higikorretan
+deribatzeko formula baserik gabe</h3>
+<p>Aurreko ataletan base higikorretan deribatzeko formula bat
+ondorioztatu dugu. Espresio hori, <span
+class="math inline">\({\mathcal{B}&#39;}\)</span> basean espresatutako
+bektore batzuen arteko eralazioa markatzen du, baina beste edozein
+basetan espresioa egia da ere. Hortaz, orokortasun haundiagoa duen
+ondorengo espresioa idatzi dezakegu: <span
+class="math display">\[\boxed{
+    \Large
+    \frac{d}{dt}\left.{\mathbf{u}} \right|_{_{{\mathcal{R}}}}
+=\frac{d}{dt}\left.{\mathbf{u}} \right|_{_{{\mathcal{R}&#39;}}} +
+\boldsymbol{\Omega}_{_{{\mathcal{B}}}}{\small ({\mathcal{B}&#39;})}
+\times {\mathbf{u}}
+}\]</span> Espresioa hau garapen teorikoetan erabiliko dugu gehien bat.
+Baina praktikan edo ariketetan erabilgarria izateko, bektore guztia
+<span class="math inline">\({\mathcal{R}}\)</span> edo <span
+class="math inline">\({\mathcal{R}&#39;}\)</span> erreferentziarekiko
+zurruna den base batean espresatu beharko ditugu, horrela bi
+deribatuetako bat behintzak base finkotan kalkulatu ahal izateko.</p>
+<h3 data-number="1.11.8"
+id="sec::bektoreen_deribazioa_base_batekiko"><span
+class="header-section-number">1.11.8</span> Bektoreen deribazioa
+<em>base batekiko</em></h3>
+<p>Demagun bi erreferentzia ezberdin ditugula: <span
+class="math inline">\({\mathcal{R}}\)</span> eta <span
+class="math inline">\({\mathcal{R}&#39;}\)</span>. Bi erreferentzien
+orientazioa amankomuna da baina haien jatorri puntua ezberdina. Hau da,
+<span class="math inline">\(\mathbf{O}\)</span> eta <span
+class="math inline">\(\mathbf{O}&#39;\)</span> elkarrekiko mugitzen
+diren bi puntu izanda eta <span
+class="math inline">\({\mathcal{B}}\)</span> base bat, bi erreferentziak
+honela definitu daitezke: <span class="math display">\[\begin{split}
+        {\mathcal{R}}&amp;= \mathbf{O}+ {\mathcal{B}}\\
+        {\mathcal{R}&#39;}&amp; = \mathbf{O}&#39; + {\mathcal{B}}
+    \end{split}\]</span></p>
+<p><strong>Teorema</strong>: Horrelako egoera batean honakoa gertatuko
+da <span class="math display">\[\Large
+    \frac{d}{dt}\left.{\mathbf{u}} \right|_{_{{\mathcal{R}}}}
+=\frac{d}{dt}\left.{\mathbf{u}} \right|_{_{{\mathcal{R}&#39;}}}\]</span>
+<strong>Frogapena</strong>: Base higikorretan deribatzeko formula
+erabiltzen badugu, base batean proiektatu gabe, frogatu dezakegu aurreko
+espresioa egia dela <span class="math display">\[\boxed{
+    \Large
+    \frac{d}{dt}\left.{\mathbf{u}} \right|_{_{{\mathcal{R}}}}
+=\frac{d}{dt}\left.{\mathbf{u}} \right|_{_{{\mathcal{R}&#39;}}} +
+\cancel{\boldsymbol{\Omega}_{_{{\mathcal{B}}}}{\small ({\mathcal{B}})}}
+\times {\mathbf{u}}= \frac{d}{dt}\left.{\mathbf{u}}
+\right|_{_{{\mathcal{R}&#39;}}}
+}\]</span></p>
+<p><strong>Ondorioa</strong>: Erreferentzia batekiko deribatzen
+dugunean, garrantzia duena erreferentziaren orientazioa da eta ez bere
+jatorri puntua nola mugitzen den. Beraz, <span
+class="math inline">\({\mathcal{R}}\)</span>-rekiko bektoreen deribatua,
+hondoko bi moduetan adierazi dezakegu: <span
+class="math display">\[\Large
+    \frac{d}{dt}\left.{\mathbf{u}} \right|_{_{{\mathcal{R}}}}
+=\frac{d}{dt}\left.{\mathbf{u}} \right|_{_{{\mathcal{B}}}}\]</span> beti
+ere <span class="math inline">\({\mathcal{R}}\)</span> erreferentzia
+<span class="math inline">\({\mathcal{B}}\)</span> basearekin sortu
+baldin bada; hau da, honakoa betetzen bada: <span
+class="math inline">\({\mathcal{R}}= \mathbf{O} + {\mathcal{B}}, \forall
+\mathbf{O}\)</span>.</p>
+<h3 data-number="1.11.9" id="bektoreak-deribatzeko-eskema"><span
+class="header-section-number">1.11.9</span> Bektoreak deribatzeko
+eskema</h3>
+<p>Azkeneko ataletan, bektoreak <em>base finkotan</em> eta <em>base
+higikorretan</em> deribatzen ikasi dugu, eta baita bektoreen <em>base
+aldaketak</em> egiten ere. Ondorengo grafikoan, tresna hauek erabilita
+aukeratu ditzakegun bideak azaltzen dira, eskema baten moduan.</p>
+<p><div id="applet_containerpy4d24ac"></div>    <script type="text/javascript">var parameterspy4d24ac = {"width": 600,"height": 400,"material_id": "py4d24ac","showFullscreenButton": true};var appletpy4d24ac = new GGBApplet(parameterspy4d24ac, true);appletpy4d24ac.inject('applet_containerpy4d24ac');</script></p>
+<p>Bektore bat base batean idatzita izanda (<span
+class="math inline">\({\mathbf{v}}\)</span> bektorea <span
+class="math inline">\({\mathcal{B}&#39;}\)</span> basean) demagun <span
+class="math inline">\({\mathcal{R}}\)</span> erreferentziarekiko
+deribatu nahi dugula, <span
+class="math inline">\({\mathcal{R}}=\mathbf{O}+ {\mathcal{B}}\)</span>
+izanda. Lan horretarako bi bide dauzkagu</p>
+<ul>
+<li><p><span
+class="math inline">\({\left\{\begin{matrix}{\mathbf{u}}\end{matrix}\right\}}_{_{{\mathcal{B}&#39;}}}\)</span>
+bektorea zuzenean base higikorretan deribatzea (pauso bakarreko
+bidea)</p></li>
+<li><p>bide luze eta neketsua erabiltzea (hiru pausotako bidea)</p>
+<ol>
+<li><p><span class="math inline">\({\mathbf{u}}\)</span> bektorea <span
+class="math inline">\({\mathcal{B}}\)</span> basera pasatzea</p></li>
+<li><p>bektorea base finkotan deribatzea</p></li>
+<li><p><span class="math inline">\(\frac{d}{dt}\left.{\mathbf{u}}
+\right|_{_{{\mathcal{R}}}}\)</span> bektorea berriz ere <span
+class="math inline">\({\mathcal{B}&#39;}\)</span> basera
+pasatzea</p></li>
+</ol></li>
+</ul>
+<p>Deribazioaren emaitza bektorea espresatuta dagoen base berdinean izan
+nahi dugun guztietan, base higikorretan deribatzea izango da errazena,
+azkarrena eta seguruena ere.</p>
+<h2 data-number="1.12" id="abiadura-angeluarren-propietateak"><span
+class="header-section-number">1.12</span> Abiadura angeluarren
+propietateak</h2>
+<p>Atal honetan ikusiko dugu nola akotatzen diren <em>oinarrizko
+biraketak</em> eta abiadura angeluar bektoreen propietateak garatuko
+dituugu.</p>
+<h3 data-number="1.12.1" id="oinarrizko-biraketa-akotatzeko-modua"><span
+class="header-section-number">1.12.1</span> Oinarrizko biraketa
+akotatzeko modua</h3>
+<p>Oinarrizko biraketa baten bitartez base berri bat sortzen dugunean
+(edo bi baseren arteko angelua akotatzen dugunean) <em><strong>oso
+garrantzitsua da</strong></em> jakitea angeluaren <em>zeinuak</em> zer
+errepresentatzen duen. Beheko irudian, <span
+class="math inline">\(\theta\)</span> akotatzeko erabiltzen dugun geziak
+<span class="math inline">\(123\)</span> basetik <span
+class="math inline">\(abc\)</span> basera apuntatzen du.</p>
+<p><div id="applet_containerkeu6etmm"></div>    <script type="text/javascript">var parameterskeu6etmm = {"width": 600,"height": 450,"material_id": "keu6etmm","showFullscreenButton": true};var appletkeu6etmm = new GGBApplet(parameterskeu6etmm, true);appletkeu6etmm.inject('applet_containerkeu6etmm');</script>
+Honek esan nahi duena da <span class="math inline">\(abc\)</span>
+basearen abidura angeluarra <span
+class="math inline">\(\dot{\boldsymbol{\theta}}\)</span> dela. Aldiz,
+<span class="math inline">\(\varphi\)</span> akotatzeko erabiltzen dugun
+geziak <span class="math inline">\(abc\)</span> basetik <span
+class="math inline">\(123\)</span> basera apuntatzen du, eta beraz <span
+class="math inline">\(123\)</span>-ren abiadura angeluarra <span
+class="math inline">\(abc\)</span>-rekiko <span
+class="math inline">\(\dot{\boldsymbol{\varphi}}\)</span> izango da.</p>
+<p>Akotatzeko erabili ditugun bi modu hauek abiadura angeluar kontrakoak
+definitzen dituzte. Izatez, betetzen duten erlazioa <span
+class="math inline">\(\dot{\boldsymbol{\theta}}=-\dot{\boldsymbol{\varphi}}\)</span>.</p>
+<p>Oinarrizko biraketa hau modu batean edo bestean akotatzea librea da,
+baina erabakitako aukerarekin koherente izan beharko dugu hortik
+aurrera.</p>
+<p><strong>Oharrak</strong>:</p>
+<ul>
+<li><p>Akotatzeko erabilitako gezien norantzak berebiziko garrantzia
+dauka.</p></li>
+<li><p>Abiadura angeluarren proiekzioak bi baseetan berdinak dira: <span
+class="math display">\[\large
+    {\left\{\begin{matrix}{\boldsymbol{\dot{\theta}}}\end{matrix}\right\}}_{_{123}}={\left\{\begin{matrix}0\\
+0 \\ {\dot{\theta}}\end{matrix}\right\}}_{_{123}}\quad\quad
+{\left\{\begin{matrix}{\boldsymbol{\dot{\theta}}}\end{matrix}\right\}}_{_{abc}}={\left\{\begin{matrix}0\\
+0 \\ {\dot{\theta}}\end{matrix}\right\}}_{_{abc}}\]</span></p></li>
+<li><p>Bi baseen arteko abiadura angeluarra, bi baseek amankomunean
+duten bektorearen norabidean joango da. Goiko adibidean <span
+class="math inline">\(\mathbf{e}_3 \equiv \mathbf{e}_c\)</span> bektorea
+amankomunean dute eta <span
+class="math inline">\({\boldsymbol{\dot{\theta}}}\)</span> abiadura
+norabide horretan joango da.</p></li>
+</ul>
+<h3 data-number="1.12.2" id="abiadura-angeluarraren-konposizioa"><span
+class="header-section-number">1.12.2</span> Abiadura angeluarraren
+konposizioa</h3>
+<p><strong>Teorema</strong>: Demagun elkarrekiko biratzen duten hiru
+base ditugula: <span class="math inline">\({\mathcal{B}}\)</span>, <span
+class="math inline">\({\mathcal{B}&#39;}\)</span> eta <span
+class="math inline">\({\mathcal{B}&#39;&#39;}\)</span>, eta haiekin
+sortuta hiru erreferentzia, hurrenez hurren: <span
+class="math inline">\({\mathcal{R}}\)</span>, <span
+class="math inline">\({\mathcal{R}&#39;}\)</span> eta <span
+class="math inline">\({\mathcal{R}&#39;&#39;}\)</span>. Demagun ere
+honako abiadura angeluarrak ezagutzen ditugula: <span
+class="math inline">\(\boldsymbol{\Omega}_{_{{\mathcal{B}}}}{\small
+({\mathcal{B}&#39;})}\)</span> eta <span
+class="math inline">\(\boldsymbol{\Omega}_{_{{\mathcal{B}&#39;}}}{\small
+({\mathcal{B}&#39;&#39;})}\)</span>. Orduan, <span
+class="math inline">\({\mathcal{B}&#39;&#39;}\)</span>-ren abiadura
+angeluarra <span class="math inline">\({\mathcal{B}}\)</span>-rekiko
+honela kalkulatu daiteke: <span
+class="math display">\[\boxed{\Large{\boldsymbol{\Omega}_{_{{\mathcal{B}}}}{\small
+({\mathcal{B}&#39;&#39;})}=\boldsymbol{\Omega}_{_{{\mathcal{B}&#39;}}}{\small
+({\mathcal{B}&#39;&#39;})}+\boldsymbol{\Omega}_{_{{\mathcal{B}}}}{\small
+({\mathcal{B}&#39;})}}}\]</span></p>
+<p><strong>Frogapena</strong>: Base higikorretan deribatzeko formula
+bitan erabilita, honako espresioak idatzi ditzakegu: <span
+class="math display">\[\begin{split}
+        \frac{d}{dt}\left.{\mathbf{u}} \right|_{_{{\mathcal{R}}}}
+&amp;=\frac{d}{dt}\left.{\mathbf{u}} \right|_{_{{\mathcal{R}&#39;}}} +
+\boldsymbol{\Omega}_{_{{\mathcal{B}}}}{\small ({\mathcal{B}&#39;})}
+\times {\mathbf{u}}\\
+        \frac{d}{dt}\left.{\mathbf{u}} \right|_{_{{\mathcal{R}&#39;}}}
+&amp;=\frac{d}{dt}\left.{\mathbf{u}}
+\right|_{_{{\mathcal{R}&#39;&#39;}}} +
+\boldsymbol{\Omega}_{_{{\mathcal{B}&#39;}}}{\small
+({\mathcal{B}&#39;&#39;})} \times {\mathbf{u}}
+    \end{split}\]</span></p>
+<p>Bigarren ekuazioaren termino askea lehenengoan ordezkatuta, honako
+espresioa lortzen dugu: <span
+class="math display">\[\frac{d}{dt}\left.{\mathbf{u}}
+\right|_{_{{\mathcal{R}}}} =\frac{d}{dt}\left.{\mathbf{u}}
+\right|_{_{{\mathcal{R}&#39;&#39;}}} +
+\big(\boldsymbol{\Omega}_{_{{\mathcal{B}&#39;}}}{\small
+({\mathcal{B}&#39;&#39;})}+\boldsymbol{\Omega}_{_{{\mathcal{B}}}}{\small
+({\mathcal{B}&#39;})}\big) \times {\mathbf{u}}\]</span> Azkeneko
+espresio hau, base higikorretan deribatzeko formularen berdina da, <span
+class="math inline">\({\mathcal{R}}\)</span> eta <span
+class="math inline">\({\mathcal{R}&#39;&#39;}\)</span> erreferentziak
+erabiltzen ditugun kasurako. Hau da: <span
+class="math display">\[\frac{d}{dt}\left.{\mathbf{u}}
+\right|_{_{{\mathcal{R}}}} =\frac{d}{dt}\left.{\mathbf{u}}
+\right|_{_{{\mathcal{R}&#39;&#39;}}} +
+\boldsymbol{\Omega}_{_{{\mathcal{B}}}}{\small ({\mathcal{B}&#39;&#39;})}
+\times {\mathbf{u}}\]</span> Horrela teorema frogatzen da.</p>
+<p><strong>Ondorioa (1)</strong>: Hurrenez-hurren kateatzen diren
+abiadura angeluar erlatibo batzuk baditugu, azkenekoaren abiadura
+angeluarra lehenengoarekiko kalkulatzeko, abiadura angeluar bakanen
+batuketa besterik ez dugu egin behar. Matematikoki: <span
+class="math display">\[\boldsymbol{\Omega}_{_{{\mathcal{B}}^{(0)}}}{\small
+({\mathcal{B}}^{(n)})} =
+\boldsymbol{\Omega}_{_{{\mathcal{B}}^{(n-1)}}}{\small
+({\mathcal{B}}^{(n)})} + \dots +
+\boldsymbol{\Omega}_{_{{\mathcal{B}}^{(0)}}}{\small
+({\mathcal{B}}^{(1)})} =
+    \sum_{i=0}^{n-1} \boldsymbol{\Omega}_{_{{\mathcal{B}}^{(i)}}}{\small
+({\mathcal{B}}^{(i+1)})}\]</span></p>
+<p><strong>Ondorioa (2)</strong>: Gainera, aurreko teoremarekin
+ondorioztatzen da <em>abiadura angeluarren batuketa trukakorra
+dela</em>. Hau da: <span class="math display">\[\Large
+    \boxed{
+    \boldsymbol{\Omega}_{_{{\mathcal{B}&#39;}}}{\small
+({\mathcal{B}&#39;&#39;})}+\boldsymbol{\Omega}_{_{{\mathcal{B}}}}{\small
+({\mathcal{B}&#39;})} = \boldsymbol{\Omega}_{_{{\mathcal{B}}}}{\small
+({\mathcal{B}&#39;})} +
+\boldsymbol{\Omega}_{_{{\mathcal{B}&#39;}}}{\small
+({\mathcal{B}&#39;&#39;})} }\]</span> Propietate honek, abiadura
+angelurren kalkulua asko erreztuko digu.</p>
+<p><strong>Adibidea</strong>: Ondorengo adibidean, hiru base agertzen
+dira eta <em>abiadura angeluarren</em> konposizioa erakusten da:</p>
+<p><div id="applet_containerhddjhm42"></div>    <script type="text/javascript">var parametershddjhm42 = {"width": 600,"height": 350,"material_id": "hddjhm42","showFullscreenButton": true};var applethddjhm42 = new GGBApplet(parametershddjhm42, true);applethddjhm42.inject('applet_containerhddjhm42');</script></p>
+<p>Irudia begiratuta ikus daiteke, <span
+class="math inline">\(123\)</span>-ren abiadura <span
+class="math inline">\(xyz\)</span>-rekiko alde batetik, eta <span
+class="math inline">\(1&#39;2&#39;3&#39;\)</span>-ren abiadura <span
+class="math inline">\(123\)</span>-rekiko baste aldetik, honako
+espresioak izango dutuztela <span class="math inline">\(123\)</span>
+basean: <span class="math display">\[\large
+    \left\{\boldsymbol{\Omega}_{_{xyz}}{\small
+(123)}\right\}_{_{123}}={\left\{\begin{matrix}0\\0\\
+{\dot{\theta}}\end{matrix}\right\}}_{_{123}},\quad
+\left\{\boldsymbol{\Omega}_{_{123}}{\small
+(1&#39;2&#39;3&#39;)}\right\}_{_{123}}={\left\{\begin{matrix}{\dot{\varphi}}\\0\\
+0\end{matrix}\right\}}_{_{123}}\]</span> Hortaz, abiadura angeluarren
+konposizioa erabilita <span
+class="math inline">\(1&#39;2&#39;3&#39;\)</span>-ren abiadura
+angeluarra <span class="math inline">\(xyz\)</span>-rekiko oso erraz
+kalkuatu dezakegu: <span class="math display">\[\large
+    \left\{\boldsymbol{\Omega}_{_{xyz}}{\small
+(1&#39;2&#39;3&#39;)}\right\}_{_{123}}={\left\{\begin{matrix}0\\0\\
+{\dot{\theta}}\end{matrix}\right\}}_{_{123}}+{\left\{\begin{matrix}{\dot{\varphi}}\\0\\
+0\end{matrix}\right\}}_{_{123}} =
+{\left\{\begin{matrix}{\dot{\varphi}}\\0\\
+{\dot{\theta}}\end{matrix}\right\}}_{_{123}}\]</span></p>
+<h3 data-number="1.12.3"
+id="abiadura-angeluarra-behatoki-ezberdinak-erabilita"><span
+class="header-section-number">1.12.3</span> Abiadura angeluarra behatoki
+ezberdinak erabilita</h3>
+<p><strong>Teorema</strong>: Abiadura angeluarrak honako propietatea
+betetzen du. <span class="math display">\[\boxed{\Large{
+\boldsymbol{\Omega}_{_{{\mathcal{B}}}}{\small ({\mathcal{B}&#39;})} =
+-\,\boldsymbol{\Omega}_{_{{\mathcal{B}&#39;}}}{\small
+({\mathcal{B}})}}}\]</span> Hau da: <span
+class="math inline">\({\mathcal{B}}\)</span> basearen orientaziotik
+<span class="math inline">\({\mathcal{B}&#39;}\)</span> baseak alde
+batera biratzen badu, <span
+class="math inline">\({\mathcal{B}&#39;}\)</span> basetik ikusita <span
+class="math inline">\({\mathcal{B}}\)</span> baseak kontrako norantzan
+biratzen du, baina modulo eta norabide berdinarekin.</p>
+<p><strong>Frogapena</strong>: Base higikorretan deriatzeko formula
+(baserik gabe erabilita) honako bi espresioak idatzi ditzakegu: <span
+class="math display">\[\begin{split}
+        \frac{d}{dt}\left.{\mathbf{u}} \right|_{_{{\mathcal{R}}}}
+&amp;=\frac{d}{dt}\left.{\mathbf{u}} \right|_{_{{\mathcal{R}&#39;}}} +
+\boldsymbol{\Omega}_{_{{\mathcal{B}}}}{\small ({\mathcal{B}&#39;})}
+\times {\mathbf{u}}\\
+        \frac{d}{dt}\left.{\mathbf{u}} \right|_{_{{\mathcal{R}&#39;}}}
+&amp;=\frac{d}{dt}\left.{\mathbf{u}} \right|_{_{{\mathcal{R}}}} +
+\boldsymbol{\Omega}_{_{{\mathcal{B}&#39;}}}{\small ({\mathcal{B}})}
+\times {\mathbf{u}}
+    \end{split}\]</span> Lehenengo ekuazioaren terminoa (<span
+class="math inline">\(\frac{d}{dt}\left.{\mathbf{u}}
+\right|_{_{{\mathcal{R}}}}\)</span>) bigarrenean ordezkatuta, espresio
+hau lortzen da, edozein <span
+class="math inline">\({\mathbf{u}}\)</span>-rentzat. <span
+class="math display">\[\cancel{\frac{d}{dt}\left.{\mathbf{u}}
+\right|_{_{{\mathcal{R}&#39;}}}} =\cancel{\frac{d}{dt}\left.{\mathbf{u}}
+\right|_{_{{\mathcal{R}&#39;}}}} +
+\boldsymbol{\Omega}_{_{{\mathcal{B}}}}{\small ({\mathcal{B}&#39;})}
+\times {\mathbf{u}}+ \boldsymbol{\Omega}_{_{{\mathcal{B}&#39;}}}{\small
+({\mathcal{B}})} \times {\mathbf{u}}\]</span> eta ondorioz, <span
+class="math inline">\(\forall\,{\mathbf{u}}\)</span>, teorema frogatzea
+lortzen dugu.</p>
+<h3 data-number="1.12.4" id="erreferentzien-abiadura-angeluarrak"><span
+class="header-section-number">1.12.4</span> Erreferentzien abiadura
+angeluarrak</h3>
+<p>Izan bitez <span
+class="math inline">\({\mathcal{R}}=\mathbf{O}+{\mathcal{B}}\)</span>
+eta <span
+class="math inline">\({\mathcal{R}&#39;}=\mathbf{O}&#39;+{\mathcal{B}&#39;}\)</span>
+bi base ortonormalekin eta edozein bi punturekin sortutako
+erreferentziak.</p>
+<p><strong>Teorema</strong>: Honako espresioak baliokideak dira: <span
+class="math display">\[\Large
+    \boldsymbol{\Omega}_{_{{\mathcal{B}}}}{\small ({\mathcal{B}&#39;})}
+= \boldsymbol{\Omega}_{_{{\mathcal{B}}}}{\small ({\mathcal{R}&#39;})} =
+\boldsymbol{\Omega}_{_{{\mathcal{R}}}}{\small ({\mathcal{B}&#39;})} =
+\boldsymbol{\Omega}_{_{{\mathcal{R}}}}{\small
+({\mathcal{R}&#39;})}\]</span></p>
+<p><strong>Frogapena</strong>: Erreferentzien arteko abiadura
+angeluarren kalkuluan, erreferentzien jatorri puntuen kokapenak ez du
+garrantzirik, beraz, berdin digu esateak base edo erreferentzi baten
+abiadura angeluarra beste base batekiko edo erreferentziarekiko
+kalkulatzen dugula.</p>
+<h3 data-number="1.12.5" id="biraketen-konposizioa"><span
+class="header-section-number">1.12.5</span> Biraketen konposizioa</h3>
+<p>Aurreko atalean ikusi eta frogatu dugu nola biraketen konposizioa
+trukakorra den. Hau da, base baten abiadura angeluarra bi abiadura
+angeluarren batuketa bezala idaztean, berdin dio zein ordenetan batzen
+ditugun abiadura horiek. Propieta hau <em>abiadura</em> mailan gertatzen
+da. Baina, egia al da biraketak batzen ditugunean?</p>
+<p>Hurrengo irudian frogatu dezakegu nola ez den berdina lehenengo <span
+class="math inline">\(90^o\)</span> <span
+class="math inline">\(z\)</span>-rekiko biratzea eta bigarrengoz <span
+class="math inline">\(90^o\)</span> <span
+class="math inline">\(x\)</span>-rekiko biratzea (ezkerreko irudia) edo
+alderantziz (eskuinekoa).</p>
+<p><div id="applet_containerpd7p7gmp"></div>    <script type="text/javascript">var parameterspd7p7gmp = {"width": 600,"height": 300,"material_id": "pd7p7gmp","showFullscreenButton": true};var appletpd7p7gmp = new GGBApplet(parameterspd7p7gmp, true);appletpd7p7gmp.inject('applet_containerpd7p7gmp');</script></p>
+<p>Beraz, <em>biraketen konposizioa ez da trukakorra</em>.</p>
+<p><strong>Ondorioa</strong>: biraketak akotatzen ditugunean,
+<em>funtsezkoa</em> da zehaztea biraketak zein ordenetan akotatzen
+diren.</p>
+<h2 data-number="1.13" id="orientazio-diagrama"><span
+class="header-section-number">1.13</span> Orientazio diagrama</h2>
+<p><em>Orientazio Diagrama</em> baseen arteko abiadura angeluarrak modu
+erraz batean kalkulatzeko erabiltzen da. Diagrama hau zuhaitz moduko
+eskema bat da non, base bikoteen abiadura erlatiboen bitartez, edozein
+baseren abiadura angeluarra kalkulatu daitekeen beste edozein
+baserekiko. Egin behar den bakarra da base batetik bestera joateko bidea
+jarraitu eta abiadura angeluar bakanak gehitzea.</p>
+<p>Beheko irudian 4 base marrazten dira eta gezi batez adierazten dira
+base batzuen abiadurak beste batzuekiko.</p>
+<figure>
+<img src="./figs/fig_1_orientazio_diagrama.png" style="width:100.0%" />
+</figure>
+<p><strong>Adibidez</strong>: goiko marrazkian, <span
+class="math inline">\(A\)</span> basetik <span
+class="math inline">\(B\)</span> basera joaten den geziak adierazten
+duena da: <span class="math display">\[{\boldsymbol{\dot{\theta}}}_1 =
+\boldsymbol{\Omega}_{_{A}}{\small (B)}\]</span> Halaber, <span
+class="math inline">\(C\)</span> basetik <span
+class="math inline">\(B\)</span> basera dihoanak adierazten du: <span
+class="math inline">\({\boldsymbol{\dot{\theta}}}_2 =
+\boldsymbol{\Omega}_{_{C}}{\small (B)}\)</span>. Azkenik, <span
+class="math inline">\(D\)</span> basetik <span
+class="math inline">\(B\)</span> basera dihoanak adierazten du: <span
+class="math inline">\({\boldsymbol{\dot{\theta}}}_3 =
+\boldsymbol{\Omega}_{_{D}}{\small (B)}\)</span>.</p>
+<p>Horrelako eskema izanda, beste edozein abiadura angeluarra
+kalkulatzea oso erraza da: <span
+class="math display">\[\boldsymbol{\Omega}_{_{A}}{\small (D)} =
+\boldsymbol{\Omega}_{_{B}}{\small (D)} +
+\boldsymbol{\Omega}_{_{A}}{\small (B)} =
+-\boldsymbol{\Omega}_{_{D}}{\small (B)} +
+\boldsymbol{\Omega}_{_{A}}{\small (B)} = -{\boldsymbol{\dot{\theta}}}_3
++ {\boldsymbol{\dot{\theta}}}_1\]</span></p>
+<p><strong>Oharra</strong>: Orientazio diagramak beti zuhaitz forma
+izango du. Ezingo da inoiz base batetik bestera joan bi bide
+ezberdinetatik. Beti bide bat eta bakarra erabili ahalko da base batetik
+beste batera joateko.</p>
+<p><strong>Adibidea</strong>:</p>
+<p>Ikusi ezazu basen marrazkia eta orientazio diagramaren arteko
+erlazioa. Kalkulatu ezazu hirugarren basearen abiadura angeluarra
+lehenengo basearekiko, proiektatzeko nahi duzun basea erabilita.</p>
+<figure>
+<img src="./figs/orientazio_diagrama_adibidea.png"
+style="width:100.0%" />
+</figure>
+<p><strong>Oharra</strong>: Orientazio diagraman, baseak eta baita
+erreferentziak izango ditugu, naiz eta garrantzia duena Erreferentziaren
+orientazioa den.</p>
+<p><strong>Oharra</strong>: Bi baseren arteko abiadura angeluarra zero
+bada, orduan bi baseek orientazio berdina dute. Beheko adibidean, base
+urdinare abiadura base gorriarekiko zero da. Hortaz, orientazio
+diagraman bloke berdinean daude.</p>
+<p><div id="applet_containereshuxmr8"></div>    <script type="text/javascript">var parameterseshuxmr8 = {"width": 600,"height": 400,"material_id": "eshuxmr8","showFullscreenButton": true};var appleteshuxmr8 = new GGBApplet(parameterseshuxmr8, true);appleteshuxmr8.inject('applet_containereshuxmr8');</script></p>
+<figure>
+<img src="./figs/Orientazio_berdineko_bi_base_OD.png"
+style="width:100.0%" />
+</figure>
+<p>Adibide honetan, hurrengo abiadura angeluarrak izango ditugu: <span
+class="math display">\[\Large
+    \boldsymbol{\Omega}_{_{{\mathcal{B}}}}{\small
+({\textcolor{red}{{\mathcal{B}}}})}=\boldsymbol{\Omega}_{_{{\mathcal{B}}}}{\small
+({\textcolor{blue}{{\mathcal{B}}}})}={\boldsymbol{\dot{\theta}}},
+\quad\quad
+\boldsymbol{\Omega}_{_{{\textcolor{red}{{\mathcal{B}}}}}}{\small
+({\textcolor{blue}{{\mathcal{B}}}})}=\boldsymbol{\Omega}_{_{{\textcolor{blue}{{\mathcal{B}}}}}}{\small
+({\textcolor{red}{{\mathcal{B}}}})}=\mathbf{0}\]</span> Hala ere, naiz
+eta <span
+class="math inline">\({\textcolor{red}{{\mathcal{B}}}}\)</span> eta
+<span class="math inline">\({\textcolor{blue}{{\mathcal{B}}}}\)</span>
+baseek orientazio berdina izan, edozein bektoreren osagaiak base batean
+eta bestean (orokorrean) ezberdinak izango dira. <span
+class="math display">\[\Large
+    {\left\{\begin{matrix}{\mathbf{u}}\end{matrix}\right\}}_{_{{\textcolor{red}{{\mathcal{B}}}}}}={\left\{\begin{matrix}{\textcolor{red}{u_1}}\\
+{\textcolor{red}{u_2}} \\
+{\textcolor{red}{u_3}}\end{matrix}\right\}}_{_{{\textcolor{red}{{\mathcal{B}}}}}}
+\neq {\left\{\begin{matrix}{\textcolor{blue}{u_1}}\\
+{\textcolor{blue}{u_2}} \\
+{\textcolor{blue}{u_3}}\end{matrix}\right\}}_{_{{\textcolor{blue}{{\mathcal{B}}}}}}={\left\{\begin{matrix}{\mathbf{u}}\end{matrix}\right\}}_{_{{\textcolor{blue}{{\mathcal{B}}}}}}\]</span></p>
+<h2 data-number="1.14" id="orientazio-diagrama-baten-adibidea"><span
+class="header-section-number">1.14</span> Orientazio diagrama baten
+adibidea</h2>
+<p><strong>Enuntziatua:</strong></p>
+<p>Hurrengo irudian ikusten ditugu hainbat solido puntu esta basez
+akotatutako mekanismoa. Irudiko <span
+class="math inline">\(\mathbf{A}\)</span> puntua <strong>Lur</strong>
+lurrarekiko trasladatzen da. Honekin batera <strong>Blo</strong> bloke
+oria trasladatzen da. Bestalde, <strong>Txa</strong> txapa gorria
+blokearekiko biratzen da, hurrenez-hurren dauden bi biraketa elementalen
+bitartez. Lehenengo biraketa <span class="math inline">\(\alpha\)</span>
+angeluaren bitartez akotatuta dago, eta base urdina definitzen du.
+Bigarren biraketa <span class="math inline">\(\gamma\)</span> angeluaren
+bitartez akotatuta dago, eta txaparen orientazioa definitzen du.</p>
+<p>Marraztu ezazu mekanismo honen <em>Orientazio Diagrama</em></p>
+<p><div id="applet_containerbhq6pdeu"></div>    <script type="text/javascript">var parametersbhq6pdeu = {"width": 600,"height": 400,"material_id": "bhq6pdeu","showFullscreenButton": true};var appletbhq6pdeu = new GGBApplet(parametersbhq6pdeu, true);appletbhq6pdeu.inject('applet_containerbhq6pdeu');</script></p>
+<p><strong>Ebazpena:</strong></p>
+<p>Irudian ikusten den bezala, blokeak ez du lurrarekiko biratzen, eta
+lurrarekiko finko den baseak ere ez du biratzen lurraren basearekiko.
+Beraz, bi base hauek eta bi solido hauek ere orientazio diagramaren
+bloke berdinean jarri beharko ditugu.</p>
+<p>Bestalde, <span class="math inline">\(\alpha\)</span> angeluaren
+bitartez base urdina biratzen dugu, ardatz bertikalarekiko. Hortaz, base
+urdina beste bloke batean egongo da orientazio diagraman. Bloke horretan
+ez da solidorik egongo, txapa gorriak base urdinarekiko biratzen bait du
+ere, <span class="math inline">\(\gamma\)</span> angeluarekin.</p>
+<p>Azkenik, txapa gorriarekin batera ez dago marraztua inongo baserik.
+Beraz, txapa solidoa bakarri egongo da orientazio diagramaren azkeneko
+blokean.</p>
+<p><div id="applet_containercqeybs59"></div>    <script type="text/javascript">var parameterscqeybs59 = {"width": 600,"height": 150,"material_id": "cqeybs59","showFullscreenButton": true};var appletcqeybs59 = new GGBApplet(parameterscqeybs59, true);appletcqeybs59.inject('applet_containercqeybs59');</script></p>
+<p>Adibide honen bitartez ikus dugu nola, orientazio diagrama batean,
+bloke bakoitzean, baseak, solidoak edo biak egon daitezkeen. Bestalde
+ere ikusi dugu nola, lurra eta blokearen erreferentziak elkarrekiko
+mugitzen badira ere, haien arteko biraketarik ez dagoenez, bi solidoak
+orientazio diagramaren bloke berdinean egongo diren.</p>
+<h2 data-number="1.15" id="ariketa"><span
+class="header-section-number">1.15</span> Ariketa</h2>
+<h3 data-number="1.15.1" id="enuntziatua"><span
+class="header-section-number">1.15.1</span> Enuntziatua</h3>
+<p>Demagun honako hiru baseak ditugula, haien arteko abiadura erlatiboak
+onakoak direlarik: <span
+class="math inline">\({\boldsymbol{\dot{\varphi}}}=\boldsymbol{\Omega}_{_{xyz}}{\small
+(123)}\)</span> eta <span
+class="math inline">\({\boldsymbol{\dot{\theta}}}=\boldsymbol{\Omega}_{_{123}}{\small
+(1&#39;2&#39;3&#39;)}\)</span>.</p>
+<p><div id="applet_containeru5vb5aud"></div>    <script type="text/javascript">var parametersu5vb5aud = {"width": 600,"height": 500,"material_id": "u5vb5aud","showFullscreenButton": true};var appletu5vb5aud = new GGBApplet(parametersu5vb5aud, true);appletu5vb5aud.inject('applet_containeru5vb5aud');</script></p>
+<p>Demagun <span class="math inline">\({\mathbf{v}}\)</span> bektorearen
+osagaiak ezagunak direla <span class="math inline">\(123\)</span>
+basean: <span
+class="math display">\[{\left\{\begin{matrix}{\mathbf{v}}\end{matrix}\right\}}_{_{123}}={\left\{\begin{matrix}v_1\\
+v_2 \\ v_3\end{matrix}\right\}}_{_{123}}\]</span> Kalkulatu itzazu
+hurrengo bektoreen osagaiak dagozkion baseetan: <span
+class="math display">\[\large
+    \begin{split}
+        a)&amp;\, {\left\{\begin{matrix}\frac{d}{dt}\left.{\mathbf{v}}
+\right|_{_{xyz}}\end{matrix}\right\}}_{_{xyz}};\quad\quad\quad\quad       b)\,
+{\left\{\begin{matrix}\frac{d}{dt}\left.{\mathbf{v}}
+\right|_{_{xyz}}\end{matrix}\right\}}_{_{123}}; \\
+        c)&amp;\, {\left\{\begin{matrix}\frac{d}{dt}\left.{\mathbf{v}}
+\right|_{_{123}}\end{matrix}\right\}}_{_{xyz}};\quad\quad\quad\quad       d)\,
+{\left\{\begin{matrix}\frac{d}{dt}\left.{\mathbf{v}}
+\right|_{_{1&#39;2&#39;3&#39;}}\end{matrix}\right\}}_{_{123}};
+    \end{split}\]</span></p>
+<h3 data-number="1.15.2" id="ebazpena"><span
+class="header-section-number">1.15.2</span> Ebazpena</h3>
+<p>Lehenbizi, marraztu dezagun ariketaren orientazio diagrama:</p>
+<figure>
+<img src="./figs/Bektoreak_deribatzeko_ariketa_OD.png"
+style="width:100.0%" />
+</figure>
+<p>Abiadura angeluar horien osagaiak baserik errazenean kalkulatzen
+ditugu: <span
+class="math display">\[{\left\{\begin{matrix}{\boldsymbol{\dot{\varphi}}}\end{matrix}\right\}}_{_{123}}={\left\{\begin{matrix}0
+\\ 0 \\ {\dot{\varphi}}\end{matrix}\right\}}_{_{123}};
+    \quad\quad\quad\quad
+    {\left\{\begin{matrix}{\boldsymbol{\dot{\theta}}}\end{matrix}\right\}}_{_{123}}={\left\{\begin{matrix}0
+\\ {\dot{\theta}}\\ 0\end{matrix}\right\}}_{_{123}}\]</span> <strong>a)
+atala:</strong> Atal hau ebazteko errazena izango da <span
+class="math inline">\({\mathbf{v}}\)</span> bektorea <span
+class="math inline">\(123\)</span> basetik <span
+class="math inline">\(xyz\)</span> basera pasatzea eta gero <em>base
+finkotan</em> deribatzea: <span
+class="math display">\[{\left\{\begin{matrix}\frac{d}{dt}\left.{\mathbf{v}}
+\right|_{_{xyz}}\end{matrix}\right\}}_{_{xyz}} =
+\frac{d}{dt}{\left\{\begin{matrix}{\mathbf{v}}\end{matrix}\right\}}_{_{xyz}};
+    \quad\quad\quad\quad
+    {\left\{\begin{matrix}{\mathbf{v}}\end{matrix}\right\}}_{_{xyz}} =
+\left[\mathbf{1}\right]_{_{xyz}}^{^{123}}{\left\{\begin{matrix}{\mathbf{v}}\end{matrix}\right\}}_{_{123}}\]</span>
+Base aldaketa matrizearen osagaiak zeintzuk diren erraz ikusteko, goiko
+diagrama mugitu dezakegu <span class="math inline">\(z\)</span>
+norabidea irudiarekiko elkartzuta izan arte. Horrela kalkulatu dezakegu:
+<span class="math display">\[\left[\mathbf{1}\right]_{_{xyz}}^{^{123}} =
+\begin{bmatrix} \cos\varphi &amp; -\sin\varphi &amp; 0 \\ \sin\varphi
+&amp; \phantom{-}\cos\varphi &amp; 0 \\ 0 &amp; 0 &amp; 1
+\end{bmatrix}_{xyz}^{123}
+    =\begin{bmatrix}
+        {\left\{\begin{matrix}{\mathbf{e}}_1\end{matrix}\right\}}_{_{xyz}}|{\left\{\begin{matrix}{\mathbf{e}}_2\end{matrix}\right\}}_{_{xyz}}|{\left\{\begin{matrix}{\mathbf{e}}_3\end{matrix}\right\}}_{_{xyz}}
+    \end{bmatrix}_{xyz}^{123}\]</span> Beraz, <span
+class="math inline">\({\mathbf{v}}\)</span> bektorearen osagaiak <span
+class="math inline">\(xyz\)</span> basean hauek dira: <span
+class="math display">\[{\left\{\begin{matrix}{\mathbf{v}}\end{matrix}\right\}}_{_{xyz}}=\begin{bmatrix}
+\cos\varphi &amp; -\sin\varphi &amp; 0 \\ \sin\varphi &amp;
+\phantom{-}\cos\varphi &amp; 0 \\ 0 &amp; 0 &amp; 1
+\end{bmatrix}_{xyz}^{123}
+    {\left\{\begin{matrix}v_1 \\ v_2 \\
+v_3\end{matrix}\right\}}_{_{123}}= {\left\{\begin{matrix}v_1\cos\varphi
+-v_2\sin\varphi \\ v_1\sin\varphi + v_2\cos\varphi \\
+v_3\end{matrix}\right\}}_{_{xyz}}\]</span> Eta orain, bektorea <span
+class="math inline">\(xyz\)</span> basean dugunez, eta deribatua <span
+class="math inline">\(xyz\)</span>-rekiko egin behar dugunez, <em>base
+finkotan</em> deribatuko dugu: <span
+class="math display">\[{\left\{\begin{matrix}\frac{d}{dt}\left.{\mathbf{v}}
+\right|_{_{xyz}}\end{matrix}\right\}}_{_{xyz}}=
+    {\left\{\begin{matrix}\dot{v}_1\cos\varphi-v_1{\dot{\varphi}}\sin\varphi
+-\dot{v}_2\sin\varphi - v_2{\dot{\varphi}}\cos\varphi \\
+           \dot{v}_1\sin\varphi+v_1{\dot{\varphi}}\cos\varphi
++\dot{v}_2\cos\varphi - v_2{\dot{\varphi}}\sin\varphi \\
+           \dot{v}_3\end{matrix}\right\}}_{_{xyz}}\]</span></p>
+<p><strong>b) atala:</strong> Atal hau ebazteko bi aukera argi daude: 1)
+<span class="math inline">\({\mathbf{v}}\)</span> bektorea <span
+class="math inline">\(123\)</span> basean egonda, <em>base
+higikorretan</em> deribatzea (<span
+class="math inline">\(xyz\)</span>-rekiko), edo 2) aurreko atalaren
+emaitz (<span class="math inline">\(xyz\)</span> basean dagoenez) <span
+class="math inline">\(123\)</span> basera pasatzea. Bigarren aukera
+erakargarria baldin bada ere, askoz errazagoa da lehenengo aukera
+autatzea. Gainera, seguruago ere bada, bigarren aukeran akatsak egiteko
+aukera gehiago daudelako.</p>
+<p>Beraz, base higikorretan deribatuz: <span
+class="math display">\[\begin{split}
+        {\left\{\begin{matrix}\frac{d}{dt}\left.{\mathbf{v}}
+\right|_{_{xyz}}\end{matrix}\right\}}_{_{123}}&amp;={\left\{\begin{matrix}\frac{d}{dt}\left.{\mathbf{v}}
+\right|_{_{123}}\end{matrix}\right\}}_{_{123}} +
+\left\{\boldsymbol{\Omega}_{_{xyz}}{\small (123)}\right\}_{_{123}}\times
+{\left\{\begin{matrix}{\mathbf{v}}\end{matrix}\right\}}_{_{123}} \\
+        &amp;={\left\{\begin{matrix}\dot{v}_1 \\ \dot{v}_2 \\
+\dot{v}_3\end{matrix}\right\}}_{_{123}} + {\left\{\begin{matrix}0\\ 0 \\
+{\dot{\varphi}}\end{matrix}\right\}}_{_{123}}\times
+{\left\{\begin{matrix}v_1 \\ v_2 \\ v_3\end{matrix}\right\}}_{_{123}}
+        = {\left\{\begin{matrix}\dot{v}_1-v_2{\dot{\varphi}}\\
+\dot{v}_2+v_1{\dot{\varphi}}\\ \dot{v}_3\end{matrix}\right\}}_{_{123}}
+    \end{split}\]</span></p>
+<p>Ariketa bezala, konprobatu ezazu deribatu bera ondorengo moduan
+kalkulatu daitekeela, prozedura luzeagoa dela eta emaitza berdina
+ateratzen dela: <span
+class="math display">\[{\left\{\begin{matrix}\frac{d}{dt}\left.{\mathbf{v}}
+\right|_{_{xyz}}\end{matrix}\right\}}_{_{123}} =
+\left[\mathbf{1}\right]_{_{123}}^{^{xyz}}  {\left\{\begin{matrix}\frac{d}{dt}\left.{\mathbf{v}}
+\right|_{_{xyz}}\end{matrix}\right\}}_{_{xyz}}\]</span></p>
+<p><strong>c) atala:</strong> Atal hau ebazteko modurik zuzenena, base
+finkotan deribatutako bektorea basez aldatzea da. <span
+class="math display">\[\begin{split}
+    {\left\{\begin{matrix}\frac{d}{dt}\left.{\mathbf{v}}
+\right|_{_{123}}\end{matrix}\right\}}_{_{xyz}} \!\!\!&amp;=
+\left[\mathbf{1}\right]_{_{xyz}}^{^{123}}{\left\{\begin{matrix}\frac{d}{dt}\left.{\mathbf{v}}
+\right|_{_{123}}\end{matrix}\right\}}_{_{123}} \!\!\!=
+    \begin{bmatrix} \cos\varphi &amp; -\sin\varphi &amp; 0 \\
+\sin\varphi &amp; \phantom{-}\cos\varphi &amp; 0 \\ 0 &amp; 0 &amp; 1
+\end{bmatrix}_{xyz}^{123}
+    {\left\{\begin{matrix}\dot{v}_1 \\ \dot{v}_2 \\
+\dot{v}_3\end{matrix}\right\}}_{_{123}} \\
+    &amp;={\left\{\begin{matrix}\dot{v}_1\cos\varphi
+-\dot{v}_2\sin\varphi \\ \dot{v}_1\sin\varphi +\dot{v}_2\cos\varphi \\
+\dot{v}_3\end{matrix}\right\}}_{_{xyz}}
+\end{split}\]</span> Ariketa bezala, erabili <span
+class="math inline">\({\mathbf{v}}\)</span> bektorearen osagaiak <span
+class="math inline">\(xyz\)</span> basean eta deribatu bektorea <em>base
+higikorretan</em>. <span
+class="math display">\[{\left\{\begin{matrix}\frac{d}{dt}\left.{\mathbf{v}}
+\right|_{_{123}}\end{matrix}\right\}}_{_{xyz}}={\left\{\begin{matrix}\frac{d}{dt}\left.{\mathbf{v}}
+\right|_{_{xyz}}\end{matrix}\right\}}_{_{xyz}} +
+\left\{\boldsymbol{\Omega}_{_{123}}{\small (xyz)}\right\}_{_{xyz}}\times
+{\left\{\begin{matrix}{\mathbf{v}}\end{matrix}\right\}}_{_{xyz}}\]</span>
+Ohartuko zarenez, bide hau askoz luzeagoa da, naiz eta emaitza berdinera
+heltzen garen.</p>
+<p><strong>d) atala:</strong> Atal hau ebazteko modurik errazena <span
+class="math inline">\({\mathbf{v}}\)</span>-ren osagaiak <span
+class="math inline">\(123\)</span> basean erabili eta <em>base
+higikorretan</em> deribatzea da: <span
+class="math display">\[\begin{split}
+        {\left\{\begin{matrix}\frac{d}{dt}\left.{\mathbf{v}}
+\right|_{_{1&#39;2&#39;3&#39;}}\end{matrix}\right\}}_{_{123}}&amp;={\left\{\begin{matrix}\frac{d}{dt}\left.{\mathbf{v}}
+\right|_{_{123}}\end{matrix}\right\}}_{_{123}} +
+\left\{\boldsymbol{\Omega}_{_{1&#39;2&#39;3&#39;}}{\small
+(123)}\right\}_{_{123}}\times
+{\left\{\begin{matrix}{\mathbf{v}}\end{matrix}\right\}}_{_{123}} \\
+            &amp;={\left\{\begin{matrix}\dot{v}_1 \\ \dot{v}_2 \\
+\dot{v}_3\end{matrix}\right\}}_{_{123}} +
+{\left\{\begin{matrix}\phantom{-}0\\ -{\dot{\theta}}\\
+\phantom{-}0\end{matrix}\right\}}_{_{123}}\times
+{\left\{\begin{matrix}v_1 \\ v_2 \\ v_3\end{matrix}\right\}}_{_{123}}
+        = {\left\{\begin{matrix}\dot{v}_1-v_3{\dot{\theta}}\\ \dot{v}_2
+\\ \dot{v}_3+v_1{\dot{\theta}}\end{matrix}\right\}}_{_{123}}
+    \end{split}\]</span></p>
+<h3 data-number="1.15.3" id="ariketaren-jarraipena"><span
+class="header-section-number">1.15.3</span> Ariketaren jarraipena</h3>
+<p>Ariketa gehigarri bezala, kalkulatu itzazu ondorengo bektoreak: <span
+class="math display">\[e)\,{\left\{\begin{matrix}\frac{d}{dt}\left.{\boldsymbol{\dot{\theta}}}
+\right|_{_{xyz}}\end{matrix}\right\}}_{_{123}}; \quad\quad\quad\quad
+f)\,{\left\{\begin{matrix}\frac{d}{dt}\left.{\mathbf{e}}_x
+\right|_{_{123}}\end{matrix}\right\}}_{_{xyz}}\]</span> Emaitzak
+honakoak dira: <span
+class="math display">\[e)\,{\left\{\begin{matrix}\frac{d}{dt}\left.{\boldsymbol{\dot{\theta}}}
+\right|_{_{xyz}}\end{matrix}\right\}}_{_{123}}={\left\{\begin{matrix}-{\dot{\varphi}}{\dot{\theta}}\\
+{\ddot{\theta}}\\ 0 \end{matrix}\right\}}_{_{123}} \quad
+    f)\,{\left\{\begin{matrix}\frac{d}{dt}\left.{\mathbf{e}}_x
+\right|_{_{123}}\end{matrix}\right\}}_{_{xyz}}={\left\{\begin{matrix}\phantom{-}0
+\\ -{\dot{\varphi}}\\
+\phantom{-}0\end{matrix}\right\}}_{_{xyz}}\]</span></p>
+</body>
+</html>

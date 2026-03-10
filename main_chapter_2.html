@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Xabier Iriarte" />
+  <meta name="dcterms.date" content="2026-02-16" />
+  <title>Mekanika</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+</head>
+<head><script src="https://www.geogebra.org/apps/deployggb.js"></script></head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Mekanika</h1>
+<p class="author">Xabier Iriarte</p>
+<p class="date">2026-02-16</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#puntuaren-zinematika" id="toc-puntuaren-zinematika"><span
+class="toc-section-number">2</span> Puntuaren zinematika</a>
+<ul>
+<li><a href="#zinematika-eta-puntu-materiala"
+id="toc-zinematika-eta-puntu-materiala"><span
+class="toc-section-number">2.1</span> Zinematika eta puntu
+materiala</a></li>
+<li><a href="#posizio-bektorea" id="toc-posizio-bektorea"><span
+class="toc-section-number">2.2</span> Posizio Bektorea</a></li>
+<li><a href="#abiadura-bektorea" id="toc-abiadura-bektorea"><span
+class="toc-section-number">2.3</span> Abiadura Bektorea</a></li>
+<li><a href="#azelerazio-bektorea" id="toc-azelerazio-bektorea"><span
+class="toc-section-number">2.4</span> Azelerazio Bektorea</a></li>
+<li><a href="#sec::adibidea_deribazioz"
+id="toc-sec::adibidea_deribazioz"><span
+class="toc-section-number">2.5</span> Adibidea:</a>
+<ul>
+<li><a href="#enuntziatua" id="toc-enuntziatua"><span
+class="toc-section-number">2.5.1</span> Enuntziatua</a></li>
+<li><a href="#ebazpena" id="toc-ebazpena"><span
+class="toc-section-number">2.5.2</span> Ebazpena</a></li>
+</ul></li>
+<li><a href="#mugimendu-konposizioa"
+id="toc-mugimendu-konposizioa"><span
+class="toc-section-number">2.6</span> Mugimendu konposizioa</a>
+<ul>
+<li><a href="#posizio-konposizioa" id="toc-posizio-konposizioa"><span
+class="toc-section-number">2.6.1</span> Posizio konposizioa</a></li>
+<li><a href="#abiadura-konposizioa" id="toc-abiadura-konposizioa"><span
+class="toc-section-number">2.6.2</span> Abiadura konposizioa</a></li>
+<li><a href="#abiadura-terminoen-errepresentazioa"
+id="toc-abiadura-terminoen-errepresentazioa"><span
+class="toc-section-number">2.6.3</span> Abiadura terminoen
+errepresentazioa</a></li>
+<li><a href="#azelerazio-konposizioa"
+id="toc-azelerazio-konposizioa"><span
+class="toc-section-number">2.6.4</span> Azelerazio konposizioa</a></li>
+<li><a href="#azelerazio-terminoen-errepresentazioa"
+id="toc-azelerazio-terminoen-errepresentazioa"><span
+class="toc-section-number">2.6.5</span> Azelerazio terminoen
+errepresentazioa</a></li>
+</ul></li>
+<li><a href="#adibidea" id="toc-adibidea"><span
+class="toc-section-number">2.7</span> Adibidea:</a>
+<ul>
+<li><a href="#enuntziatua-1" id="toc-enuntziatua-1"><span
+class="toc-section-number">2.7.1</span> Enuntziatua</a></li>
+<li><a href="#planteamendua" id="toc-planteamendua"><span
+class="toc-section-number">2.7.2</span> Planteamendua</a></li>
+<li><a href="#abiadura-kalkuluaren-ebazpena"
+id="toc-abiadura-kalkuluaren-ebazpena"><span
+class="toc-section-number">2.7.3</span> Abiadura kalkuluaren
+ebazpena</a></li>
+<li><a href="#azelerazio-kalkuluaren-ebazpena"
+id="toc-azelerazio-kalkuluaren-ebazpena"><span
+class="toc-section-number">2.7.4</span> Azelerazio kalkuluaren
+ebazpena</a></li>
+<li><a href="#ariketaren-jarraipena"
+id="toc-ariketaren-jarraipena"><span
+class="toc-section-number">2.7.5</span> Ariketaren jarraipena:</a></li>
+</ul></li>
+<li><a href="#adibidea-pare-prismatiko-batekin"
+id="toc-adibidea-pare-prismatiko-batekin"><span
+class="toc-section-number">2.8</span> Adibidea: pare prismatiko
+batekin</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 data-number="2" id="puntuaren-zinematika"><span
+class="header-section-number">2</span> Puntuaren zinematika</h1>
+<h2 data-number="2.1" id="zinematika-eta-puntu-materiala"><span
+class="header-section-number">2.1</span> Zinematika eta puntu
+materiala</h2>
+<p><strong>Zinematika</strong>: Gorputz materialen higiduraz arduratzen
+den zientzia da, higiduraren zergatiak kontutan hartu gabe.</p>
+<p><strong>Higidura</strong>: Posizio aldaketa espazioan eta denboran
+zehar.</p>
+<p><strong>Puntu materiala edo partikula</strong>: Zinematikako
+elementurik simpleena. Dimentsiorik gabeko abstrakzio matematikoa.
+Espazioan kokalekua dauka, baina orientazioak ez du garrantzirik.</p>
+<p>Adibidea: Planeten mugimendua aztertzean, puntu material bezala
+tratatu ditzakegu.</p>
+<h2 data-number="2.2" id="posizio-bektorea"><span
+class="header-section-number">2.2</span> Posizio Bektorea</h2>
+<p><strong>Definizioa</strong>: <span
+class="math inline">\(\overline{\mathbf{OP}}\)</span> bektorea <span
+class="math inline">\(\mathbf{P}\)</span> puntuaren <em>Posizio
+Bektorea</em> da <span class="math inline">\({\mathcal{R}}\)</span>
+erreferentzian, <span class="math inline">\(\mathbf{O}\)</span> puntua
+<span class="math inline">\({\mathcal{R}}\)</span> erreferentziarekiko
+zurruna baldin bada. <span class="math inline">\(\mathbf{A}\)</span>
+puntua <span class="math inline">\({\mathcal{R}}\)</span>-rekiko zurruna
+bada, orduan <span class="math inline">\(\overline{\mathbf{AP}}\)</span>
+ere <span class="math inline">\(\mathbf{P}\)</span> puntuaren
+<em>Posizio Bektorea</em> izango da <span
+class="math inline">\({\mathcal{R}}\)</span> erreferentzian. Aldiz,
+<span class="math inline">\(\mathbf{O}&#39;\)</span> puntua <span
+class="math inline">\({\mathcal{R}}\)</span>-rekiko mugitzen denez,
+<span class="math inline">\(\overline{\mathbf{O&#39;P}}\)</span>
+bektorea <em><strong>ez da</strong> Posizio Bektorea</em> <span
+class="math inline">\({\mathcal{R}}\)</span> erreferentzian.</p>
+<p><div id="applet_containerjjrrfb62"></div>    <script type="text/javascript">var parametersjjrrfb62 = {"width": 600,"height": 400,"material_id": "jjrrfb62","showFullscreenButton": true};var appletjjrrfb62 = new GGBApplet(parametersjjrrfb62, true);appletjjrrfb62.inject('applet_containerjjrrfb62');</script></p>
+<h2 data-number="2.3" id="abiadura-bektorea"><span
+class="header-section-number">2.3</span> Abiadura Bektorea</h2>
+<p>Puntu baten posizio aldaketa (denborarekin) adierazten duen bektorea
+da. Ez litzateke zuzena izango <span
+class="math inline">\(\mathbf{V}_{_{}}{\small (\mathbf{P})} =
+\frac{d}{dt}\overline{\mathbf{OP}}\)</span> idaztea, bi arrazoigatik.
+<em>Fisikoki</em>: zein behatzailerekiko ikusiko genukeen mugimendua?
+Behatzaile ezberdinek abiadura ezberdinak ikusi ditzateke, beraz ezin
+jakin aukera guztietatik zein den kalkulatzen duguna. Bestaldetik,
+<em>matematikoki</em>, zein erreferentziarekiko deribatzen da bektorea?
+Bektoreak deribatzeko, erreferentzia bat behar dugu aldaketa
+adierazteko.</p>
+<p><em>Abiadura bektorea</em> honela definituko dugu:</p>
+<p><strong>Definizioa</strong>: <span
+class="math inline">\(\mathbf{P}\)</span> puntuaren abiadura <span
+class="math inline">\({\mathcal{R}}\)</span>-rekiko honela adierazi eta
+kalkulatuko dugu: <span class="math display">\[\Large
+    \boxed{
+    \mathbf{V}_{_{{\textcolor{blue}{{\mathcal{R}}}}}}{\small
+({\textcolor{red}{\mathbf{P}}})}=\frac{d}{dt}\left.\overline{\mathbf{{\textcolor{blue}{O}}{\textcolor{red}{P}}}}
+\right|_{_{{\textcolor{blue}{{\mathcal{R}}}}}}
+    }\]</span> Espresio honenta, <span
+class="math inline">\({\textcolor{blue}{{\mathcal{R}}}}\)</span> eta
+<span class="math inline">\({\textcolor{blue}{\mathbf{O}}}\)</span>
+urdinez markatuta daude, <span class="math inline">\(\mathbf{O}\)</span>
+puntua <span class="math inline">\({\mathcal{R}}\)</span>
+erreferentziarekiko zurruna izan behar delako. Hau da, <span
+class="math inline">\(\overline{\mathbf{OP}}\)</span> bektorea <span
+class="math inline">\(\mathbf{P}\)</span>-ren <em>posizio bektorea</em>
+izan behar da <span class="math inline">\({\mathcal{R}}\)</span>-n.
+Abiadura <span class="math inline">\({\mathcal{R}}\)</span>-rekiko
+kalkulatu nahi badugu, orduan <span
+class="math inline">\({\mathcal{R}}\)</span>-rekiko deribatu beharko
+dugu <span class="math inline">\(\overline{\mathbf{OP}}\)</span>
+bektorea.</p>
+<p><strong>Oharra</strong>: aurreko <a
+href="#sec::bektoreen_deribazioa_base_batekiko"
+data-reference-type="ref"
+data-reference="sec::bektoreen_deribazioa_base_batekiko">[sec::bektoreen_deribazioa_base_batekiko]</a>
+atalean adierazi dugunez, <span
+class="math inline">\({\mathbf{u}}\)</span> bektore baten deribazioa
+erreferentzia batekiko kalkulatzen dugunean, berdin digu idazteko
+hurrengo bi moduetatik zein erabili <span class="math display">\[\Large
+    \frac{d}{dt}\left.{\mathbf{u}} \right|_{_{{\mathcal{R}}}}
+=\frac{d}{dt}\left.{\mathbf{u}} \right|_{_{{\mathcal{B}}}}\]</span>
+bektorearen deribazioan erreferentziaren ezaugarri garrantzitsu bakarra
+orientazioa delako, baldin eta <span
+class="math inline">\({\mathcal{R}}= \mathbf{O}+ {\mathcal{B}}\)</span>
+egia bada.</p>
+<p>Hortaz, honako expresioak ez du zentzurik: <span
+class="math display">\[\Large
+    \cancel{\mathbf{V}_{_{{\mathcal{B}}}}{\small
+(\mathbf{P})}}\]</span></p>
+<p>Aldiz, <span class="math inline">\(\mathbf{P}\)</span> puntu baten
+abiadura kalkulatzean <span
+class="math inline">\({\mathcal{R}}\)</span>-ren bi ezaugarriak
+garrantzitsuak dira: <span class="math inline">\(\mathbf{O}\)</span>
+puntuaren posizioa eta <span
+class="math inline">\({\mathcal{B}}\)</span> basearen orientazioa.
+Arrazoia, <span class="math inline">\(\mathbf{O}\)</span> puntua <span
+class="math inline">\({\mathcal{R}}\)</span>-rekiko finkoa izan behar da
+<span class="math inline">\(\overline{\mathbf{OP}}\)</span>-ren
+deribatua <span class="math inline">\(\mathbf{V}_{_{R}}{\small
+(P)}\)</span> izan dadin.</p>
+<h2 data-number="2.4" id="azelerazio-bektorea"><span
+class="header-section-number">2.4</span> Azelerazio Bektorea</h2>
+<p>Puntu baten abiadura aldaketa (denborarekin) adierazten duen bektorea
+da. <em>Azelerazio bektorea</em> honela definituko dugu:</p>
+<p><strong>Definizioa</strong>: <span
+class="math inline">\(\mathbf{P}\)</span> puntuaren azelerazioa <span
+class="math inline">\({\mathcal{R}}\)</span>-rekiko honela adierazi eta
+kalkulatuko dugu: <span class="math display">\[\Large
+    \boxed{
+    \mathbf{A}_{_{{\textcolor{blue}{{\mathcal{R}}}}}}{\small
+{({\textcolor{red}{\mathbf{P}}})}}=\frac{d}{dt}\left.\mathbf{V}_{_{{\textcolor{blue}{{\mathcal{R}}}}}}{\small
+({\textcolor{red}{\mathbf{P}}})}
+\right|_{_{{\textcolor{blue}{{\mathcal{R}}}}}}
+    }\]</span> Espresio honenta, <span
+class="math inline">\({\textcolor{blue}{{\mathcal{R}}}}\)</span> guztiak
+urdinez markatzearen arrazoia honakoa da: puntuaren azelerazioa <span
+class="math inline">\({\mathcal{R}}\)</span>-rekiko kalkulatun nahi
+badugu, puntuaren abiadura <span
+class="math inline">\({\mathcal{R}}\)</span>-rekiko, berriz ere <span
+class="math inline">\({\mathcal{R}}\)</span>-rekiko deribatu beharko
+dugu.</p>
+<h2 data-number="2.5" id="sec::adibidea_deribazioz"><span
+class="header-section-number">2.5</span> Adibidea:</h2>
+<h3 data-number="2.5.1" id="enuntziatua"><span
+class="header-section-number">2.5.1</span> Enuntziatua</h3>
+<p>Hurrengo irudian agertzen den <span
+class="math inline">\(\mathbf{P}\)</span> puntuaren abiadura eta
+azelerazioa kalkulatu ezazu, jakinda <span
+class="math inline">\(\lVert\overline{\mathbf{OA}}\rVert=h\)</span> dela
+eta <span
+class="math inline">\(\lVert\overline{\mathbf{AP}}\rVert=\rho\)</span>
+dela ere. Beraz, <span class="math inline">\(\varphi\)</span> eta <span
+class="math inline">\(\theta\)</span> koordenatuak izango dira eta <span
+class="math inline">\(h\)</span> eta <span
+class="math inline">\(\rho\)</span> parametroak (konstanteak). Adibide
+honetan, <span class="math inline">\(\boldsymbol{\Omega}_{_{xyz}}{\small
+(123)}={\boldsymbol{\dot{\psi}}}\)</span> bektorea <span
+class="math inline">\(3\)</span> ardatzaren norantza positiboan dihoa.
+Halaber, <span class="math inline">\(\boldsymbol{\Omega}_{_{123}}{\small
+(1&#39;2&#39;3&#39;)}={\boldsymbol{\dot{\theta}}}\)</span> bektorea
+<span class="math inline">\(1\)</span> ardatzaren norantza positiboan
+dihoa.</p>
+<p>Lurraren erreferentzia definitzeko <span
+class="math inline">\(\mathbf{O}\)</span> puntua eta <span
+class="math inline">\(xyz\)</span> basea erabiliko ditugu. Hau da: <span
+class="math inline">\({Lur}=\mathbf{O}+xyz\)</span>. Bestalde,
+plataformaren eta barraren erreferentziak, honakoak izango dira: <span
+class="math inline">\({Pla}=\mathbf{A}+123\)</span> eta <span
+class="math inline">\({Bar}=\mathbf{A}+1&#39;2&#39;3&#39;\)</span>.</p>
+<p><div id="applet_containerqymunyss"></div>    <script type="text/javascript">var parametersqymunyss = {"width": 600,"height": 550,"material_id": "qymunyss","showFullscreenButton": true};var appletqymunyss = new GGBApplet(parametersqymunyss, true);appletqymunyss.inject('applet_containerqymunyss');</script></p>
+<h3 data-number="2.5.2" id="ebazpena"><span
+class="header-section-number">2.5.2</span> Ebazpena</h3>
+<p><strong>Orientazio Diagrama:</strong></p>
+<p>Lehenik eta behin, irudikatu dezagun ariketaren orientazio
+diagrama:</p>
+<p><div id="applet_containercpngtyvg"></div>    <script type="text/javascript">var parameterscpngtyvg = {"width": 600,"height": 200,"material_id": "cpngtyvg","showFullscreenButton": true};var appletcpngtyvg = new GGBApplet(parameterscpngtyvg, true);appletcpngtyvg.inject('applet_containercpngtyvg');</script></p>
+<p><strong>Basearen aukeraketa:</strong></p>
+<p>Ebazpenean egin beharreko lehenengo gauza <em>basearen
+aukeraketa</em> izango da, gure erabakia izango baita aukeratzea zein
+basetan proiektatu nahiko ditugun bektoreak. Ariketa edozein basetan
+ebatzi daiteke, enuntziatuak ez bait du zehazten zein basetan nahi den
+emaitza. Hala ere, ariketa honetan eta beste edozeinetan ere, badaude
+base batzuk non ariketaren ebazpena askoz errazagoa den.</p>
+<p>Basea aukeratzeko, aldez aurretik pentsatu beharko dugu ebazpenaren
+parte diren bektoreak zein basetan idazten ahalko ditugun modurik
+errazenean. Orientazio diagramako bi abiadura angeluarrak <span
+class="math inline">\(123\)</span> basean oso erraz idatziko dira,
+abiadurak <span class="math inline">\(123\)</span> basearen bi
+bektorerekin lerrokatuta bait daude. Bestalde, <span
+class="math inline">\(\overline{\mathbf{OA}}\)</span> bektorea <span
+class="math inline">\(xyz\)</span> basean erraz idatzi daiteke, baina
+piska bat pentsatuta ikusi dezakegu bektore honen beharrik ez dugula
+izango. Azkenik, <span
+class="math inline">\(\overline{\mathbf{AP}}\)</span> bektorea idazteko
+baserik errazena <span class="math inline">\(1&#39;2&#39;3&#39;\)</span>
+izango da. Beraz, <span class="math inline">\(123\)</span> basea
+aukeratuta, <span class="math inline">\(\overline{\mathbf{AP}}\)</span>
+bektorea besterik ez dugu proiektatu beharko, eta <span
+class="math inline">\(1&#39;2&#39;3&#39;\)</span> basea aukeratuta,
+bakarrik <span class="math inline">\({\boldsymbol{\dot{\psi}}}\)</span>
+bektorea proiektatu beharko dugu. Antzeko zailtasuna izango dute beraz
+<span class="math inline">\(123\)</span> eta <span
+class="math inline">\(1&#39;2&#39;3&#39;\)</span> baseen
+aukeraketak.</p>
+<p>Hortaz, kasu honetan <span class="math inline">\(123\)</span> basea
+aukeratuko dugu.</p>
+<p>Orientazio diagramako abiadura angeluarrak <span
+class="math inline">\(123\)</span> basean proiektatzen baditugu, honako
+osagaiak izango dituzte:</p>
+<p><span
+class="math display">\[{\left\{\begin{matrix}\boldsymbol{\Omega}_{_{xyz}}{\small
+(123)}\end{matrix}\right\}}_{_{123}}\!\!\!={\left\{\begin{matrix}{\boldsymbol{\dot{\psi}}}\end{matrix}\right\}}_{_{123}}\!\!\!={\left\{\begin{matrix}0
+\\ 0 \\ {\dot{\psi}}\end{matrix}\right\}}_{_{123}};
+    \quad\quad
+    {\left\{\begin{matrix}\boldsymbol{\Omega}_{_{123}}{\small
+(1&#39;2&#39;3&#39;)}\end{matrix}\right\}}_{_{123}}\!\!\!={\left\{\begin{matrix}{\boldsymbol{\dot{\theta}}}\end{matrix}\right\}}_{_{123}}\!\!\!={\left\{\begin{matrix}{\dot{\theta}}\\
+0 \\ 0\end{matrix}\right\}}_{_{123}}\]</span></p>
+<p><strong>Abiaduraren kalkulua:</strong></p>
+<p>Hasi gaitezen beraz abiaduraren kalkuluarekin. Ariketa honetan <span
+class="math inline">\(\mathbf{P}\)</span> puntuaren abiadura <span
+class="math inline">\(Lur\)</span>-rekiko kalkulatu behar dugunez,
+lurrarekiko finko den puntu batetik <span
+class="math inline">\(\mathbf{P}\)</span> puntura dihoan bektorea
+deribatu beharko dugu <span class="math inline">\(Lur\)</span>-rekiko.
+Kasu honetan, <span class="math inline">\(Lur\)</span>-rekiko finko
+diren bi puntu ditugu aukeran: <span
+class="math inline">\(\mathbf{O}\)</span> eta <span
+class="math inline">\(\mathbf{A}\)</span>. Errazena oraingoan <span
+class="math inline">\(\mathbf{A}\)</span> puntua erabiltzea izango
+da.</p>
+<p>Beraz, <span class="math inline">\(\mathbf{P}\)</span>-ren abiadura
+<span class="math inline">\(Lur\)</span>-rekiko honela kalkulatuko dugu:
+<span class="math display">\[\mathbf{V}_{_{Lur}}{\small
+(\mathbf{P})}=\frac{d}{dt}\left.\overline{\mathbf{AP}}
+\right|_{_{Lur}}\]</span></p>
+<p>Eta <span class="math inline">\(123\)</span> basea erabilita, <span
+class="math inline">\(\overline{\mathbf{AP}}\)</span> bektorearen
+osagaiak kalkulatuko ditugu. Osagaiak erraz ikusteko, biratu ezazu goiko
+marrazkia <span class="math inline">\(2\)</span>, <span
+class="math inline">\(3\)</span>, <span
+class="math inline">\(2&#39;\)</span> eta <span
+class="math inline">\(3&#39;\)</span> bektoreak marrazkiaren planuan
+ikusteko. <span
+class="math display">\[{\left\{\begin{matrix}\overline{\mathbf{AP}}\end{matrix}\right\}}_{_{123}}={\left\{\begin{matrix}0
+\\ \rho\cos\theta \\
+\rho\sin\theta\end{matrix}\right\}}_{_{123}}\]</span></p>
+<p>Abiaduraren kalkulua egiteko, honako espresioa planteatuko dugu:
+<span class="math display">\[\left\{\mathbf{V}_{_{Lur}}{\small
+(\mathbf{P})}\right\}_{_{123}}={\left\{\begin{matrix}\frac{d}{dt}\left.\overline{\mathbf{AP}}
+\right|_{_{Lur}}\end{matrix}\right\}}_{_{123}}\]</span></p>
+<p>Deribazioa egiteko, konprobatu beharko dugu ea deribatzeko
+erreferentzia eta proiektatzeko basea elkarrekin ote doazen. Kasu
+honetan ikusi dezakegu <span class="math inline">\(Lur\)</span> eta
+<span class="math inline">\(123\)</span> ez dihoazela elkarrekin
+orientazio diagraman. Beraz, deribazioa <em>base higikorretan</em> egin
+beharko dugu.</p>
+<p><span class="math display">\[\begin{split}
+        \left\{\mathbf{V}_{_{Lur}}{\small (\mathbf{P})}\right\}_{_{123}}
+&amp;=
+        {\left\{\begin{matrix}\frac{d}{dt}\left.\overline{\mathbf{AP}}
+\right|_{_{123}}\end{matrix}\right\}}_{_{123}} +
+{\left\{\begin{matrix}\boldsymbol{\Omega}_{_{Lur}}{\small
+(123)}\end{matrix}\right\}}_{_{123}} \times
+{\left\{\begin{matrix}\overline{\mathbf{AP}}\end{matrix}\right\}}_{_{123}}
+\\
+        &amp;= {\left\{\begin{matrix}0 \\ -{\dot{\theta}}\rho\sin\theta
+\\ {\dot{\theta}}\rho\cos\theta\end{matrix}\right\}}_{_{123}} +
+{\left\{\begin{matrix}0\\ 0\\ {\dot{\psi}}\end{matrix}\right\}}_{_{123}}
+                    \times  {\left\{\begin{matrix}0 \\ \rho\cos\theta \\
+\rho\sin\theta\end{matrix}\right\}}_{_{123}} \\
+        &amp;= {\left\{\begin{matrix} -{\dot{\psi}}\rho\cos\theta  \\
+-{\dot{\theta}}\rho\sin\theta \\
+\phantom{-}{\dot{\theta}}\rho\cos\theta\end{matrix}\right\}}_{_{123}}
+    \end{split}\]</span></p>
+<p><strong>Azelerazioaren kalkulua:</strong></p>
+<p>Azelerazio bektorea kalkulatzeko, abiadura bektorea <span
+class="math inline">\(Lur\)</span>-rekiko deribatuko dugu. Beraz: <span
+class="math display">\[\mathbf{A}_{_{Lur}}{\small
+{(\mathbf{P})}}=\frac{d}{dt}\left.\mathbf{V}_{_{Lur}}{\small
+(\mathbf{P})} \right|_{_{Lur}}\]</span></p>
+<p>Kalkulu hau, abiadurena bezala, <span
+class="math inline">\(123\)</span> basean egingo dugu eta base
+higikorretan beraz:</p>
+<p><span class="math display">\[\begin{split}
+        \left\{\mathbf{A}_{_{Lur}}{\small
+{(\mathbf{P})}}\right\}_{_{123}}&amp;={\left\{\begin{matrix}\frac{d}{dt}\left.\mathbf{V}_{_{Lur}}{\small
+(\mathbf{P})} \right|_{_{123}}\end{matrix}\right\}}_{_{123}} +
+                    {\left\{\begin{matrix}\boldsymbol{\Omega}_{_{Lur}}{\small
+(123)}\end{matrix}\right\}}_{_{123}} \times
+\left\{\mathbf{V}_{_{Lur}}{\small (\mathbf{P})}\right\}_{_{123}} \\
+                    &amp;= {\left\{\begin{matrix}
+-{\ddot{\psi}}\rho\cos\theta +
+{\dot{\psi}}{\dot{\theta}}\rho\sin\theta  \\
+                          -{\ddot{\theta}}\rho\sin\theta
+-{\dot{\theta}}^2 \rho\cos\theta\\
+                          \phantom{-}{\ddot{\theta}}\rho\cos\theta
+-{\dot{\theta}}^2 \rho \sin\theta\end{matrix}\right\}}_{_{123}}
+                          \!\!\!+ {\left\{\begin{matrix}0\\ 0\\
+{\dot{\psi}}\end{matrix}\right\}}_{_{123}} \!\!\!\times
+            {\left\{\begin{matrix} -{\dot{\psi}}\rho\cos\theta  \\
+-{\dot{\theta}}\rho\sin\theta \\
+\phantom{-}{\dot{\theta}}\rho\cos\theta\end{matrix}\right\}}_{_{123}} \\
+            &amp; = {\left\{\begin{matrix} -{\ddot{\psi}}\rho\cos\theta
++ {\dot{\psi}}{\dot{\theta}}\rho\sin\theta
++{\dot{\psi}}{\dot{\theta}}\rho \sin\theta \\
+                          -{\ddot{\theta}}\rho\sin\theta
+-{\dot{\theta}}^2 \rho\cos\theta - {\dot{\psi}}^2 \rho \cos\theta\\
+                          \phantom{-}{\ddot{\theta}}\rho\cos\theta
+-{\dot{\theta}}^2 \rho \sin\theta\end{matrix}\right\}}_{_{123}}
+\end{split}\]</span></p>
+<p><strong>Ariketaren jarraipena:</strong></p>
+<p>Ariketa bezala, errepikatu ezazu <span
+class="math inline">\(\mathbf{P}\)</span>-ren abiadura eta
+azelerazioaren kalkulua, baina oraingoan <span
+class="math inline">\(\rho=\rho(t)\)</span> denborarekiko aldatzen den
+koordenatua izanda.</p>
+<h2 data-number="2.6" id="mugimendu-konposizioa"><span
+class="header-section-number">2.6</span> Mugimendu konposizioa</h2>
+<p>Abiadura eta azelerazioen kalkulua deribazioz egin ditzakegu. Hala
+ere, behatzaile laguntzaile bat erabilita, askotan, mugimenduak askoz
+errazago irudikatzen dira. Behatzaile laguntzailea tentuz aukeratu behar
+da. Zenbait kasutan behatzaile laguntzaileak <span
+class="math inline">\(\mathbf{P}\)</span>-ren abiaduraren kalkulua
+errazago egiten lagunduko digu.</p>
+<p>Banatu dezagun posizio bektore bat bi zatitan eta garatu ditzagun
+bere deribatuak:</p>
+<h3 data-number="2.6.1" id="posizio-konposizioa"><span
+class="header-section-number">2.6.1</span> Posizio konposizioa</h3>
+<p>Demagun bi erreferentzia dauzkagula, <span
+class="math inline">\({\textcolor{blue}{{\mathcal{R}}=\mathbf{O}+xyz}}\)</span>
+eta <span
+class="math inline">\({\textcolor{red}{{\mathcal{R}&#39;}=\mathbf{O&#39;}+123}}\)</span>.
+Horrela, <span
+class="math inline">\(\overline{\mathbf{{\textcolor{blue}{O}}{\textcolor{green}{P}}}}\)</span>
+bektorea bitan banatu dezakegu: <span class="math display">\[\Large{
+    \boxed{
+    \overline{\mathbf{{\textcolor{blue}{O}}{\textcolor{green}{P}}}}=\overline{\mathbf{{\textcolor{blue}{O}}{\textcolor{red}{O&#39;}}}}+\overline{\mathbf{{\textcolor{red}{O&#39;}}{\textcolor{green}{P}}}}
+    }}\]</span></p>
+<p><div id="applet_containernku6bms2"></div>    <script type="text/javascript">var parametersnku6bms2 = {"width": 600,"height": 400,"material_id": "nku6bms2","showFullscreenButton": true};var appletnku6bms2 = new GGBApplet(parametersnku6bms2, true);appletnku6bms2.inject('applet_containernku6bms2');</script></p>
+<h3 data-number="2.6.2" id="abiadura-konposizioa"><span
+class="header-section-number">2.6.2</span> Abiadura konposizioa</h3>
+<p>Aurreko marrazkia erabilita, ondorioztatu dezakegu abiaduren
+konposizio formula honakoa dela:</p>
+<p><strong>Teorema</strong>: <span
+class="math inline">\(\mathbf{P}\)</span> puntu baten abiadura <span
+class="math inline">\({\mathcal{R}}\)</span> erreferentzia batekiko,
+hurrengo moduan idatzi daiteke: <span class="math display">\[\Large{
+    \boxed{
+        \mathbf{V}_{_{{\textcolor{blue}{{\mathcal{R}}}}}}{\small
+({\textcolor{green}{\mathbf{P}}})}=\mathbf{V}_{_{{\textcolor{blue}{{\mathcal{R}}}}}}{\small
+({\textcolor{red}{\mathbf{O&#39;}}})} +
+\boldsymbol{\Omega}_{_{{\textcolor{blue}{{\mathcal{R}}}}}}{\small
+({\textcolor{red}{{\mathcal{R}}&#39;}})}\times
+\overline{\mathbf{{\textcolor{red}{O&#39;}}{\textcolor{green}{P}}}} +
+\mathbf{V}_{_{{\textcolor{red}{{\mathcal{R}&#39;}}}}}{\small
+({\textcolor{green}{\mathbf{P}}})}
+        }
+    }\]</span></p>
+<p><strong>Frogapena</strong> Posizio konposizioa erabiliko dugu eta
+bektorea deribatu, emaitza bezala <span
+class="math inline">\(\mathbf{P}\)</span>-ren abiadura lortzeko:</p>
+<p><span class="math display">\[\mathbf{V}_{_{{\mathcal{R}}}}{\small
+(\mathbf{P})} = \frac{d}{dt}\left.\overline{\mathbf{OP}}
+\right|_{_{{\mathcal{R}}}}=\frac{d}{dt}\left.\big(\overline{\mathbf{OO&#39;}}+\overline{\mathbf{O&#39;P}}\big)
+\right|_{_{{\mathcal{R}}}}=\frac{d}{dt}\left.\overline{\mathbf{OO&#39;}}
+\right|_{_{{\mathcal{R}}}}+\frac{d}{dt}\left.\overline{\mathbf{O&#39;P}}
+\right|_{_{{\mathcal{R}}}}\]</span> Orain, kalkulatu ditzagun bi
+deribatu horiek banan-banan.</p>
+<p>Lehenengo terminoan, <span class="math inline">\(\mathbf{O}\)</span>
+puntua <span class="math inline">\({\mathcal{R}}\)</span>-rekiko zurruna
+denez, <span class="math inline">\(\overline{\mathbf{OO&#39;}}\)</span>
+bektorea, <span class="math inline">\(\mathbf{O&#39;}\)</span> puntuaren
+<em>posizio bektorea</em> da <span
+class="math inline">\({\mathcal{R}}\)</span>-n. Beraz, zuzenean: <span
+class="math display">\[\frac{d}{dt}\left.\overline{\mathbf{OO&#39;}}
+\right|_{_{{\mathcal{R}}}}= \mathbf{V}_{_{{\mathcal{R}}}}{\small
+(\mathbf{O&#39;})}\]</span></p>
+<p>Aldiz, <span class="math inline">\(\mathbf{O&#39;}\)</span> ez da
+finkoa <span class="math inline">\({\mathcal{R}}\)</span>-n, beraz,
+<span class="math inline">\(\overline{\mathbf{O&#39;P}}\)</span> ez da
+posizio bektorea <span class="math inline">\({\mathcal{R}}\)</span>-n
+eta ezin dugu kalkulua zuzenean egin. Aldiz, baserik gabeko <em>base
+higikorretan deribatzeko formula</em> erabilita, aurreko <a
+href="#sec::base_gabe_deribazioa_base_higikorretan"
+data-reference-type="ref"
+data-reference="sec::base_gabe_deribazioa_base_higikorretan">[sec::base_gabe_deribazioa_base_higikorretan]</a>
+atalean kalkulatu dugunez,</p>
+<p><span class="math display">\[\label{eq::dt_Op_R}
+    \frac{d}{dt}\left.\overline{\mathbf{O&#39;P}}
+\right|_{_{{\mathcal{R}}}} =
+\frac{d}{dt}\left.\overline{\mathbf{O&#39;P}}
+\right|_{_{{\mathcal{R}&#39;}}} +
+\boldsymbol{\Omega}_{_{{\mathcal{R}}}}{\small
+({\mathcal{R}&#39;})}\times \overline{\mathbf{O&#39;P}}\]</span>
+Oraingoan, <span
+class="math inline">\(\overline{\mathbf{O&#39;P}}\)</span> bai da <span
+class="math inline">\(\mathbf{P}\)</span> puntuaren posizio bektorea
+<span class="math inline">\({\mathcal{R}&#39;}\)</span>-n, beraz
+kalkulatu beharreko deribatua <span
+class="math inline">\(\mathbf{P}\)</span>-ren abiadura <span
+class="math inline">\({\mathcal{R}&#39;}\)</span>-rekiko izango da:
+<span
+class="math display">\[\frac{d}{dt}\left.\overline{\mathbf{O&#39;P}}
+\right|_{_{{\mathcal{R}&#39;}}}=\mathbf{V}_{_{{\mathcal{R}&#39;}}}{\small
+(\mathbf{P})}\]</span> eta frogatu beharreko espresioa lortzen dugu.</p>
+<p><strong>Oharra (1)</strong>: abiadura konposizio formula bi zatitan
+banatzen da:</p>
+<p>Lehenengo zatiari <em><span style="color: blue">Arrasteko
+Abiadura</span></em> deitzen zaio, eta bigarrenari <em><span
+style="color: red">Abiadura Erlatiboa</span></em>. Lehenengoak
+adierazten du nola mugituko litzatekeen <span
+class="math inline">\(\mathbf{P}\)</span> puntua <span
+class="math inline">\({\mathcal{R}&#39;}\)</span>-ri pegatuta egongo
+balitz, eta bigarrengoak adierazten du nola mugitzen den <span
+class="math inline">\(\mathbf{P}\)</span> puntua <span
+class="math inline">\({\mathcal{R}&#39;}\)</span>-rekiko. Bi zati hauen
+baturak <span class="math inline">\(\mathbf{P}\)</span>-ren abiadura
+<span class="math inline">\({\mathcal{R}}\)</span>-rekiko adierazten
+du.</p>
+<p><span class="math display">\[\large{
+    \mathbf{V}_{_{{\mathcal{R}}}}{\small
+(\mathbf{P})}={\textcolor{blue}{\mathbf{V}_{_{{\mathcal{R}}}}{\small
+(\mathbf{O&#39;})}+ \boldsymbol{\Omega}_{_{{\mathcal{R}}}}{\small
+({\mathcal{R}}&#39;)}\times \overline{\mathbf{O&#39;P}} }} +
+{\textcolor{red}{\mathbf{V}_{_{{\mathcal{R}&#39;}}}{\small (\mathbf{P})}
+}}
+    }\]</span></p>
+<p><strong>Oharra (2)</strong>: abiadura konposizioaren hiru terminoak
+hurrengo diagraman irudikatzen dira. Puntu bakoitzaren mugimenduaz
+termino bakoitzaren kontribuzioa adierazten da.</p>
+<p><div id="applet_containerw78ntepk"></div>    <script type="text/javascript">var parametersw78ntepk = {"width": 600,"height": 450,"material_id": "w78ntepk","showFullscreenButton": true};var appletw78ntepk = new GGBApplet(parametersw78ntepk, true);appletw78ntepk.inject('applet_containerw78ntepk');</script></p>
+<h3 data-number="2.6.3" id="abiadura-terminoen-errepresentazioa"><span
+class="header-section-number">2.6.3</span> Abiadura terminoen
+errepresentazioa</h3>
+<p>Hurrengo adibidean, botoiak sakatuz ikusi daitezke abiadura
+konposizioaren hiru terminoengatik lortzen diren abiadura terminoak.
+Termino bakoitzaren bektorea ori da, eta hiru bektoreen batura urdinez
+irudikatzen da.</p>
+<p><div id="applet_containerecztzabz"></div>    <script type="text/javascript">var parametersecztzabz = {"width": 600,"height": 500,"material_id": "ecztzabz","showFullscreenButton": true};var appletecztzabz = new GGBApplet(parametersecztzabz, true);appletecztzabz.inject('applet_containerecztzabz');</script></p>
+<h3 data-number="2.6.4" id="azelerazio-konposizioa"><span
+class="header-section-number">2.6.4</span> Azelerazio konposizioa</h3>
+<p>Abiadura konposizioaren formula denborarekiko eta <span
+class="math inline">\({\mathcal{R}}\)</span>-rekiko deribatzen badugu
+<em>azelerazio konposizioaren</em> formula lortzen dugu.</p>
+<p><strong>Teorema</strong>: <span
+class="math inline">\(\mathbf{P}\)</span> puntu baten azelerazioa <span
+class="math inline">\({\mathcal{R}}\)</span> erreferentzia batekiko,
+hurrengo moduan idatzi daiteke: <span class="math display">\[\large
+\boxed{
+\begin{split}
+%     \large{
+%     \boxed{
+        \mathbf{A}_{_{{\textcolor{blue}{{\mathcal{R}}}}}}{\small
+{({\textcolor{green}{\mathbf{P}}})}}&amp;=\mathbf{A}_{_{{\textcolor{blue}{{\mathcal{R}}}}}}{\small
+{({\textcolor{red}{\mathbf{O&#39;}}})}} +
+\boldsymbol{\Omega}_{_{{\textcolor{blue}{{\mathcal{R}}}}}}{\small
+({\textcolor{red}{{\mathcal{R}}&#39;}})}\times \big(
+\boldsymbol{\Omega}_{_{{\textcolor{blue}{{\mathcal{R}}}}}}{\small
+({\textcolor{red}{{\mathcal{R}}&#39;}})}\times
+\overline{\mathbf{{\textcolor{red}{O&#39;}}{\textcolor{green}{P}}}}\big)
++ \boldsymbol{\alpha}_{_{{\textcolor{blue}{{\mathcal{R}}}}}}{\small
+({\textcolor{red}{{\mathcal{R}}&#39;}})} \times
+\overline{\mathbf{{\textcolor{red}{O&#39;}}{\textcolor{green}{P}}}}\\
+        &amp;+
+2\,\,\boldsymbol{\Omega}_{_{{\textcolor{blue}{{\mathcal{R}}}}}}{\small
+({\textcolor{red}{{\mathcal{R}}&#39;}})}\times
+\mathbf{V}_{_{{\textcolor{red}{{\mathcal{R}&#39;}}}}}{\small
+({\textcolor{green}{\mathbf{P}}})}+
+\mathbf{A}_{_{{\textcolor{red}{{\mathcal{R}&#39;}}}}}{\small
+{({\textcolor{green}{\mathbf{P}}})}}
+%         }
+%     }
+\end{split}
+}\]</span></p>
+<p><strong>Frogapena</strong> Abiadura konposizioa erabiliko dugu eta
+bektorea deribatu, emaitza bezala <span
+class="math inline">\(\mathbf{P}\)</span>-ren azelerazioa lortzeko:
+<span
+class="math display">\[\frac{d}{dt}\left.\mathbf{V}_{_{{\mathcal{R}}}}{\small
+(\mathbf{P})}
+\right|_{_{{\mathcal{R}}}}=\frac{d}{dt}\left.\big({\textcolor{red}{\mathbf{V}_{_{{\mathcal{R}}}}{\small
+(\mathbf{O&#39;})}}}+
+{\textcolor{green}{\boldsymbol{\Omega}_{_{{\mathcal{R}}}}{\small
+({\mathcal{R}}&#39;)}\times \overline{\mathbf{O&#39;P}}}}  +
+{\textcolor{blue}{\mathbf{V}_{_{{\mathcal{R}&#39;}}}{\small
+(\mathbf{P})}}}\big) \right|_{_{{\mathcal{R}}}}\]</span></p>
+<p>Egin beharreko hiru deribatuak banan-banan egingo ditugu.</p>
+<p><span><span style="color: red"><strong>Lehenengo
+terminoan</strong></span></span>, <span
+class="math inline">\({\mathcal{R}}\)</span>-rekiko kalkulatuta dagoen
+puntu baten abiadura berriz ere <span
+class="math inline">\({\mathcal{R}}\)</span>-rekiko deribatu bahar
+dugunez, honek zuzenean puntuaren azelerazioa errepresentatuko du:</p>
+<p><span
+class="math display">\[\frac{d}{dt}\left.\mathbf{V}_{_{{\mathcal{R}}}}{\small
+(\mathbf{O&#39;})} \right|_{_{{\mathcal{R}}}}=
+{\textcolor{red}{\mathbf{A}_{_{{\mathcal{R}}}}{\small
+{(\mathbf{O&#39;})}}}}\]</span></p>
+<p><span><span style="color: green"><strong>Bigarren
+terminoan</strong></span></span>, biderkadura bat dugunez,
+biderkaduraren deribatuaren formula erabili beharko dugu: <span
+class="math inline">\(\frac{d}{dt}(f\times g) = \frac{df}{dt}\times g +
+f\times \frac{dg}{dt}\)</span>. Gure ekuazioari aplikatuta, honela
+geratuko da:</p>
+<p><span
+class="math display">\[\frac{d}{dt}\left.\big(\boldsymbol{\Omega}_{_{{\mathcal{R}}}}{\small
+({\mathcal{R}}&#39;)}\times \overline{\mathbf{O&#39;P}}\big)
+\right|_{_{{\mathcal{R}}}}=
+        \frac{d}{dt}\left.\boldsymbol{\Omega}_{_{{\mathcal{R}}}}{\small
+({\mathcal{R}}&#39;)} \right|_{_{{\mathcal{R}}}}\times
+\overline{\mathbf{O&#39;P}}  +
+\boldsymbol{\Omega}_{_{{\mathcal{R}}}}{\small
+({\mathcal{R}}&#39;)}\times
+\frac{d}{dt}\left.\overline{\mathbf{O&#39;P}}
+\right|_{_{{\mathcal{R}}}}\]</span></p>
+<p>Eskuinaldean 4 termino agertzen dira. Lehenengoari <em>azelerazio
+angeluarra</em> deituko diogu, eta honela idatziko dugu: <span
+class="math display">\[\boldsymbol{\alpha}_{_{{\mathcal{R}}}}{\small
+({{\mathcal{R}}&#39;})} =
+\frac{d}{dt}\left.\boldsymbol{\Omega}_{_{{\mathcal{R}}}}{\small
+({\mathcal{R}}&#39;)} \right|_{_{{\mathcal{R}}}}\]</span> Azkeneko
+terminoaren abiaduren konposizioaren frogapenean garatu dugu, <a
+href="#eq::dt_Op_R" data-reference-type="ref"
+data-reference="eq::dt_Op_R">[eq::dt_Op_R]</a> ekuazioan. <span
+class="math display">\[\frac{d}{dt}\left.\overline{\mathbf{O&#39;P}}
+\right|_{_{{\mathcal{R}}}} = \mathbf{V}_{_{{\mathcal{R}&#39;}}}{\small
+(\mathbf{P})} + \boldsymbol{\Omega}_{_{{\mathcal{R}}}}{\small
+({\mathcal{R}&#39;})}\times \overline{\mathbf{O&#39;P}}\]</span></p>
+<p>Beraz, bigarren terminoaren garapenak honakoa ematen du: <span
+class="math display">\[\begin{split}
+    &amp;\frac{d}{dt}\left.\big(\boldsymbol{\Omega}_{_{{\mathcal{R}}}}{\small
+({\mathcal{R}}&#39;)}\times \overline{\mathbf{O&#39;P}}\big)
+\right|_{_{{\mathcal{R}}}} =
+        \boldsymbol{\alpha}_{_{{\mathcal{R}}}}{\small
+({{\mathcal{R}}&#39;})}\times \overline{\mathbf{O&#39;P}}  +
+\boldsymbol{\Omega}_{_{{\mathcal{R}}}}{\small
+({\mathcal{R}}&#39;)}\times \big(
+\mathbf{V}_{_{{\mathcal{R}&#39;}}}{\small (\mathbf{P})} +
+\boldsymbol{\Omega}_{_{{\mathcal{R}}}}{\small
+({\mathcal{R}&#39;})}\times \overline{\mathbf{O&#39;P}} \big) \\
+    &amp; =
+{\textcolor{green}{\boldsymbol{\Omega}_{_{{\mathcal{R}}}}{\small
+({\mathcal{R}}&#39;)}\times
+\big(\boldsymbol{\Omega}_{_{{\mathcal{R}}}}{\small
+({\mathcal{R}&#39;})}\times \overline{\mathbf{O&#39;P}}\big)
+    + \boldsymbol{\alpha}_{_{{\mathcal{R}}}}{\small
+({{\mathcal{R}}&#39;})}\times \overline{\mathbf{O&#39;P}}
+    + \boldsymbol{\Omega}_{_{{\mathcal{R}}}}{\small
+({\mathcal{R}}&#39;)}\times \mathbf{V}_{_{{\mathcal{R}&#39;}}}{\small
+(\mathbf{P})}}}
+\end{split}\]</span></p>
+<p><span><span style="color: blue"><strong>Hirugarren
+terminoan</strong></span></span>, <span
+class="math inline">\({\mathcal{R}&#39;}\)</span>-rekiko abiadura bat
+deribatu behar dugu <span
+class="math inline">\({\mathcal{R}}\)</span>-rekiko. Baina hori ezin
+dugu zuzenean egin, erreferentzi horiek ezberdinak direlako.
+Horretarako, base higikorretan deribatzeko formula erabiliko dugu
+(baserik gabe), lehen (<a
+href="#eq::base_gabe_deribazioa_base_higikorretan"
+data-reference-type="ref"
+data-reference="eq::base_gabe_deribazioa_base_higikorretan">[eq::base_gabe_deribazioa_base_higikorretan]</a>)
+ekuazioan ikusi dugun bezala. Formula hori erabilita, honako emaitza
+lortuko dugu: <span
+class="math display">\[\frac{d}{dt}\left.\mathbf{V}_{_{{\mathcal{R}&#39;}}}{\small
+(\mathbf{P})} \right|_{_{{\mathcal{R}}}}=
+\frac{d}{dt}\left.\mathbf{V}_{_{{\mathcal{R}&#39;}}}{\small
+(\mathbf{P})} \right|_{_{{\mathcal{R}&#39;}}}
++  \boldsymbol{\Omega}_{_{{\mathcal{R}}}}{\small
+({\mathcal{R}}&#39;)}\times \mathbf{V}_{_{{\mathcal{R}&#39;}}}{\small
+(\mathbf{P})}\]</span> Eskuin aldeko terminoaren deribazioan bi
+erreferentziak berdinak direnez, termino hori zuzenean azelerazio bat
+izango da: <span
+class="math display">\[\frac{d}{dt}\left.\mathbf{V}_{_{{\mathcal{R}&#39;}}}{\small
+(\mathbf{P})} \right|_{_{{\mathcal{R}&#39;}}} =
+\mathbf{A}_{_{{\mathcal{R}&#39;}}}{\small {(\mathbf{P})}}\]</span>
+Beraz, hirugarren terminoa honakoa izango da: <span
+class="math display">\[\frac{d}{dt}\left.\mathbf{V}_{_{{\mathcal{R}&#39;}}}{\small
+(\mathbf{P})} \right|_{_{{\mathcal{R}}}}=
+{\textcolor{blue}{\mathbf{A}_{_{{\mathcal{R}&#39;}}}{\small
+{(\mathbf{P})}} +  \boldsymbol{\Omega}_{_{{\mathcal{R}}}}{\small
+({\mathcal{R}}&#39;)}\times \mathbf{V}_{_{{\mathcal{R}&#39;}}}{\small
+(\mathbf{P})}}}\]</span></p>
+<p>Koloreztatutako hiru terminoak batuta, frogapenaren emaitza lortzen
+da.</p>
+<p><strong>Oharra (1)</strong>: azelerazio konposizio formula hiru
+zatitan banatzen da:</p>
+<p><span class="math display">\[\large
+\begin{split}
+        \mathbf{A}_{_{{{\mathcal{R}}}}}{\small
+{({\mathbf{P}})}}&amp;={\textcolor{blue}{\mathbf{A}_{_{{\mathcal{R}}}}{\small
+{({\mathbf{O&#39;}})}} + \boldsymbol{\Omega}_{_{{\mathcal{R}}}}{\small
+({{\mathcal{R}}&#39;})}\times \big(
+\boldsymbol{\Omega}_{_{{\mathcal{R}}}}{\small
+({{\mathcal{R}}&#39;})}\times \overline{\mathbf{{O&#39;}{P}}}\big) +
+\boldsymbol{\alpha}_{_{{\mathcal{R}}}}{\small ({{\mathcal{R}}&#39;})}
+\times \overline{\mathbf{{O&#39;}{P}}} }}\\
+        &amp;+
+{\textcolor{green}{2\,\,\boldsymbol{\Omega}_{_{{\mathcal{R}}}}{\small
+({{\mathcal{R}}&#39;})}\times
+\mathbf{V}_{_{{{\mathcal{R}&#39;}}}}{\small ({\mathbf{P}})} }}+
+{\textcolor{red}{\mathbf{A}_{_{{\mathcal{R}&#39;}}}{\small
+{({\mathbf{P}})}} }}
+\end{split}\]</span></p>
+<p>Lehenengo zatiari <em><span style="color: blue">Arrasteko
+Azelerazioa</span></em> deitzen zaio. Honek adierazten duena da zein
+azelerazio izango lukeen <span class="math inline">\(\mathbf{P}\)</span>
+puntuak <span class="math inline">\({\mathcal{R}&#39;}\)</span>-ri
+pegatuta egongo balitz. Azelerazio honek bi termino ezagun ditu
+<em>Azelerazio Normala</em> <span class="math inline">\(\big(
+\boldsymbol{\Omega}_{_{{\mathcal{R}}}}{\small
+({\mathcal{R}}&#39;)}\times \big(
+\boldsymbol{\Omega}_{_{{\mathcal{R}}}}{\small
+({{\mathcal{R}}&#39;})}\times \overline{\mathbf{{O&#39;}{P}}}\big)
+\big)\)</span> eta <em>Azelerazio Tangentziala</em> <span
+class="math inline">\(\big(
+\boldsymbol{\alpha}_{_{{\mathcal{R}}}}{\small ({\mathcal{R}}&#39;)}
+\times \overline{\mathbf{O&#39;P}}  \big)\)</span>.</p>
+<p>Bigarren terminoari <span><span style="color: green"><em>Coriolis-en
+Azelerazioa</em></span></span> deitzen zaio. Termino honek ez dauka
+interpretazio errazarik baina bakarrik gertatzen da <span
+class="math inline">\(\mathbf{P}\)</span> puntua <span
+class="math inline">\({\mathcal{R}&#39;}\)</span>-rekiko mugitzen denean
+(<span
+class="math inline">\(\boldsymbol{\Omega}_{_{{\mathcal{R}}}}{\small
+({\mathcal{R}}&#39;)}\)</span> abiadura angeluarrarekiko paraleloki izan
+gabe).</p>
+<p>Azkenik hirugarren terminoari <em><span style="color: red">Azelerazio
+Erlatiboa</span></em> deritzo. Termino honek adierazten du zer
+azelerazio duen <span class="math inline">\(\mathbf{P}\)</span> puntuak
+<span class="math inline">\({\mathcal{R}&#39;}\)</span>-rekiko. Hiru
+zati hauen baturak <span class="math inline">\(\mathbf{P}\)</span>-ren
+azelerazioa <span class="math inline">\({\mathcal{R}}\)</span>-rekiko
+adierazten du.</p>
+<h3 data-number="2.6.5" id="azelerazio-terminoen-errepresentazioa"><span
+class="header-section-number">2.6.5</span> Azelerazio terminoen
+errepresentazioa</h3>
+<p>Demagun badugula plataforma ori bat bueltak ematen <span
+class="math inline">\({\boldsymbol{\dot{\theta}}}\)</span> abiadura
+angeluarrarekin, eta berarekiko finko den zirrikutu batean zehar, bola
+urdin bat (<span class="math inline">\(\mathbf{P}\)</span> puntua)
+mugitzen dela. Plataformaren erdiko puntua <span
+class="math inline">\(\mathbf{O}&#39;\)</span> deituko dugu eta
+plataformarekin biratzen duen basea <span
+class="math inline">\(123\)</span>. Hortaz, <span
+class="math inline">\({\mathcal{R}}\)</span> erreferentzia lurra izango
+da eta <span class="math inline">\({\mathcal{R}&#39;}\)</span>
+erreferentzia plataforma oria.</p>
+<p>Adibide honekin, azelerazio konposizioaren osagai bakoitza
+irudikatuko dugu, argiago ikusi dadin bakoitzaren esan nahia:</p>
+<p><span class="math inline">\(\mathbf{A}_{_{{\mathcal{R}}}}{\small
+{({\mathbf{O&#39;}})}}\)</span>: <strong><span
+class="math inline">\({\mathcal{R}&#39;}\)</span>-ren jatorriaren
+azelerazioa</strong>:</p>
+<p>Termino hau guztietatik errazena da. Pentsatu bakarrik plataforma
+osoa trasladatu egiten dela bakarrik (biratu gab) eta partikula ez dela
+plataformarekiko mugitzen. Plataformako puntu guztiek bere jatorriaren
+mugimendu berdina izango dute (abiadura eta azelerazio) berdina.</p>
+<p><span
+class="math inline">\(\boldsymbol{\Omega}_{_{{\mathcal{R}}}}{\small
+({{\mathcal{R}}&#39;})}\times \big(
+\boldsymbol{\Omega}_{_{{\mathcal{R}}}}{\small
+({{\mathcal{R}}&#39;})}\times
+\overline{\mathbf{{O&#39;}{P}}}\big)\)</span>: <strong>Azelerazio
+zentripetua</strong>:</p>
+<p>Adibide honetan plataforma biratzen dago, eta partikula ez da
+mugitzen berarekiko. Partikularen azelerazio zentripetuaren bektorearen
+norantza, beti, partikularen ibilbide zirkularraren zentrurantz
+zuzentzen da. Azelerazio hau, <span
+class="math inline">\(\lVert\overline{\mathbf{{O&#39;}{P}}}\rVert\)</span>-rekiko
+proportzionala da (distantzia hau bikoitza bada, azelerazioa
+zentripetuaren moduloa ere bikoitza izango da). Gainera, plataformaren
+abiadura angeluarraren karratuarekiko proportzionala da; hau da,
+abiadura angeluarra bikoitza bada, azelerazio zentripetua laukoitza
+izango da.</p>
+<p>Matematikoko, adibide honentan azelerazio zentripetuaren balorea
+honakoa izango da: <span class="math display">\[\begin{split}
+    &amp;\left\{\boldsymbol{\Omega}_{_{{\mathcal{R}}}}{\small
+({{\mathcal{R}}&#39;})}\right\}_{_{123}}\times \big(
+\left\{\boldsymbol{\Omega}_{_{{\mathcal{R}}}}{\small
+({{\mathcal{R}}&#39;})}\right\}_{_{123}}\times
+{\left\{\begin{matrix}\overline{\mathbf{{O&#39;}{P}}}\end{matrix}\right\}}_{_{123}}\big)
+= \\
+    &amp; {\left\{\begin{matrix}0 \\ 0 \\
+{\dot{\theta}}\end{matrix}\right\}}_{_{123}} \times \left(
+{\left\{\begin{matrix}0 \\ 0 \\
+{\dot{\theta}}\end{matrix}\right\}}_{_{123}} \times
+{\left\{\begin{matrix}\rho \\ 0 \\
+0\end{matrix}\right\}}_{_{123}}\right) =
+    {\left\{\begin{matrix}-\rho{\dot{\theta}}^2 \\ 0 \\
+0\end{matrix}\right\}}_{_{123}}
+\end{split}\]</span></p>
+<p>Grafikoki, honela adierazi daiteke:</p>
+<p><div id="applet_containerm5fxccs3"></div>    <script type="text/javascript">var parametersm5fxccs3 = {"width": 600,"height": 450,"material_id": "m5fxccs3","showFullscreenButton": true};var appletm5fxccs3 = new GGBApplet(parametersm5fxccs3, true);appletm5fxccs3.inject('applet_containerm5fxccs3');</script></p>
+<p><span
+class="math inline">\(\boldsymbol{\alpha}_{_{{\mathcal{R}}}}{\small
+({{\mathcal{R}}&#39;})} \times \overline{\mathbf{{O&#39;}{P}}}\)</span>:
+<strong>Azelerazio tangentziala</strong>:</p>
+<p>Azelerazio konposizioaren termino hau irudikatzeko, adibide honetan
+plataformaren abiadura angeluarra denborarekin aldatuko da. Batzuetan
+bere abiadura norantza batean haundituko du, gero geldotuko da gelditu
+arte, eta gero beste aldera biratuko du, gero eta azkarrago. Adibide
+honentan beraz, abiadura angeluarraren modulo aldaketarekiko
+proportzionala den azelerazioa irudikatuko dugu: <em>i.e.</em>:
+azelerazio tangentziala.</p>
+<p>Matematikoki honela adierazi daiteke. Demagun <span
+class="math inline">\(\theta(t) = \sin(t)\)</span> dela. Beraz, <span
+class="math inline">\({\dot{\theta}}(t) = \cos(t)\)</span> eta <span
+class="math inline">\({\ddot{\theta}}(t)=-\sin(t)\)</span>. Horrela,
+azelerazio tangentzialaren bektorea honela adieraziko dugu: <span
+class="math display">\[\left\{\boldsymbol{\alpha}_{_{{\mathcal{R}}}}{\small
+({{\mathcal{R}}&#39;})}\right\}_{_{123}} \!\!\times\!
+{\left\{\begin{matrix}\overline{\mathbf{{O&#39;}{P}}}\end{matrix}\right\}}_{_{123}}\!\!\!=\!
+    {\left\{\begin{matrix}0 \\ 0 \\
+{\ddot{\theta}}\end{matrix}\right\}}_{_{123}} \!\!\!\!\!\times\!
+{\left\{\begin{matrix}\rho \\ 0 \\ 0\end{matrix}\right\}}_{_{123}}
+\!\!\!\!\!=\! {\left\{\begin{matrix}0 \\ \rho{\ddot{\theta}}\\
+0\end{matrix}\right\}}_{_{123}}
+    \!\!\!\!\!=\! {\left\{\begin{matrix}0 \\ -\rho\sin(t) \\
+0\end{matrix}\right\}}_{_{123}}\!\!\!\!\!=\! {\left\{\begin{matrix}0 \\
+-\rho\theta(t) \\ 0\end{matrix}\right\}}_{_{123}}\]</span></p>
+<p><div id="applet_containerdnm6wryw"></div>    <script type="text/javascript">var parametersdnm6wryw = {"width": 600,"height": 450,"material_id": "dnm6wryw","showFullscreenButton": true};var appletdnm6wryw = new GGBApplet(parametersdnm6wryw, true);appletdnm6wryw.inject('applet_containerdnm6wryw');</script></p>
+<p><span
+class="math inline">\(2\,\,\boldsymbol{\Omega}_{_{{\mathcal{R}}}}{\small
+({{\mathcal{R}}&#39;})}\times
+\mathbf{V}_{_{{{\mathcal{R}&#39;}}}}{\small ({\mathbf{P}})}\)</span>:
+<strong>Coriolis-en azelerazioa</strong>:</p>
+<p>Kasu hau zailena da bektorialki interpretatzeko momentuan. Azelerazio
+osagai hau gertatzen da, <span
+class="math inline">\(\left\{\boldsymbol{\Omega}_{_{{\mathcal{R}}}}{\small
+({{\mathcal{R}}&#39;})}\right\}_{_{123}}\neq \mathbf{0}\)</span> eta
+<span class="math inline">\(\mathbf{V}_{_{{{\mathcal{R}&#39;}}}}{\small
+({\mathbf{P}})}\neq \mathbf{0}\)</span> betetzen direnean (eta baita bi
+bektore horiek paraleloak ez direnean). Adibide honetan, plataformaren
+abiadura angeluarra ezberdin zero eta konstantea da, eta partikularen
+abiadura <span class="math inline">\({\mathcal{R}&#39;}\)</span>-rekiko
+ere zeroren ezberdina da (zirrikituan mugitzen delako).</p>
+<p>Matematikoki, <span class="math inline">\({\dot{\theta}}=kte \neq
+0\)</span> eta <span class="math inline">\(\rho(t)=\sin(t)\)</span>
+(<span class="math inline">\(\dot{\rho}(t)=\cos(t)\)</span>) betetzen
+da. Beraz, Coriolis-en azelerazio osagaiaren bektorea honakoa da:</p>
+<p><span
+class="math display">\[2\,\,\boldsymbol{\Omega}_{_{{\mathcal{R}}}}{\small
+({{\mathcal{R}}&#39;})}\times
+\mathbf{V}_{_{{{\mathcal{R}&#39;}}}}{\small
+({\mathbf{P}})}=2\,\,{\left\{\begin{matrix}0 \\ 0 \\
+{\dot{\theta}}\end{matrix}\right\}}_{_{123}} \!\!\!\!\!\times\!
+    {\left\{\begin{matrix}\dot{\rho}(t) \\ 0 \\
+0\end{matrix}\right\}}_{_{123}} = 2\,\,{\left\{\begin{matrix}0 \\
+{\dot{\theta}}\dot{\rho}(t) \\
+0\end{matrix}\right\}}_{_{123}}\]</span></p>
+<p>Grafikoki ikusten denez, <span
+class="math inline">\(\dot{\rho}>0\)</span> denean, Coriolis-en
+azelerazioa <span class="math inline">\(2\)</span> ardatzaren norantza
+positiboan dihoa. Eta <span class="math inline">\(\dot{\rho}=0\)</span>
+denean, Coriolis-en azelerazioa zero da.</p>
+<p><div id="applet_containereevv6zjv"></div>    <script type="text/javascript">var parameterseevv6zjv = {"width": 600,"height": 500,"material_id": "eevv6zjv","showFullscreenButton": true};var appleteevv6zjv = new GGBApplet(parameterseevv6zjv, true);appleteevv6zjv.inject('applet_containereevv6zjv');</script></p>
+<p><span class="math inline">\(\mathbf{A}_{_{{\mathcal{R}&#39;}}}{\small
+{({\mathbf{P}})}}\)</span>: <strong>Azelerazio erlatiboa</strong>:</p>
+<p>Termino hau grafikoki irudikatzea ere nahiko erraza da. Pentsatu
+behar den gauza bakarra da plataforman montatzen garela <span
+class="math inline">\(\mathbf{P}\)</span> partikularen mugimendua
+ikusteko. Adibide honetan, partikularen mugimendua zirrikituan zehar
+gertatzen denez, bakarrik <span class="math inline">\(1\)</span>
+ardatzean zehar egongo da azelerazio erlatiboa. Matematikoki, <span
+class="math inline">\(\rho(t)=\sin(t)\)</span>, <span
+class="math inline">\(\dot{\rho}(t)=\cos(t)\)</span>, eta <span
+class="math inline">\(\ddot{\rho}(t)=-\sin(t)\)</span> inposatzen
+ditugu. Naiz eta plataforma mugitzen ikusten dugun, horrek ez du
+garrantzirik kalkulatzen dugun termino honetan. Beraz, azelerazio
+erlatiboaren bektorea honakoa da: <span
+class="math display">\[\left\{\mathbf{A}_{_{{\mathcal{R}&#39;}}}{\small
+{(\mathbf{P})}}\right\}_{_{123}} \!\!\!\!\!=\!  {\left\{\begin{matrix}
+\frac{d}{dt}\left.  \left(\frac{d}{dt}\left.\overline{\mathbf{O&#39;P}}
+\right|_{_{{\mathcal{R}&#39;}}}
+\right)  \right|_{_{{\mathcal{R}&#39;}}}\end{matrix}\right\}}_{_{123}}
+\!\!\!\!\!=\!  {\left\{\begin{matrix}\ddot{\rho}(t)\\ 0 \\
+0\end{matrix}\right\}}_{_{123}}\!\!\!\!\!=\!  {\left\{\begin{matrix}-\sin(t)\\
+0 \\ 0\end{matrix}\right\}}_{_{123}}\!\!\!\!\!=\!
+{\left\{\begin{matrix}-\rho(t)\\ 0 \\
+0\end{matrix}\right\}}_{_{123}}\]</span></p>
+<p>Grafikoki ikusi daiteke, adibide honentan, azelerazio erlatiboa beti
+zirrikituaren norabidean dihoala.</p>
+<p><div id="applet_containerefam4v5n"></div>    <script type="text/javascript">var parametersefam4v5n = {"width": 600,"height": 400,"material_id": "efam4v5n","showFullscreenButton": true};var appletefam4v5n = new GGBApplet(parametersefam4v5n, true);appletefam4v5n.inject('applet_containerefam4v5n');</script></p>
+<h2 data-number="2.7" id="adibidea"><span
+class="header-section-number">2.7</span> Adibidea:</h2>
+<h3 data-number="2.7.1" id="enuntziatua-1"><span
+class="header-section-number">2.7.1</span> Enuntziatua</h3>
+<p>Aurretik ariketa hau deribazioz ebatzi dugu <a
+href="#sec::adibidea_deribazioz" data-reference-type="ref"
+data-reference="sec::adibidea_deribazioz">1.5</a> sekzioan.</p>
+<p>Hurrengo irudian agertzen den <span
+class="math inline">\(\mathbf{P}\)</span> puntuaren abiadura eta
+azelerazioa kalkulatu ezazu (konposizioz), jakinda <span
+class="math inline">\(\lVert\overline{\mathbf{OA}}\rVert=h\)</span> dela
+eta <span
+class="math inline">\(\lVert\overline{\mathbf{AP}}\rVert=\rho\)</span>
+dela ere. Beraz, <span class="math inline">\(\varphi\)</span> eta <span
+class="math inline">\(\theta\)</span> koordenatuak izango dira eta <span
+class="math inline">\(h\)</span> eta <span
+class="math inline">\(\rho\)</span> parametroak (konstanteak). Adibide
+honetan, <span class="math inline">\(\boldsymbol{\Omega}_{_{xyz}}{\small
+(123)}={\boldsymbol{\dot{\psi}}}\)</span> bektorea <span
+class="math inline">\(3\)</span> ardatzaren norantza positiboan dihoa.
+Halaber, <span class="math inline">\(\boldsymbol{\Omega}_{_{123}}{\small
+(1&#39;2&#39;3&#39;)}={\boldsymbol{\dot{\theta}}}\)</span> bektorea
+<span class="math inline">\(1\)</span> ardatzaren norantza positiboan
+dihoa.</p>
+<p>Lurraren erreferentzia definitzeko <span
+class="math inline">\(\mathbf{O}\)</span> puntua eta <span
+class="math inline">\(xyz\)</span> basea erabiliko ditugu. Hau da: <span
+class="math inline">\({Lur}=\mathbf{O}+xyz\)</span>. Bestalde,
+plataformaren eta barraren erreferentziak, honakoak izango dira: <span
+class="math inline">\({Pla}=\mathbf{A}+123\)</span> eta <span
+class="math inline">\({Bar}=\mathbf{A}+1&#39;2&#39;3&#39;\)</span>.</p>
+<p><div id="applet_containerurvmuzug"></div>    <script type="text/javascript">var parametersurvmuzug = {"width": 600,"height": 550,"material_id": "urvmuzug","showFullscreenButton": true};var appleturvmuzug = new GGBApplet(parametersurvmuzug, true);appleturvmuzug.inject('applet_containerurvmuzug');</script></p>
+<h3 data-number="2.7.2" id="planteamendua"><span
+class="header-section-number">2.7.2</span> Planteamendua</h3>
+<p>Lehenago deribazioz ebatzi dugu ariketa hau bera, eta emaitza bat
+lortu dugu puntuaren abiadura eta azelerazioarentzat. Kasu honetan
+konposizioz egiten badugu, emaitza berdinera iritsi beharko gara.
+Kalkulua konposizioz egin behar dugunez, hartu beharreko erabakirik
+garrantzitsuena <em>Erreferentzia Erlatibo</em> bat aukeratzea izango
+da. Aukeratuko dugun erreferentziak kalkulua errazago egin beharko
+liguke. Hau da, <em>mugimendu konposizioz</em> kalkuluak egitea, tresna
+bat da, eta kalkuluak errazteko helburuarekin erabiliko dugu. Beraz,
+erreferentzia erlatiboa aukeratzean, gure buruari galdetu beharko
+genioke: zein erreferentzia erabili dezaket formularen terminoak erraz
+kalkulatzeko?</p>
+<p>Aztertu dezagun <em>abiadura konposizioaren formula</em> ikusteko
+zein termino dituen: <span class="math display">\[\Large{
+    \boxed{
+        \mathbf{V}_{_{{\textcolor{blue}{{\mathcal{R}}}}}}{\small
+({\textcolor{green}{\mathbf{P}}})}=\mathbf{V}_{_{{\textcolor{blue}{{\mathcal{R}}}}}}{\small
+({\textcolor{red}{\mathbf{O&#39;}}})} +
+\boldsymbol{\Omega}_{_{{\textcolor{blue}{{\mathcal{R}}}}}}{\small
+({\textcolor{red}{{\mathcal{R}}&#39;}})}\times
+\overline{\mathbf{{\textcolor{red}{O&#39;}}{\textcolor{green}{P}}}} +
+\mathbf{V}_{_{{\textcolor{red}{{\mathcal{R}&#39;}}}}}{\small
+({\textcolor{green}{\mathbf{P}}})}
+        }
+    }\]</span></p>
+<p>Ariketak finkatzen du zein punturen abiadura (edo azelerazioa)
+kalkulatuko dugun eta baita zein erreferentziarekiko, beraz, <span><span
+style="color: green">berdez</span></span> eta <span><span
+style="color: blue">urdinez</span></span> koloreztatuta dauden
+terminoetan ezin dugu ezer erabaki. Erabaki behar duguna da <span><span
+style="color: red">gorriz</span></span> dagoena. Erdiko terminoa
+begiratuta, abiadura angeluarra beti ezaguna izango da (<a
+href="#sec::adibidea_deribazioz" data-reference-type="ref"
+data-reference="sec::adibidea_deribazioz">1.5</a> sekzioan marraztu
+dugun orientazio diagrama erabilita) eta posizio bektorea ere ezaguna
+izango da (mekanismoaren geometria ezaguna delako). Beraz beste bi
+terminoei begiratu beharko diegu erreferentzia erlatibaoa
+aukeratzeko.</p>
+<p>Azkeneko terminotik abiatuta,</p>
+<ul>
+<li><p><strong>galdera</strong>: aukeratzen ahal dugu erreferentzia bat
+zeinekiko <span class="math inline">\(\mathbf{P}\)</span> puntuaren
+abiadura ezaguna den?</p></li>
+<li><p><strong>erantzuna</strong>: Bai! <strong>T</strong> formako
+<em>barra</em> gorriarekiko finko den edozein erreferentziarekiko <span
+class="math inline">\(\mathbf{P}\)</span> puntua ez da mugitzen eta
+beraz azkeneko terminoa zero izango da.</p></li>
+<li><p><strong>oharra</strong>: batzuetan gertatuko zaigu puntu horren
+abiadura ez dela zero, baina puntu horrek beste solido batekiko duen
+mugimendu bakarra traslazioa dela. Horrelako kasuetan, traslazio
+abiadura hori erraz kalkulatzen ahalko dugu (deribazioz).</p></li>
+</ul>
+<p>Falta dena da erabakitzea zein izango den erreferentzia horren
+jatorri puntua. Hau da, erabakitzea gure ariketako zein puntu izango de
+formulako <span class="math inline">\(\mathbf{O}&#39;\)</span>
+puntua.</p>
+<ul>
+<li><p><strong>galdera</strong>: ezaguna al da barraren punturen baten
+abiadura?</p></li>
+<li><p><strong>erantzuna</strong>: Bai! Kasu honetan <span
+class="math inline">\(\mathbf{A}\)</span> puntua lurrarekiko finkoa da
+(ez da mugitzen) eta beraz <span
+class="math inline">\(\mathbf{V}_{_{{\textcolor{blue}{{\mathcal{R}}}}}}{\small
+({\textcolor{red}{\mathbf{O}&#39;}})} \equiv
+\mathbf{V}_{_{{\mathcal{R}}}}{\small ({\mathbf{A}})}\)</span> ezaguna
+izango da. Eta honekin kalkuluaren planteamendua bukatutzat eman ahalko
+dugu.</p></li>
+<li><p><strong>oharra</strong>: batzuetan gertatuko zaigu aukeratutako
+<span
+class="math inline">\({\textcolor{red}{{\mathcal{R}&#39;}}}\)</span>
+erreferentziaren puntu guztien abiadura ezezaguna dela. Horrelako
+kasuetan, <span
+class="math inline">\({\textcolor{red}{{\mathcal{R}&#39;}}}\)</span>-k
+beste solido batekin duen loturan dagoen puntu bat aukeratu beharko
+dugu. Horrela, bigarren iterazio batean, puntu horren abiadura
+konposizioz kalkulatuko dugu, erreferentzia erlatiboa hurrengo solidoan
+jarrita.</p></li>
+</ul>
+<p>Erreferentzia erlatiboak aukeratzea ez da prozedura sistematikoa,
+intuizioaren beharra dauka. Eta intuizioa ariketak ebazten lortzen da.
+Erreferentzia desegoki bat aukeratzen bada, formula aplikatzeak ez gaitu
+lagunduko edo bestela bi aldiz aplikatu beharko dugu konposizioa behin
+bakarrik aplikatzeko aukera dagoen kasu ordez.</p>
+<h3 data-number="2.7.3" id="abiadura-kalkuluaren-ebazpena"><span
+class="header-section-number">2.7.3</span> Abiadura kalkuluaren
+ebazpena</h3>
+<p><strong>Puntuaren abiaduraren kalkulua</strong> Deskribatu dugun
+bezala, erabiliko dugun erreferentzia erlatiboa honakoa izango da: <span
+class="math inline">\(\mathbf{A}\)</span> puntua jatorri duen eta <span
+class="math inline">\(1&#39;2&#39;3&#39;\)</span> basearekin orientatuta
+dagoen erreferentzia. Konposizioaren formula aplikatuta:</p>
+<p><span class="math display">\[\mathbf{V}_{_{Lur}}{\small
+(\mathbf{P})}=\mathbf{V}_{_{Lur}}{\small
+({\textcolor{red}{\mathbf{A}}})} + \boldsymbol{\Omega}_{_{Lur}}{\small
+({\textcolor{red}{Bar}})}\times
+\overline{\mathbf{{\textcolor{red}{A}}{P}}} +
+\mathbf{V}_{_{{\textcolor{red}{Bar}}}}{\small (\mathbf{P})}\]</span></p>
+<p>Erreferentzia erlatiboa aukeratzean, gure helburua zen formulako
+azkeneko terminoa zero izatea (edo kalkulatzen erraza). Egindako
+aukeraketarekin, konprobatzen dugu, nahi genuen bezala, azkeneko
+terminoa zero dela: <span
+class="math inline">\(\mathbf{V}_{_{{\textcolor{red}{Bar}}}}{\small
+(\mathbf{P})}=\mathbf{0}\)</span>. Bigarren terminoa kalkulatzea erraza
+da orientazio diagramari begiratzen badiogu. Azkenik, kasu honenta,
+lehenengo terminoaren balorea zero da ere eta kalkuluak egiten hasi
+gaitezke: <span class="math display">\[\mathbf{V}_{_{Lur}}{\small
+(\mathbf{P})}=\cancel{\mathbf{V}_{_{Lur}}{\small
+({\textcolor{red}{\mathbf{A}}})}} + \boldsymbol{\Omega}_{_{Lur}}{\small
+({\textcolor{red}{Bar}})}\times
+\overline{\mathbf{{\textcolor{red}{A}}{P}}} +
+\cancel{\mathbf{V}_{_{{\textcolor{red}{Bar}}}}{\small
+(\mathbf{P})}}\]</span></p>
+<p><strong>Proiekzio basearen aukeraketa</strong> Hartzeko geratzen
+zaigun beste erabaki garrantzitsua, basearen aukeraketa da.
+Planteamenduaren emaitza bezala lortu duguna da bakarrik bi bektore
+idatzi beharko ditugula: <span
+class="math inline">\(\boldsymbol{\Omega}_{_{Lur}}{\small
+({\textcolor{red}{Bar}})}={\boldsymbol{\dot{\psi}}}+{\boldsymbol{\dot{\theta}}}\)</span>
+eta <span
+class="math inline">\(\overline{\mathbf{{\textcolor{red}{A}}{P}}}\)</span>.
+Beraz galdera erraza da: zein basetan lortu ditzakegu bektore hauen
+osagaiak modurik errazenean?</p>
+<ul>
+<li><p><span class="math inline">\({\boldsymbol{\dot{\psi}}}\)</span>
+bektorearen osagaiak <span class="math inline">\(xyz\)</span> eta <span
+class="math inline">\(123\)</span> baseetan zuzenean idazten
+dira.</p></li>
+<li><p><span class="math inline">\({\boldsymbol{\dot{\theta}}}\)</span>
+bektorearen osagaiak <span class="math inline">\(123\)</span> eta <span
+class="math inline">\(1&#39;2&#39;3&#39;\)</span> baseetan zuzenean
+idazten dira.</p></li>
+<li><p><span
+class="math inline">\(\overline{\mathbf{{\textcolor{red}{A}}{P}}}\)</span>
+bektorearen osagaiak <span
+class="math inline">\(1&#39;2&#39;3&#39;\)</span> basean zuzenean
+idazten dira.</p></li>
+</ul>
+<p>Beraz, <span class="math inline">\(123\)</span> basea erabilita <span
+class="math inline">\(\overline{\mathbf{{\textcolor{red}{A}}{P}}}\)</span>
+bektorea basez aldatu beharko dugu, eta <span
+class="math inline">\(1&#39;2&#39;3&#39;\)</span> basea erabilita <span
+class="math inline">\({\boldsymbol{\dot{\psi}}}\)</span> bektorea basez
+aldatu beharko dugu. Aukeraketa bat edo bestearekin antzeko lan egin
+beharko denez, hauetako edozein aukera egokia izango da kasu honetan.
+Gure aukeraketa <span class="math inline">\(123\)</span> basea
+erabiltzea izango da oraingoan (deribazioz egin dugun bezala). Beraz:
+<span class="math display">\[\begin{split}
+        \left\{\mathbf{V}_{_{Lur}}{\small
+(\mathbf{P})}\right\}_{_{123}}&amp;=\left\{\boldsymbol{\Omega}_{_{Lur}}{\small
+({\textcolor{red}{Bar}})}\right\}_{_{123}}\times
+{\left\{\begin{matrix}\overline{\mathbf{{\textcolor{red}{A}}{P}}}\end{matrix}\right\}}_{_{123}}
+=
+        {\left\{\begin{matrix}{\dot{\theta}}\\ 0 \\
+{\dot{\psi}}\end{matrix}\right\}}_{_{123}} \times
+{\left\{\begin{matrix}0 \\ \rho\cos\theta \\
+\rho\sin\theta\end{matrix}\right\}}_{_{123}} = \\
+%     
+        &amp; =  {\left\{\begin{matrix}-{\dot{\psi}}\rho\cos\theta \\
+-{\dot{\theta}}\rho\sin\theta \\
+\phantom{-}{\dot{\theta}}\rho\cos\theta\end{matrix}\right\}}_{_{123}}
+    \end{split}\]</span></p>
+<p>Aurreko <a href="#sec::adibidea_deribazioz" data-reference-type="ref"
+data-reference="sec::adibidea_deribazioz">1.5</a> sekzioan garatu
+dugunarekin alderatuta ikusten dugu emaitza berdina dela.</p>
+<h3 data-number="2.7.4" id="azelerazio-kalkuluaren-ebazpena"><span
+class="header-section-number">2.7.4</span> Azelerazio kalkuluaren
+ebazpena</h3>
+<p>Ariketa gehienetan (guztietan ez esateagatik) azelerazioen
+kalkulurako egin beharreko <em>erreferentzi erlatiboaren</em> eta
+<em>proiekzio basearen</em> aukeraketak berdinak izango dira abiduren
+ariketan egindakoekin alderatuta. Beraz, azelerazio konposizioaren
+formulan <span class="math display">\[\large
+\boxed{
+\begin{split}
+        \mathbf{A}_{_{{\textcolor{blue}{{\mathcal{R}}}}}}{\small
+{({\textcolor{green}{\mathbf{P}}})}}&amp;=\mathbf{A}_{_{{\textcolor{blue}{{\mathcal{R}}}}}}{\small
+{({\textcolor{red}{\mathbf{O&#39;}}})}} +
+\boldsymbol{\Omega}_{_{{\textcolor{blue}{{\mathcal{R}}}}}}{\small
+({\textcolor{red}{{\mathcal{R}}&#39;}})}\times \big(
+\boldsymbol{\Omega}_{_{{\textcolor{blue}{{\mathcal{R}}}}}}{\small
+({\textcolor{red}{{\mathcal{R}}&#39;}})}\times
+\overline{\mathbf{{\textcolor{red}{O&#39;}}{\textcolor{green}{P}}}}\big)
++ \boldsymbol{\alpha}_{_{{\textcolor{blue}{{\mathcal{R}}}}}}{\small
+({\textcolor{red}{{\mathcal{R}}&#39;}})} \times
+\overline{\mathbf{{\textcolor{red}{O&#39;}}{\textcolor{green}{P}}}}\\
+        &amp;+
+2\,\,\boldsymbol{\Omega}_{_{{\textcolor{blue}{{\mathcal{R}}}}}}{\small
+({\textcolor{red}{{\mathcal{R}}&#39;}})}\times
+\mathbf{V}_{_{{\textcolor{red}{{\mathcal{R}&#39;}}}}}{\small
+({\textcolor{green}{\mathbf{P}}})}+
+\mathbf{A}_{_{{\textcolor{red}{{\mathcal{R}&#39;}}}}}{\small
+{({\textcolor{green}{\mathbf{P}}})}}
+\end{split}
+}\]</span> erreferentzia erlatiboa <span
+class="math inline">\({\textcolor{red}{{\mathcal{R}&#39;}}} \equiv
+\mathbf{A} + 123 = Bar\)</span> izango da, eta proiektatzeko basea <span
+class="math inline">\(123\)</span>.</p>
+<p>Honela, matematikoki, honako terminoak izango ditugu:</p>
+<ul>
+<li><p>Erreferentzia erlatiboaren jatorriaren azelerazioa: <span
+class="math display">\[\mathbf{A}_{_{Lur}}{\small
+{(\mathbf{A})}}=\mathbf{0}\]</span></p></li>
+<li><p>Azelerazio zentripetua: <span
+class="math display">\[\begin{align}
+            {\left\{\begin{matrix} \boldsymbol{\Omega}_{_{Lur}}{\small
+(Bar)}\! \times\! \left( \boldsymbol{\Omega}_{_{Lur}}{\small
+(Bar)}\!\times\! \overline{\mathbf{AP}}\right)
+\end{matrix}\right\}}_{_{123}} &amp;=
+            {\left\{\begin{matrix}{\dot{\theta}}\\ 0 \\
+{\dot{\psi}}\end{matrix}\right\}}_{_{123}} \!\!\!\times\! \left(
+{\left\{\begin{matrix}{\dot{\theta}}\\ 0 \\
+{\dot{\psi}}\end{matrix}\right\}}_{_{123}} \!\!\!\times\!
+{\left\{\begin{matrix}0 \\ \rho\cos\theta \\
+\rho\sin\theta\end{matrix}\right\}}_{_{123}}\right) \\
+            &amp;=
+{\left\{\begin{matrix}\phantom{-}{\dot{\psi}}{\dot{\theta}}\rho\sin\theta
+\\ -({\dot{\theta}}^2+{\dot{\psi}}^2)\rho\cos\theta \\
+-{\dot{\theta}}^2\rho\sin\theta\end{matrix}\right\}}_{_{123}}
+        \end{align}\]</span></p></li>
+<li><p>Azelerazio tangentziala: lehenik <span
+class="math inline">\(\boldsymbol{\alpha}_{_{Lur}}{\small
+(Bar)}\)</span> terminoa kalkulatu beharko dugu, <span
+class="math inline">\(Bar\)</span>-ren abiadura angeluarra base
+higikorretan deribatuz: <span class="math display">\[\begin{split}
+        \left\{\boldsymbol{\alpha}_{_{Lur}}{\small
+(Bar)}\right\}_{_{123}} &amp;=
+{\left\{\begin{matrix}\frac{d}{dt}\left.\boldsymbol{\Omega}_{_{Lur}}{\small
+(Bar)} \right|_{_{Pla}}\end{matrix}\right\}}_{_{123}} +
+{\left\{\begin{matrix} \boldsymbol{\Omega}_{_{Lur}}{\small (123)} \times
+\boldsymbol{\Omega}_{_{Lur}}{\small (Bar)}\end{matrix}\right\}}_{_{123}}
+\\
+        &amp;= \frac{d}{dt}{\left\{\begin{matrix}{\dot{\theta}}\\ 0 \\
+{\dot{\psi}}\end{matrix}\right\}}_{_{123}} + {\left\{\begin{matrix}0 \\
+0 \\ {\dot{\psi}}\end{matrix}\right\}}_{_{123}} \times
+{\left\{\begin{matrix}{\dot{\theta}}\\ 0 \\
+{\dot{\psi}}\end{matrix}\right\}}_{_{123}}
+        = {\left\{\begin{matrix}{\ddot{\theta}}\\
+{\dot{\psi}}{\dot{\theta}}\\ {\ddot{\psi}}\end{matrix}\right\}}_{_{123}}
+    \end{split}\]</span> Eta orain <span
+class="math inline">\(\overline{\mathbf{AP}}\)</span> bektorearekin
+biderkatu: <span
+class="math display">\[{\left\{\begin{matrix}\boldsymbol{\alpha}_{_{Lur}}{\small
+(Bar)}\!\!\times\! \overline{\mathbf{AP}} \end{matrix}\right\}}_{_{123}}
+\!\!\!=\!
+        {\left\{\begin{matrix}{\ddot{\theta}}\\
+{\dot{\psi}}{\dot{\theta}}\\ {\ddot{\psi}}\end{matrix}\right\}}_{_{123}}
+\!\!\!\!\times\! {\left\{\begin{matrix}0 \\ \rho\cos\theta \\
+\rho\sin\theta\end{matrix}\right\}}_{_{123}} \!\!\!\!=\!
+        {\left\{\begin{matrix}{\dot{\psi}}{\dot{\theta}}\rho\sin\theta -
+{\ddot{\psi}}\rho\cos\theta \\ -{\ddot{\theta}}\rho\sin\theta \\
+\phantom{-}{\ddot{\theta}}\rho\cos\theta\end{matrix}\right\}}_{_{123}}\]</span></p></li>
+<li><p>Coriolis-en azelerazioa eta azelerazio erlatiboa: <span
+class="math inline">\(\mathbf{P}\)</span> puntua <span
+class="math inline">\(Bar\)</span> barrarekiko finkoa denez, <span
+class="math inline">\(\mathbf{V}_{_{Bar}}{\small
+(\mathbf{P})}=\mathbf{A}_{_{Bar}}{\small
+{(\mathbf{P})}}=\mathbf{0}\)</span> izango dira.</p></li>
+</ul>
+<p>Azelerazio termino guztiak batuta, <a
+href="#sec::adibidea_deribazioz" data-reference-type="ref"
+data-reference="sec::adibidea_deribazioz">1.5</a> atalean lortu dugun
+emaitza bera lortzen dugu: <span
+class="math display">\[\left\{\mathbf{A}_{_{Lur}}{\small
+{(\mathbf{P})}}\right\}_{_{123}}=
+        {\left\{\begin{matrix} -{\ddot{\psi}}\rho\cos\theta +
+{\dot{\psi}}{\dot{\theta}}\rho\sin\theta +{\dot{\psi}}{\dot{\theta}}\rho
+\sin\theta \\
+                -{\ddot{\theta}}\rho\sin\theta -{\dot{\theta}}^2
+\rho\cos\theta - {\dot{\psi}}^2 \rho \cos\theta\\
+                \phantom{-}{\ddot{\theta}}\rho\cos\theta
+-{\dot{\theta}}^2 \rho
+\sin\theta\end{matrix}\right\}}_{_{123}}\]</span></p>
+<h3 data-number="2.7.5" id="ariketaren-jarraipena"><span
+class="header-section-number">2.7.5</span> Ariketaren jarraipena:</h3>
+<p>Ariketa bezala, kalkulatu itzazu <span
+class="math inline">\(\mathbf{P}\)</span>-ren abiadura eta
+azelerazioaren kalkuluak, baina oraingoan <span
+class="math inline">\(\rho=\rho(t)\)</span> denborarekiko aldatzen den
+koordenatua izanda. Ohartuko zarenez, birkalkulatzeko beharra duten
+termino bakarrak Coriolis-ena eta azelerazio erlatiboarena izango dira.
+Bi termino horiek kalkulatuta eta aurreko emaitzari batuta, ariketaren
+jarraipenaren emaitza lortuko dugu eta <a
+href="#sec::adibidea_deribazioz" data-reference-type="ref"
+data-reference="sec::adibidea_deribazioz">1.5</a> atalean
+lortutakoarekin alderatu ahalko dugu.</p>
+<h2 data-number="2.8" id="adibidea-pare-prismatiko-batekin"><span
+class="header-section-number">2.8</span> Adibidea: pare prismatiko
+batekin</h2>
+<p><strong>Enuntziatua</strong>:</p>
+<p>Hurrengo irudian 4 solido dituen mekanismo bat agertzen da.
+<strong><span style="color: cyan">Mas</span></strong> masta bertikalak
+<strong><span style="color: grey">Lur</span></strong> lurrarekiko
+biratzen du, <span class="math inline">\(\theta\)</span> angelua, ardatz
+bertikalarekiko. Bestalde, <strong><span
+style="color: blue">Bes</span></strong> besoa mastarekiko trasladatzen
+da ardatz horizontal batean zehar, <span
+class="math inline">\(x\)</span> aldagaiak akotatzen duen bezala.
+Azkenik, <strong><span style="color: red">Txa</span></strong> txapak
+besoarekiko biratzen du, <span class="math inline">\(\varphi\)</span>
+angeluak adierazten duen bezala. Luzeerei dagokionez, izan bedi <span
+class="math inline">\(L\)</span> konstantea <span
+class="math inline">\(\mathbf{B}\)</span> eta <span
+class="math inline">\(\mathbf{C}\)</span> puntuen arteko distantzia;
+<em>i.e.</em>: <span
+class="math inline">\(\lVert\overline{\mathbf{BC}}\rVert=L\)</span>.</p>
+<p>Kalkulatu ezazu <span class="math inline">\(\mathbf{C}\)</span>
+puntuaren abiadura lurrarekiko, mugimendu konposizioa erabilita.</p>
+<p><div id="applet_containerunpkmbfp"></div>    <script type="text/javascript">var parametersunpkmbfp = {"width": 600,"height": 450,"material_id": "unpkmbfp","showFullscreenButton": true};var appletunpkmbfp = new GGBApplet(parametersunpkmbfp, true);appletunpkmbfp.inject('applet_containerunpkmbfp');</script></p>
+<p><strong>Planteamendua</strong>:</p>
+<p>Mekanismo honetan <em>pare prismatiko</em> bat dago, eta beraz, pare
+horren bi aldeetan dauden solidoek (Mastak eta Besoak) ez dute biraketa
+erlatiborik izango eta orientazio diagraman bloke berdinean egongo dira.
+Mekanismoaren orientazio diagrama honakoa izango litzateke beraz:</p>
+<p><div id="applet_containerq35bxbdw"></div>    <script type="text/javascript">var parametersq35bxbdw = {"width": 600,"height": 200,"material_id": "q35bxbdw","showFullscreenButton": true};var appletq35bxbdw = new GGBApplet(parametersq35bxbdw, true);appletq35bxbdw.inject('applet_containerq35bxbdw');</script></p>
+<p>Mekanismoko <span class="math inline">\(\mathbf{C}\)</span> puntuaren
+abiadura konposizioz kalkulatzeko, erpin horretatik bertatik abiatuko
+gara. Konposizioaren erreferentzia erlatibo bat aukeratzean, errazena da
+solido bat aukeratzea <span class="math inline">\(\mathbf{C}\)</span>
+puntua horrekiko finkoa izan dadin. Kasu honetan <strong><span
+style="color: red">Txa</span></strong> solidoa aukeratzen badugu,
+badakigu konposizioaren formularen azkeneko terminoa zero izango dela.
+Behin hori lortuta, artu beharreko hurrengo erabakia honakoa da: <span
+class="math inline">\({\textcolor{red}{Txa}}\)</span> solidoaren zein
+puntu artuko dugu erreferentzia erlatiboaren jatorri bezala? Kasu
+honetan erabakia argia da: punturik egokiena <span
+class="math inline">\(\mathbf{B}\)</span> puntua da, aurreko
+solidoarekiko (<strong><span style="color: blue">Bes</span></strong>
+solidoarekiko) zurruna bait da. Erabaki honek, hurrengo konposizio
+pausoan, ekuazioaren azkeneko terminoaren kalkulua erraztuko digu.</p>
+<p>Beraz, konposizioaren lehenengo pausoa honakoa da: <span
+class="math display">\[\mathbf{V}_{_{Lur}}{\small (\mathbf{C})} =
+\mathbf{V}_{_{Lur}}{\small
+(\mathbf{B})}+\boldsymbol{\Omega}_{_{Lur}}{\small (Txa)} \times
+\overline{\mathbf{BC}} + \cancel{\mathbf{V}_{_{Txa}}{\small
+(\mathbf{C})}}\]</span></p>
+<p>Azkeneko terminoa zero izatea ez da kasualidadea izan. Konposizioaren
+erreferentzia erlatiboa aukeratu dugunean, hori zen gure helburua:
+termino horren balorea zero izatea edo <em>kalkulatzen oso erraza
+izatea</em>. Hala ere, <span class="math inline">\(\mathbf{B}\)</span>
+puntuaren abiadura ezin dugu zuzenean idatzi eta beraz, termino horren
+kalkuluarekin jarraitu beharko dugu.</p>
+<p>Eta hurrengo pauso hau da adibide honen zergatia. Masta eta besoaren
+artean pare prismatiko bat dagoenez, ez da existitzen besoaren puntu bat
+ere masterekiko finkoa denik. Besoan erreferentzia erlatibo bat jarriko
+bagenu, konposizioa aplikatzeko, edozein jatorri aukeratuta ere, ez
+genuk lortuko hurrengo solidoarekiko finkoa den punturik aurkitzea.
+Baten batek pentsatu lezake irudiko <span
+class="math inline">\(\mathbf{A}\)</span> puntua besoarekiko finkoa
+dela, baina marrazkia mugituz (<span
+class="math inline">\(\mathbf{B}\)</span> puntutik tiraka) ikusi daiteke
+nola <span class="math inline">\(\mathbf{A}\)</span> puntua mastari
+finkoa geratzen den, eta ez den besoarekin trasladatzen. Beraz, <span
+class="math inline">\(\mathbf{A}\)</span> puntua <strong><span
+style="color: cyan">Mas</span></strong> eta <strong><span
+style="color: blue">Bes</span></strong> solidoen intersekzioan egon
+arren, bi solidoetako batekiko finkoa da soilik: <strong><span
+style="color: cyan">Mas</span></strong> solidoarekiko.</p>
+<p>Hortaz, zein da konposizioarekin jarraitzeko aukera. Ba besterik
+gabe, <strong><span style="color: cyan">Mas</span></strong> solidoan
+montatzea eta <span class="math inline">\(\mathbf{B}\)</span> puntuaren
+abiadura (mastarekiko) traslazio huts bat besterik ez dela ikustea.</p>
+<p>Mastan montatuz, honako konposizioa planteatu dezakegu: <span
+class="math display">\[\mathbf{V}_{_{Lur}}{\small (\mathbf{B})} =
+\cancel{\mathbf{V}_{_{Lur}}{\small
+(\mathbf{A})}}+\boldsymbol{\Omega}_{_{Lur}}{\small (Mas)} \times
+\overline{\mathbf{AB}} + \mathbf{V}_{_{Mas}}{\small
+(\mathbf{B})}\]</span></p>
+<p>Zorionez, <span class="math inline">\(\mathbf{A}\)</span> puntuaren
+abiadura lurrarekiko zero da, eta <span
+class="math inline">\(\mathbf{B}\)</span> puntuaren abiadura
+<em>deribazioz</em> honela kalkulatu dezakegu: <span
+class="math display">\[\mathbf{V}_{_{Mas}}{\small (\mathbf{B})} =
+\frac{d}{dt}\left.\overline{\mathbf{AB}} \right|_{_{Mas}}\]</span></p>
+<p><strong>Ebazpena</strong>:</p>
+<p>Planteamendua bukatutzat emanda, hasi gaitezen terminoak <span
+class="math inline">\(123\)</span> basean kalkulatzen:</p>
+<p><span class="math display">\[\left\{\mathbf{V}_{_{Mas}}{\small
+(\mathbf{B})}\right\}_{_{123}} \!\!=
+{\left\{\begin{matrix}\frac{d}{dt}\left.\overline{\mathbf{AB}}
+\right|_{_{Mas}}\end{matrix}\right\}}_{_{123}} \!\!\!\!=\!
+\frac{d}{dt}{\left\{\begin{matrix}0 \\ x \\
+0\end{matrix}\right\}}_{_{123}} \!\!\!\!+\!
+\cancel{\left\{\boldsymbol{\Omega}_{_{Mas}}{\small
+(123)}\right\}_{_{123}}}\!\!\!\!\times\!
+{\left\{\begin{matrix}\overline{\mathbf{AB}}\end{matrix}\right\}}_{_{123}}
+\!\!\!\!=\!{\left\{\begin{matrix}0 \\ \dot{x} \\
+0\end{matrix}\right\}}_{_{123}}\]</span></p>
+<p>Orain, bigarren konposizioaren terminoa kalkulatuta: <span
+class="math display">\[\left\{\boldsymbol{\Omega}_{_{Lur}}{\small
+(Mas)}\right\}_{_{123}} \times
+{\left\{\begin{matrix}\overline{\mathbf{AB}}\end{matrix}\right\}}_{_{123}}
+= {\left\{\begin{matrix}0 \\ 0 \\
+{\dot{\theta}}\end{matrix}\right\}}_{_{123}}\times
+{\left\{\begin{matrix}0 \\ x \\ 0\end{matrix}\right\}}_{_{123}}=
+    {\left\{\begin{matrix}-x{\dot{\theta}}\\ 0 \\
+0\end{matrix}\right\}}_{_{123}}\]</span></p>
+<p>Azkenik, planteatutako lehenengo konposizioaren terminoa <span
+class="math inline">\(123\)</span> idatzita: <span
+class="math display">\[\left\{\boldsymbol{\Omega}_{_{Lur}}{\small
+(Txa)}\right\}_{_{123}} \times \overline{\mathbf{BC}} =
+{\left\{\begin{matrix}{\dot{\varphi}}\\ 0 \\
+{\dot{\theta}}\end{matrix}\right\}}_{_{123}}\times
+{\left\{\begin{matrix}0 \\ L\cos\varphi \\
+L\sin\varphi\end{matrix}\right\}}_{_{123}} =
+{\left\{\begin{matrix}-{\dot{\theta}}L\cos\varphi \\ -{\dot{\varphi}}L
+\sin\varphi \\
+\phantom{-}{\dot{\varphi}}L\cos\varphi\end{matrix}\right\}}_{_{123}}\]</span></p>
+<p>Expresioetako hiru terminoak batuta, <span
+class="math inline">\(\mathbf{C}\)</span> puntuaren abiaduraren
+expresioa lortzen dugu <span class="math inline">\(123\)</span> basean:
+<span class="math display">\[\left\{\mathbf{V}_{_{Lur}}{\small
+(\mathbf{C})}\right\}_{_{123}}
+    = {\left\{\begin{matrix}0 \\ \dot{x} \\
+0\end{matrix}\right\}}_{_{123}}
+    + {\left\{\begin{matrix}-x{\dot{\theta}}\\ 0 \\
+0\end{matrix}\right\}}_{_{123}}
+    + {\left\{\begin{matrix}-{\dot{\theta}}L\cos\varphi \\
+-{\dot{\varphi}}L \sin\varphi \\
+\phantom{-}{\dot{\varphi}}L\cos\varphi\end{matrix}\right\}}_{_{123}}\]</span></p>
+<p>Termino hauek hurrengo moduan taldekatzen baditugu, marrazkiko puntu
+bakoitzaren mugimenduarekin asoziatu daitezke:</p>
+<p><span class="math display">\[\left\{\mathbf{V}_{_{Lur}}{\small
+(\mathbf{C})}\right\}_{_{123}}
+    = {\textcolor{red}{{\left\{\begin{matrix}0 \\ \dot{x} \\
+0\end{matrix}\right\}}_{_{123}}}}
+    + {\textcolor{green}{{\left\{\begin{matrix}-{\dot{\theta}}(x+
+L\cos\varphi)\\ 0 \\ 0\end{matrix}\right\}}_{_{123}}}}
+    + {\textcolor{blue}{{\left\{\begin{matrix}0 \\ -{\dot{\varphi}}L
+\sin\varphi \\
+\phantom{-}{\dot{\varphi}}L\cos\varphi\end{matrix}\right\}}_{_{123}}}}\]</span></p>
+<p><div id="applet_containerfjmqfry7"></div>    <script type="text/javascript">var parametersfjmqfry7 = {"width": 600,"height": 450,"material_id": "fjmqfry7","showFullscreenButton": true};var appletfjmqfry7 = new GGBApplet(parametersfjmqfry7, true);appletfjmqfry7.inject('applet_containerfjmqfry7');</script></p>
+</body>
+</html>

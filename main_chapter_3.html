@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Xabier Iriarte" />
+  <meta name="dcterms.date" content="2026-02-16" />
+  <title>Mekanika</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+</head>
+<head><script src="https://www.geogebra.org/apps/deployggb.js"></script></head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Mekanika</h1>
+<p class="author">Xabier Iriarte</p>
+<p class="date">2026-02-16</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#solido-zurrunaren-zinematika"
+id="toc-solido-zurrunaren-zinematika"><span
+class="toc-section-number">3</span> Solido zurrunaren zinematika</a>
+<ul>
+<li><a href="#solido-zurruna" id="toc-solido-zurruna"><span
+class="toc-section-number">3.1</span> Solido zurruna</a></li>
+<li><a href="#solido-baten-puntuen-abiadura-eta-azelerazioa"
+id="toc-solido-baten-puntuen-abiadura-eta-azelerazioa"><span
+class="toc-section-number">3.2</span> Solido baten puntuen abiadura eta
+azelerazioa</a></li>
+<li><a
+href="#oinarrizko-lotura-baldintzak.-kontaktua-eta-irristadura-eza"
+id="toc-oinarrizko-lotura-baldintzak.-kontaktua-eta-irristadura-eza"><span
+class="toc-section-number">3.3</span> Oinarrizko lotura baldintzak.
+Kontaktua eta irristadura-eza</a>
+<ul>
+<li><a href="#kontaktua-bermatzeko-ekuazioa"
+id="toc-kontaktua-bermatzeko-ekuazioa"><span
+class="toc-section-number">3.3.1</span> Kontaktua bermatzeko
+ekuazioa</a></li>
+<li><a href="#irristadura-eza-bermatzeko-ekuazioa"
+id="toc-irristadura-eza-bermatzeko-ekuazioa"><span
+class="toc-section-number">3.3.2</span> Irristadura-eza bermatzeko
+ekuazioa</a></li>
+<li><a href="#irristadura-gabeko-kontaktua-errodadura-perfektua"
+id="toc-irristadura-gabeko-kontaktua-errodadura-perfektua"><span
+class="toc-section-number">3.3.3</span> Irristadura gabeko kontaktua:
+errodadura perfektua</a></li>
+<li><a href="#oharra" id="toc-oharra"><span
+class="toc-section-number">3.3.4</span> Oharra</a></li>
+</ul></li>
+<li><a href="#kontaktu-puntu-geometrikoa-errodaduran"
+id="toc-kontaktu-puntu-geometrikoa-errodaduran"><span
+class="toc-section-number">3.4</span> Kontaktu puntu geometrikoa
+errodaduran</a>
+<ul>
+<li><a
+href="#errodadura-perfektuko-baldintzak-puntu-geometrikoa-erabilita"
+id="toc-errodadura-perfektuko-baldintzak-puntu-geometrikoa-erabilita"><span
+class="toc-section-number">3.4.1</span> Errodadura perfektuko baldintzak
+puntu geometrikoa erabilita</a></li>
+<li><a
+href="#puntu-geometrikoaren-ibilbidea-kontaktuan-dauden-bi-solidoetan"
+id="toc-puntu-geometrikoaren-ibilbidea-kontaktuan-dauden-bi-solidoetan"><span
+class="toc-section-number">3.4.2</span> Puntu geometrikoaren ibilbidea
+kontaktuan dauden bi solidoetan</a></li>
+</ul></li>
+<li><a href="#adibideak-oinarrizko-lotura-balditzen-kalkulua"
+id="toc-adibideak-oinarrizko-lotura-balditzen-kalkulua"><span
+class="toc-section-number">3.5</span> Adibideak: oinarrizko lotura
+balditzen kalkulua</a>
+<ul>
+<li><a
+href="#adibidea-gurpil-baten-errodadura-lurrean.-traslazio-eta-biraketaren-arteko-erlazioa"
+id="toc-adibidea-gurpil-baten-errodadura-lurrean.-traslazio-eta-biraketaren-arteko-erlazioa"><span
+class="toc-section-number">3.5.1</span> Adibidea: Gurpil baten
+errodadura lurrean. Traslazio eta biraketaren arteko erlazioa</a></li>
+<li><a
+href="#adibidea-kontaktuan-dauden-bi-gurpilen-arteko-abiadura-angeluarren-erlazioa"
+id="toc-adibidea-kontaktuan-dauden-bi-gurpilen-arteko-abiadura-angeluarren-erlazioa"><span
+class="toc-section-number">3.5.2</span> Adibidea: Kontaktuan dauden bi
+gurpilen arteko abiadura angeluarren erlazioa</a></li>
+<li><a
+href="#adibidea-kontaktuan-eta-irristaduran-dagoen-barra-baten-abiadura-angeluarra"
+id="toc-adibidea-kontaktuan-eta-irristaduran-dagoen-barra-baten-abiadura-angeluarra"><span
+class="toc-section-number">3.5.3</span> Adibidea: Kontaktuan eta
+irristaduran dagoen barra baten abiadura angeluarra</a></li>
+<li><a
+href="#adibidea-gainazal-zilindriko-baten-eta-gurpil-baten-arteko-errodadura"
+id="toc-adibidea-gainazal-zilindriko-baten-eta-gurpil-baten-arteko-errodadura"><span
+class="toc-section-number">3.5.4</span> Adibidea: Gainazal zilindriko
+baten eta gurpil baten arteko errodadura</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1 data-number="1" id="solido-zurrunaren-zinematika"><span
+class="header-section-number">3</span> Solido zurrunaren zinematika</h1>
+<h2 data-number="1.1" id="solido-zurruna"><span
+class="header-section-number">3.1</span> Solido zurruna</h2>
+<p><strong>Definizioa</strong>: <em>Solido Zurruna</em> elkarren artean
+distantzia konstantea mantentzen duten puntu materialen multzoa da.
+Matematikoki, honela adireazi dezakegu: <span
+class="math display">\[\forall \,\mathbf{P},\mathbf{Q}\in Sol \quad
+\Longrightarrow \quad \lVert\overline{\mathbf{PQ}}\rVert=kte\]</span>
+Hau da, solidoarekiko finko diren edozein puntu bikoterentzat (<span
+class="math inline">\(\mathbf{P}\)</span> eta <span
+class="math inline">\(\mathbf{Q}\)</span>) haien arteko distantzia
+konstantea mantentzen da beti.</p>
+<figure>
+<img src="./figs/figura_3_1.png" style="width:100.0%" />
+</figure>
+<h2 data-number="1.2"
+id="solido-baten-puntuen-abiadura-eta-azelerazioa"><span
+class="header-section-number">3.2</span> Solido baten puntuen abiadura
+eta azelerazioa</h2>
+<p>Solidoaren puntu guztien posizioa eta mugimendua, solidoaren puntu
+baten mugimendua eta basearen orientazioaren menpe jakin daitezke. <span
+class="math display">\[\large{
+        \mathbf{V}_{_{{\mathcal{R}}}}{\small
+(\mathbf{P})}=\mathbf{V}_{_{{\mathcal{R}}}}{\small (\mathbf{O})} +
+\boldsymbol{\Omega}_{_{{\mathcal{R}}}}{\small (Sol)}\times
+\overline{\mathbf{OP}} + \cancel{\mathbf{V}_{_{Sol}}{\small
+(\mathbf{P})}}
+    }\]</span> <span class="math inline">\(\mathbf{P}\)</span> puntua
+solidoarekiko zurruna denez (<span class="math inline">\(\mathbf{P}\in
+Sol\)</span>) abiadura konposizioaren abiadura erlatiboa zero izango da:
+<span class="math inline">\(\mathbf{V}_{_{Sol}}{\small
+(\mathbf{P})}=\mathbf{0}\)</span>.</p>
+<p><span class="math display">\[\large
+\begin{split}
+        \mathbf{A}_{_{{\mathcal{R}}}}{\small
+{({\mathbf{P}})}}&amp;=\mathbf{A}_{_{{\mathcal{R}}}}{\small
+{({\mathbf{O}})}} + \boldsymbol{\Omega}_{_{{\mathcal{R}}}}{\small
+({Sol})}\times \big( \boldsymbol{\Omega}_{_{{\mathcal{R}}}}{\small
+({Sol})}\times \overline{\mathbf{{O}{P}}}\big) +
+\boldsymbol{\alpha}_{_{{\mathcal{R}}}}{\small ({Sol})} \times
+\overline{\mathbf{{O}{P}}}\\
+        &amp;+ 2\,\,\boldsymbol{\Omega}_{_{{\mathcal{R}}}}{\small
+({Sol})}\times \cancel{\mathbf{V}_{_{{Sol}}}{\small ({\mathbf{P}})}}+
+\cancel{\mathbf{A}_{_{Sol}}{\small {({\mathbf{P}})}} }
+\end{split}\]</span> <span class="math inline">\(\mathbf{P}\)</span>
+puntua solidoarekiko zurruna denez (<span
+class="math inline">\(\mathbf{P}\in Sol\)</span>) abiadura
+konposizioaren Coriolise azelerazioa eta azelerazio erlatiboa zero
+izango dira: <span
+class="math inline">\(2\,\,\boldsymbol{\Omega}_{_{{\mathcal{R}}}}{\small
+({Sol})}\times \mathbf{V}_{_{{Sol}}}{\small
+({\mathbf{P}})}=\mathbf{0}\)</span> eta <span
+class="math inline">\(\mathbf{A}_{_{Sol}}{\small
+{({\mathbf{P}})}}=\mathbf{0}\)</span>.</p>
+<h2 data-number="1.3"
+id="oinarrizko-lotura-baldintzak.-kontaktua-eta-irristadura-eza"><span
+class="header-section-number">3.3</span> Oinarrizko lotura baldintzak.
+Kontaktua eta irristadura-eza</h2>
+<p>Atal honetan lortu nahi dugun helburua da jakitea nolako baldintzak
+jarri behar ditugun bi solidoen mugimenduen artean, haien artean,
+<em>kontaktua</em>, <em>irristadura-eza</em> edo bi kondizio hauek
+batera bete daitezen.</p>
+<p>Marrazkian dauden izakiak zehaztu ditzagun, gerora baldintza
+matematikoak idazteko:</p>
+<ul>
+<li><p>Bi solido agertzen dira: <span
+class="math inline">\(\mathbf{S_1}\)</span> eta <span
+class="math inline">\(\mathbf{S_2}\)</span>.</p></li>
+<li><p>Bi solidoen arteko kontaktuan dagoen puntuari <span
+class="math inline">\(\mathbf{J}\)</span> deituko diogu.</p></li>
+<li><p><span class="math inline">\(\mathbf{J}\)</span> puntuaren lekuan
+dagoen puntua <span class="math inline">\(\mathbf{S_1}\)</span>
+solidoarekiko zurruna bada, <span
+class="math inline">\(\mathbf{J}_1\)</span> deituko dugu. Hau da, <span
+class="math inline">\(\mathbf{J}_1\)</span> puntua <span
+class="math inline">\(\mathbf{S_1}\)</span> solidoari pegatuta
+dago.</p></li>
+<li><p><span class="math inline">\(\mathbf{J}\)</span> puntuaren lekuan
+dagoen puntua <span class="math inline">\(\mathbf{S_2}\)</span>
+solidoarekiko zurruna bada, <span
+class="math inline">\(\mathbf{J}_2\)</span> deituko dugu. Hau da, <span
+class="math inline">\(\mathbf{J}_2\)</span> puntua <span
+class="math inline">\(\mathbf{S_2}\)</span> solidoari pegatuta
+dago.</p></li>
+<li><p>Marrazkiko <span class="math inline">\(\pi\)</span> planua, <span
+class="math inline">\(\mathbf{J}\)</span> puntutik pasatzen da eta <span
+class="math inline">\(\mathbf{J}\)</span>-n bi solidoekiko tangentea
+da.</p></li>
+<li><p><span class="math inline">\(\mathbf{n}\)</span> bektorea <span
+class="math inline">\(\pi\)</span> planuarekiko elkartzuta da.</p></li>
+<li><p><span class="math inline">\(\mathbf{t}_a\)</span> eta <span
+class="math inline">\(\mathbf{t}_b\)</span> bektoreak <span
+class="math inline">\(\pi\)</span> planuaren orientazioa zehazten
+dute.</p></li>
+</ul>
+<p><div id="applet_containerpx5zghwq"></div>    <script type="text/javascript">var parameterspx5zghwq = {"width": 600,"height": 550,"material_id": "px5zghwq","showFullscreenButton": true};var appletpx5zghwq = new GGBApplet(parameterspx5zghwq, true);appletpx5zghwq.inject('applet_containerpx5zghwq');</script></p>
+<h3 data-number="1.3.1" id="kontaktua-bermatzeko-ekuazioa"><span
+class="header-section-number">3.3.1</span> Kontaktua bermatzeko
+ekuazioa</h3>
+<p>Bi soldidoen arteko kontaktua bermatu nahi badugu, <span
+class="math inline">\(\pi\)</span> planuarekiko elkartzuta den
+norabidean solidoen mugimendu erlatiboa zero izan behar da. Matematikoki
+adierazita: <span class="math display">\[\large{
+        \mathbf{V}_{_{{\mathcal{R}}}}{\small (\mathbf{J}_1)}\cdot
+\mathbf{n}=\mathbf{V}_{_{{\mathcal{R}}}}{\small (\mathbf{J}_2)}\cdot
+\mathbf{n}, \quad \forall\,{\mathcal{R}}
+    }\]</span></p>
+<p><span class="math inline">\(\mathbf{V}_{_{{\mathcal{R}}}}{\small
+(\mathbf{J}_1)}\)</span> eta <span
+class="math inline">\(\mathbf{V}_{_{{\mathcal{R}}}}{\small
+(\mathbf{J}_2)}\)</span> abiaduraren proiekzioak <span
+class="math inline">\(\mathbf{n}\)</span> bektorearen norabidean
+berdinak izango dira. Edo beste modu batez esanda, <span
+class="math inline">\(\mathbf{J}_1\)</span> eta <span
+class="math inline">\(\mathbf{J}_2\)</span> puntuen abiadurak <span
+class="math inline">\({\mathcal{R}}\)</span>-erreferentziarekiko
+(edozein erreferentziarekiko), biak <span
+class="math inline">\(\mathbf{n}\)</span> bektorearen norabidean
+proiektatuta, berdinak dira.</p>
+<p>Aurreko ekuazioarekin <span
+class="math inline">\(\mathbf{S}_1\)</span> eta <span
+class="math inline">\(\mathbf{S}_2\)</span> solidoen arteko kontaktua
+bermatzen da, <span class="math inline">\({\mathcal{R}}\)</span>
+erreferentzia edozein izanda ere. Horrela, <span
+class="math inline">\({\mathcal{R}}\)</span> modu egokiz aukeratuta,
+ekuazioa simplifikatzeko honako aukerak ditugu:</p>
+<ul>
+<li><p><span class="math inline">\({\mathcal{R}}\equiv
+\mathbf{S}_1\)</span> izatea erabakitzen badugu, orduan: <span
+class="math display">\[\large{
+        \cancel{\mathbf{V}_{_{\mathbf{S}_1}}{\small
+(\mathbf{J}_1)}}\cdot \mathbf{n}= 0 =\mathbf{V}_{_{\mathbf{S}_1}}{\small
+(\mathbf{J}_2)}\cdot \mathbf{n}
+    }\]</span></p></li>
+<li><p><span class="math inline">\({\mathcal{R}}\equiv
+\mathbf{S}_2\)</span> izatea erabakitzen badugu, orduan: <span
+class="math display">\[\large{
+        {\mathbf{V}_{_{\mathbf{S}_2}}{\small (\mathbf{J}_1)}}\cdot
+\mathbf{n}= 0 =\cancel{\mathbf{V}_{_{\mathbf{S}_2}}{\small
+(\mathbf{J}_2)}}\cdot \mathbf{n}
+    }\]</span></p></li>
+</ul>
+<h3 data-number="1.3.2" id="irristadura-eza-bermatzeko-ekuazioa"><span
+class="header-section-number">3.3.2</span> Irristadura-eza bermatzeko
+ekuazioa</h3>
+<p>Bi soldidoen artean irristadurarik ez egotea bermatu nahi badugu,
+<span class="math inline">\(\pi\)</span> planuarekiko paralelo diren
+norabideetan solidoen mugimendu erlatiboa zero izan behar da.
+Matematikoki adierazita: <span class="math display">\[\begin{split}
+    &amp;\large{ \mathbf{V}_{_{{\mathcal{R}}}}{\small
+(\mathbf{J}_1)}\cdot \mathbf{t}_a=\mathbf{V}_{_{{\mathcal{R}}}}{\small
+(\mathbf{J}_2)}\cdot \mathbf{t}_a, \quad \forall\,{\mathcal{R}}}\\
+    &amp;\large{ \mathbf{V}_{_{{\mathcal{R}}}}{\small
+(\mathbf{J}_1)}\cdot \mathbf{t}_b=\mathbf{V}_{_{{\mathcal{R}}}}{\small
+(\mathbf{J}_2)}\cdot \mathbf{t}_b, \quad \forall\,{\mathcal{R}}}
+    \end{split}\]</span></p>
+<p><span class="math inline">\(\mathbf{V}_{_{{\mathcal{R}}}}{\small
+(\mathbf{J}_1)}\)</span> eta <span
+class="math inline">\(\mathbf{V}_{_{{\mathcal{R}}}}{\small
+(\mathbf{J}_2)}\)</span> abiaduraren proiekzioak <span
+class="math inline">\(\mathbf{t}_a\)</span> eta <span
+class="math inline">\(\mathbf{t}_b\)</span> bektoreeren norabideetan
+berdinak izango dira. Edo beste modu batez esanda, <span
+class="math inline">\(\mathbf{J}_1\)</span> eta <span
+class="math inline">\(\mathbf{J}_2\)</span> puntuen abiadurak <span
+class="math inline">\({\mathcal{R}}\)</span>-erreferentziarekiko
+(edozein erreferentziarekiko), <span
+class="math inline">\(\mathbf{t}_a\)</span> eta <span
+class="math inline">\(\mathbf{t}_b\)</span> bektoreeren norabideetan
+proiektatuta, berdinak izango dira.</p>
+<p>Aurreko ekuazioarekin <span
+class="math inline">\(\mathbf{S}_1\)</span> eta <span
+class="math inline">\(\mathbf{S}_2\)</span> solidoen arteko
+irristadura-eza bermatzen da, <span
+class="math inline">\({\mathcal{R}}\)</span> erreferentzia edozein
+izanda ere. Horrela, <span class="math inline">\({\mathcal{R}}\)</span>
+modu egokiz aukeratuta, ekuazioak simplifikatzeko honako aukerak
+ditugu:</p>
+<ul>
+<li><p><span class="math inline">\({\mathcal{R}}\equiv
+\mathbf{S}_1\)</span> izatea erabakitzen badugu, orduan: <span
+class="math display">\[\begin{split}
+        &amp;\large{ \cancel{\mathbf{V}_{_{\mathbf{S}_1}}{\small
+(\mathbf{J}_1)}}\cdot \mathbf{t}_a= 0
+=\mathbf{V}_{_{\mathbf{S}_1}}{\small (\mathbf{J}_2)}\cdot
+\mathbf{t}_a}\\
+        &amp;\large{ \cancel{\mathbf{V}_{_{\mathbf{S}_1}}{\small
+(\mathbf{J}_1)}}\cdot \mathbf{t}_b= 0
+=\mathbf{V}_{_{\mathbf{S}_1}}{\small (\mathbf{J}_2)}\cdot \mathbf{t}_b}
+        \end{split}\]</span></p></li>
+<li><p><span class="math inline">\({\mathcal{R}}\equiv
+\mathbf{S}_2\)</span> izatea erabakitzen badugu, orduan: <span
+class="math display">\[\begin{split}
+        &amp;\large{ \mathbf{V}_{_{\mathbf{S}_2}}{\small
+(\mathbf{J}_1)}\cdot \mathbf{t}_a= 0
+=\cancel{\mathbf{V}_{_{\mathbf{S}_2}}{\small (\mathbf{J}_2)}}\cdot
+\mathbf{t}_a}\\
+        &amp;\large{ \mathbf{V}_{_{\mathbf{S}_2}}{\small
+(\mathbf{J}_1)}\cdot \mathbf{t}_b= 0
+=\cancel{\mathbf{V}_{_{\mathbf{S}_2}}{\small (\mathbf{J}_2)}}\cdot
+\mathbf{t}_b}
+        \end{split}\]</span></p></li>
+</ul>
+<h3 data-number="1.3.3"
+id="irristadura-gabeko-kontaktua-errodadura-perfektua"><span
+class="header-section-number">3.3.3</span> Irristadura gabeko kontaktua:
+errodadura perfektua</h3>
+<p>Aurreko bi ataletan, bi solidoen artean kontaktua bermatzeko eta
+irristadurarik ez egoteko bermatu beharreko ekuazioak ikusi ditugu,
+hurrenez-hurren. Atal honetan, bi gauzak batera gertatzeko bermatu
+beharreko ekuazioa ikusiko dugu. Kasu honenta, hiru ekuazio eskalarrak
+idatzi ordez, zuzenean ekuazio bektorial bat idatzi dezakegu, hiru
+kondizioak betetzen dituena:</p>
+<p><span
+class="math display">\[\large{     \mathbf{V}_{_{{\mathcal{R}}}}{\small
+(\mathbf{J}_1)}=\mathbf{V}_{_{{\mathcal{R}}}}{\small
+(\mathbf{J}_2)},  \quad \forall\,{\mathcal{R}}}\]</span></p>
+<p>Beste kasuetan bezala, <span
+class="math inline">\({\mathcal{R}}\)</span> erreferentzia egoki
+aukeratuta, ekuazioa modu simpleagoan idatzi daiteke:</p>
+<ul>
+<li><p><span class="math inline">\({\mathcal{R}}\equiv
+\mathbf{S}_1\)</span> izatea erabakitzen badugu, orduan: <span
+class="math display">\[\large{        \cancel{\mathbf{V}_{_{\mathbf{S}_1}}{\small
+(\mathbf{J}_1)}}=\mathbf{0}=\mathbf{V}_{_{\mathbf{S}_1}}{\small
+(\mathbf{J}_2)} }\]</span></p></li>
+<li><p><span class="math inline">\({\mathcal{R}}\equiv
+\mathbf{S}_2\)</span> izatea erabakitzen badugu, orduan: <span
+class="math display">\[\large{        \mathbf{V}_{_{\mathbf{S}_2}}{\small
+(\mathbf{J}_1)}=\mathbf{0}=\cancel{\mathbf{V}_{_{\mathbf{S}_2}}{\small
+(\mathbf{J}_2)}} }\]</span></p></li>
+</ul>
+<p><strong>Oharra</strong>: <em>Solido bati zurruna den kontaktu puntu
+baten abiadura edo azelerazioa</em> kalkulatu behar badugu, kalkulu hau
+beti <u><em>konposizioz</em></u> egin beharko dugu.</p>
+<p><span
+class="math display">\[\large{\mathbf{V}_{_{{\mathcal{R}}}}{\small
+(\mathbf{J_1})}= \mathbf{V}_{_{{\mathcal{R}}}}{\small (\mathbf{Q})}} +
+\boldsymbol{\Omega}_{_{{\mathcal{R}}}}{\small (Sol)}\times
+\overline{\mathbf{QJ_1}} + \cancel{\mathbf{V}_{_{Sol}}{\small
+(\mathbf{J_1})}}\quad
+    \mathbf{J_1},\mathbf{Q}\in\,Sol\]</span> Azkeneko kalkulu honen
+<span class="math inline">\(\mathbf{V}_{_{{\mathcal{R}}}}{\small
+(\mathbf{Q})}\)</span> osagaia, <em>konposizioz</em> edo
+<em>deribazioz</em> kalkulatu daiteke, <span
+class="math inline">\(\mathbf{Q}\)</span> ez bait da kontaktu puntu
+bat.</p>
+<h3 data-number="1.3.4" id="oharra"><span
+class="header-section-number">3.3.4</span> Oharra</h3>
+<p>Ikusi dugu nola bi solidoen arteko kontaktua eta irristadura
+bermatzeko, <span
+class="math inline">\(\mathbf{V}_{_{\mathbf{S}_1}}{\small
+(\mathbf{J}_2)}=\mathbf{0}\)</span> bezalako ekuazio bat betearazi behar
+den. Aldiz, honen deribatuak ez du zertan zero izan behar. Matematikoki
+honela adieraziko dugu:</p>
+<p><span
+class="math display">\[\large{\mathbf{V}_{_{\mathbf{S}_1}}{\small
+(\mathbf{J}_2)}=\mathbf{0}\quad \cancel{\Longrightarrow} \quad
+\mathbf{A}_{_{\mathbf{S}_1}}{\small
+{(\mathbf{J}_2)}}=\mathbf{0}}\]</span></p>
+<p>Gertatzen dena da, abiadura ekuazioak errepresentatzen duen kondizioa
+<em>aldiunekoa</em> dela. Hau da, instante bakar batean gertatzen den
+kondizioa da, eta horrek ez du deribatuei buruzko kondiziorik
+inposatzen.</p>
+<p><strong>Adibidez</strong>: Izan bedi partikula baten mugimendua <span
+class="math inline">\(X\)</span> ardatzean adierazten duen honako
+espresioa: <span class="math inline">\(x(t)=t^2+1\)</span>. Partikularen
+deribatua, noski, honako espresioaz adierazi daiteke: <span
+class="math inline">\(\dot{x}(t)=2\,t\)</span>. Beraz, <span
+class="math inline">\(t=0\)</span> instantean, abiaduraren balorea
+kalkulatu dezakegu: <span class="math inline">\(\dot{x}(t=0)=2\cdot 0 =
+0\)</span>. Orain, berriz, instante horretan azelerazioa kalkulatu nahi
+badugu, balore hau deribatu dezakegu: <span
+class="math inline">\(\ddot{x}(t=0)=\frac{d}{dt}\left(0\right) =
+0\)</span>. Baina noski, <strong>kalkulu hau ez da zuzena</strong>.
+Arazoa da, ez gaudela abiadura espresio orokorra deribatzen ari, baizik
+eta balore partikularra. Partikularen azelerazioa zuzen kalkulatzeko,
+honela egingo genuke: <span
+class="math inline">\(\ddot{x}(t)=\frac{d}{dt}\left(2\,t\right) =
+2\)</span>. Eta beraz, <span class="math inline">\(t=0\)</span> instante
+partikularrean, azelerazioaren balorea <span
+class="math inline">\(\ddot{x}(t=0)=2\)</span> izango da.</p>
+<h2 data-number="1.4" id="kontaktu-puntu-geometrikoa-errodaduran"><span
+class="header-section-number">3.4</span> Kontaktu puntu geometrikoa
+errodaduran</h2>
+<p>Kontaktuan dauden bi solidoen artean errodadura perfektua gertatzen
+bada ere, solidoen arten abiadura angeluarra zeroren ezberdina baldin
+bada, orduan kontaktu puntua solidoen gainazalean zehar mugitu ahalko
+da.</p>
+<p><strong>Definizioa:</strong> <em>Kontaktu puntu geometrikoa</em>,
+<span class="math inline">\(\mathbf{J}_g\)</span> puntua, denbora
+guztian zehar bi solidoen arteko kontaktuan mantentzen den leku
+geometrikoa da.</p>
+<p>Hurrengo irudian <span
+class="math inline">\({\textcolor{blue}{\mathbf{S}_1}}\)</span> eta
+<span class="math inline">\({\textcolor{cyan}{\mathbf{S}_2}}\)</span>
+solidoak agertzen dira. Bi solido hauen artean errodadura perfektua dago
+eta irudian hiru puntu agertzen dira: <span
+class="math inline">\({\textcolor{red}{\mathbf{J}_{2}}}\)</span>
+(diskarekiko zurruna den puntua), <span
+class="math inline">\({\textcolor{blue}{\mathbf{J}_{1}}}\)</span>
+(lurrarekiko zurruna den puntua) eta <span
+class="math inline">\({\textcolor{green}{\mathbf{J}_{g}}}\)</span>
+(denbora guztian zehar solidoen arteko kontaktuan dagoen puntua).</p>
+<p><div id="applet_containermxrjzwhy"></div>    <script type="text/javascript">var parametersmxrjzwhy = {"width": 600,"height": 450,"material_id": "mxrjzwhy","showFullscreenButton": true};var appletmxrjzwhy = new GGBApplet(parametersmxrjzwhy, true);appletmxrjzwhy.inject('applet_containermxrjzwhy');</script></p>
+<p>Irudi hau aztertzeko, beharrezkoa da hiru puntu hauek bata bestearen
+gainean jartzea, egoera hori aztertzen hari bait gara. Horretarako
+diskaren zentrua (<strong>C</strong> puntua) mugitu daiteke. Diska puntu
+horretatik ateratzen dugunean, ordea, argi ikusten da puntu bakoitzaren
+mugimendua ezberdina dela (kontaktu puntutik kanpo).</p>
+<h3 data-number="1.4.1"
+id="errodadura-perfektuko-baldintzak-puntu-geometrikoa-erabilita"><span
+class="header-section-number">3.4.1</span> Errodadura perfektuko
+baldintzak puntu geometrikoa erabilita</h3>
+<p>Ikus dezagun nola bermatu daitezkeen errodadura perfektuko lotura
+baldintzak <span
+class="math inline">\({\textcolor{green}{\mathbf{J}_{g}}}\)</span>
+kontaktu puntu geometrikoa erabilita.</p>
+<p><strong>Teorema</strong>: <span
+class="math inline">\({\textcolor{blue}{\mathbf{S}_1}}\)</span> eta
+<span class="math inline">\({\textcolor{cyan}{\mathbf{S}_2}}\)</span>
+solidoen artean errodadura perfektua baldin badago, orduan honako
+erlazioa betetzen da: <span class="math display">\[\large
+\mathbf{V}_{{\textcolor{blue}{\mathbf{S}_1}}}({\textcolor{green}{\mathbf{J}_{g}}})
+=
+\mathbf{V}_{{\textcolor{cyan}{\mathbf{S}_2}}}({\textcolor{green}{\mathbf{J}_{g}}})\]</span></p>
+<p>Hau da, <span
+class="math inline">\({\textcolor{green}{\mathbf{J}_{g}}}\)</span> punto
+geometrikoa bi solidoen gainazalean zehar mugitzen da, abiadura
+berdinarekin, bi solidoekiko.</p>
+<p><strong>Frogapena</strong>: Erlazio hau frogatzeko <span
+class="math inline">\(\mathbf{V}_{{\textcolor{blue}{\mathbf{S}_1}}}({\textcolor{green}{\mathbf{J}_{g}}})\)</span>
+abiadura kalkulatuko dugu, konposizioz, <span
+class="math inline">\({\textcolor{red}{\mathbf{J}_{2}}}\)</span> jatorri
+duen eta <span
+class="math inline">\({\textcolor{cyan}{\mathbf{S}_2}}\)</span>
+solidoaren orientazioa duen erreferentzia erlatiboa erabilita: <span
+class="math display">\[\mathbf{V}_{{\textcolor{blue}{\mathbf{S}_1}}}({\textcolor{green}{\mathbf{J}_{g}}})
+=
+\cancel{\mathbf{V}_{{\textcolor{blue}{\mathbf{S}_1}}}({\textcolor{red}{\mathbf{J}_{2}}})}
++ \boldsymbol{\Omega}_{_{{\textcolor{blue}{\mathbf{S}_1}}}}{\small
+({\textcolor{cyan}{\mathbf{S}_2}})}\times
+\cancel{\overline{\mathbf{{\textcolor{red}{\mathbf{J}_{2}}}
+{\textcolor{green}{\mathbf{J}_{g}}}}}} +
+\mathbf{V}_{{\textcolor{cyan}{\mathbf{S}_2}}}({\textcolor{green}{\mathbf{J}_{g}}})
+=
+\mathbf{V}_{{\textcolor{cyan}{\mathbf{S}_2}}}({\textcolor{green}{\mathbf{J}_{g}}})\]</span></p>
+<p>Solidoen arteko errodadura perfektua dagoenez, espresio honetako
+lehenengo terminoa zeroren berdina da. Bestalde, <span
+class="math inline">\(\overline{\mathbf{{\textcolor{red}{\mathbf{J}_{2}}}
+{\textcolor{green}{\mathbf{J}_{g}}}}}\)</span> bektorean agertzen diren
+bi puntuak, abiadura ezberdina baldin badute ere, espazioaren leku
+berdinean daude, eta beraz haien arteko distantzia zero da.</p>
+<p><strong>Oharra</strong>: <em>Bi solidoen arteko kontaktu puntu
+geometriko baten abiadura edo azelerazioa</em> kalkulatu behar badugu,
+kalkulu hau beti <u><em>deribazioz</em></u> egin beharko dugu. <span
+class="math display">\[\large{\mathbf{V}_{_{{\mathcal{R}}}}{\small
+(\mathbf{J_g})}= \frac{d}{dt}\left.\overline{\mathbf{OJ_g}}
+\right|_{_{{\mathcal{R}}}}, \quad \mathbf{O}\in
+{\mathcal{R}}}\]</span></p>
+<h3 data-number="1.4.2"
+id="puntu-geometrikoaren-ibilbidea-kontaktuan-dauden-bi-solidoetan"><span
+class="header-section-number">3.4.2</span> Puntu geometrikoaren
+ibilbidea kontaktuan dauden bi solidoetan</h3>
+<p>Ikusi dezagun, errodadura perfektua gertatzen denean, zer nolako
+ibilbideak egiten dituen puntu geometrikoak kontaktuan dauden bi
+solidoen gainazalean.</p>
+<p><strong>Teorema</strong>: <span
+class="math inline">\({\textcolor{green}{\mathbf{J}_{g}}}\)</span> puntu
+geometrikoak, kontaktuan dauden bi solidoen gainazaletan egiten dituen
+ibilbideen luzeerak berdina izango dira.</p>
+<p><strong>Frogapena</strong>: Hurrengo irudiaz baliatuta, teoremak
+dioena da <span
+class="math inline">\({\textcolor{orange}{s_{S_1}}}={\textcolor{red}{s_{S_2}}}\)</span>.
+Bi ibilbide hauen luzeera abiaduren integralen bitartez kalkulatu
+daiteke. Errodadura perfektuaren baldintzak bi abiadurak berdinak izatea
+bermatzen duenez, puntu geometrikoak, solidoen gainazaletan
+mugutzerakoan, luzeera berdineko ibilbideak sortuko ditu; <em>i.e.:</em>
+irudian marra gorriz eta laranjaz irudikatutako ibilbideak.</p>
+<p><div id="applet_containerunbryywe"></div>    <script type="text/javascript">var parametersunbryywe = {"width": 600,"height": 500,"material_id": "unbryywe","showFullscreenButton": true};var appletunbryywe = new GGBApplet(parametersunbryywe, true);appletunbryywe.inject('applet_containerunbryywe');</script></p>
+<p><strong>Oharra</strong>: Kotxe baten abiadura neurtzeko erabiltzen
+den teknika, aurreko garapenean oinarritzen da. Kontaktu puntu
+geometrikoaren abiadura lurrarekiko moduren batean neurtu ordez (<span
+class="math inline">\(\mathbf{V}_{_{Lur}}{\small
+(\mathbf{J_g})}\)</span> neurtu ordez) puntu geometrikoaren abiadura
+neurtzen da gurpilan zehar mugitzen denean (<span
+class="math inline">\(\mathbf{V}_{_{Dis}}{\small
+(\mathbf{J_g})}\)</span> neurtu ordez). Bi abiadura hauek berdinak
+direnez, bata neurtuz bestea kalkulatzen da, eta horrela, kotxearen
+abiadura eta baita egindako kilometroen kopurua ere kalkulatzen da.</p>
+<p><strong>Adibidea: <span class="math inline">\(\mathbf{J}_{g}\)</span>
+puntuaren mugimendua solido ezberdinetatik ikusita</strong> Hurrengo
+irudian argi ikusi daiteke, nola <span
+class="math inline">\(\mathbf{J}_g\)</span> puntuaren ibilbidea eta
+abiadura berdina den, lurretik ikusita eta gurpilatik bertatik ikusita
+ere.</p>
+<p><div id="applet_containerh7yneg6p"></div>    <script type="text/javascript">var parametersh7yneg6p = {"width": 600,"height": 500,"material_id": "h7yneg6p","showFullscreenButton": true};var appleth7yneg6p = new GGBApplet(parametersh7yneg6p, true);appleth7yneg6p.inject('applet_containerh7yneg6p');</script></p>
+<h2 data-number="1.5"
+id="adibideak-oinarrizko-lotura-balditzen-kalkulua"><span
+class="header-section-number">3.5</span> Adibideak: oinarrizko lotura
+balditzen kalkulua</h2>
+<h3 data-number="1.5.1"
+id="adibidea-gurpil-baten-errodadura-lurrean.-traslazio-eta-biraketaren-arteko-erlazioa"><span
+class="header-section-number">3.5.1</span> Adibidea: Gurpil baten
+errodadura lurrean. Traslazio eta biraketaren arteko erlazioa</h3>
+<p><strong>Enuntziatua</strong>:</p>
+<p>Hurrengo irudian gurpil bat dugu, lurrarekin kontaktuan errodadura
+perfektuan. <span class="math inline">\(\mathbf{O}\)</span> puntua
+lurrarekiko zurruna da, bi solidoen arteko kontaktu puntuari <span
+class="math inline">\(\mathbf{J}\)</span> deitzen diogu eta gurpilaren
+zentuari <span class="math inline">\(\mathbf{C}\)</span>. Gurpilaren
+zentruaren posizio horizontala <span class="math inline">\(x\)</span>
+koordenatuaz adierazten da, eta gurpilaren biraketa <span
+class="math inline">\(\theta\)</span> angeluaz. Gurpilaren erradioa
+<span class="math inline">\(R\)</span> da.</p>
+<ol>
+<li><p>Zein erlazio dago gurpilaren traslazioa eta biraketaren artean
+errodadura perfektua mantendu dadin?</p></li>
+<li><p>Zein da diskaren <span class="math inline">\(\mathbf{J}\)</span>
+puntuaren azelerazioa lurrarekiko? Hau da, kalkulatu <span
+class="math inline">\(\mathbf{A}_{_{Lur}}{\small
+{(\mathbf{J}_{Dis})}}\)</span>.</p></li>
+</ol>
+<p><div id="applet_containeranqxwvna"></div>    <script type="text/javascript">var parametersanqxwvna = {"width": 600,"height": 400,"material_id": "anqxwvna","showFullscreenButton": true};var appletanqxwvna = new GGBApplet(parametersanqxwvna, true);appletanqxwvna.inject('applet_containeranqxwvna');</script></p>
+<p><strong>Ebazpena</strong>:</p>
+<ol>
+<li><p>Lehenengo atalean kalkulatu dezagun gurpilaren traslazioa eta
+biraketaren arteko eralzioa.</p>
+<p>Irudiko <span class="math inline">\(\mathbf{J}\)</span> puntuan
+errodadura dagoenez, abiaduren arteko erlazio bat idatzita, mugimenduen
+arteko erlazio bat lortuko dugu. Adibide honenta, gutxienez honako bi
+moduetaz planteatu daiteke abiaduren arteko erlazioa: <span
+class="math display">\[\large{\mathbf{V}_{_{Lur}}{\small
+(\mathbf{J_{Dis}})} = \mathbf{0}, \quad \quad \mathbf{V}_{_{Lur}}{\small
+(\mathbf{J_g})}=\mathbf{V}_{_{Dis}}{\small (\mathbf{J_g})}}\]</span>
+Ebatzi dezagun ariketa bi moduetaz.</p>
+<ol type="a">
+<li><p><span class="math inline">\(\mathbf{V}_{_{Lur}}{\small
+(\mathbf{J_{Dis}})} = \mathbf{0}\)</span> Diskarekiko zurruna den
+kontaktu puntu baten abiadura kalkulatu behar dugunez, kalkulu hau
+<u><em>konposizioz</em></u> egin beharko dugu. <span
+class="math display">\[\mathbf{V}_{_{Lur}}{\small
+(\mathbf{J_{Dis}})}=\mathbf{V}_{_{Lur}}{\small (\mathbf{C})} +
+\boldsymbol{\Omega}_{_{Lur}}{\small (Dis)}\times \overline{\mathbf{CJ}}
++ \cancel{\mathbf{V}_{_{Dis}}{\small (\mathbf{J_{Dis}})}}\]</span>
+Bektore hauek <span class="math inline">\(123\)</span> basean
+proiektatuta, honako espresioa lortzen da: <span
+class="math display">\[\left\{\mathbf{V}_{_{Lur}}{\small
+(\mathbf{J_{Dis}})}\right\}_{_{123}}
+                ={\left\{\begin{matrix}\dot{x}\\ 0\\
+0\end{matrix}\right\}}_{_{123}}+{\left\{\begin{matrix}0 \\
+\dot{\theta}\\ 0\end{matrix}\right\}}_{_{123}}\times
+{\left\{\begin{matrix}0 \\ 0 \\ -R\end{matrix}\right\}}_{_{123}}
+                ={\left\{\begin{matrix}\dot{x}-{\dot{\theta}}R \\ 0 \\
+0\end{matrix}\right\}}_{_{123}} = {\left\{\begin{matrix}0 \\ 0 \\
+0\end{matrix}\right\}}_{_{123}}\]</span> Ekuazio honetatik
+ondorioztatzen dugun erlazioa honakoa da: <span
+class="math display">\[\Large{  \boxed{\dot{x} =
+{\dot{\theta}}R}  }\]</span></p></li>
+<li><p><span class="math inline">\(\mathbf{V}_{_{Lur}}{\small
+(\mathbf{J_g})}=\mathbf{V}_{_{Dis}}{\small (\mathbf{J_g})}\)</span> Kasu
+honetan, puntu geometrikoaren abiadurak kalkulatu behar ditugunez,
+kalkulu hauek <u><em>deribazioz</em></u> egin beharko ditugu.</p>
+<ol type="i">
+<li><p>Lehenengo terminoa kalkulatzeko, lurrarekiko finkoa den puntu bat
+erabiliko dugu, <span class="math inline">\(\mathbf{O}\)</span> puntua.
+<span class="math display">\[\mathbf{V}_{_{Lur}}{\small (\mathbf{J_g})}=
+\frac{d}{dt}\left.\overline{\mathbf{OJ_g}} \right|_{_{Lur}}\]</span>
+Kalkulu hau <span class="math inline">\(123\)</span> basean proiektatuta
+(<span class="math inline">\(123\)</span> basea eta <span
+class="math inline">\(Lur\)</span> elkarrekiko zurrunak direnez) base
+finkotan deribatuta honako espresioa lortzen da: <span
+class="math display">\[\left\{\mathbf{V}_{_{Lur}}{\small
+(\mathbf{J_g})}\right\}_{_{123}}= \frac{d}{dt}{\left\{\begin{matrix}x \\
+0 \\ 0\end{matrix}\right\}}_{_{123}} = {\left\{\begin{matrix}\dot{x}\\ 0
+\\ 0\end{matrix}\right\}}_{_{123}}\]</span></p></li>
+<li><p>Bigarren terminoa kalkulatzeko diskarekiko finkoa den puntu bat
+erabiliko dugu, <span class="math inline">\(\mathbf{C}\)</span> puntua.
+<span class="math display">\[\mathbf{V}_{_{Dis}}{\small (\mathbf{J_g})}=
+\frac{d}{dt}\left.\overline{\mathbf{CJ_g}} \right|_{_{Dis}}\]</span>
+Kalkulu hau <span class="math inline">\(123\)</span> basean proiektatuta
+(<span class="math inline">\(123\)</span> basea eta <span
+class="math inline">\(Dis\)</span> mugimendu erlatiboa dutenez) base
+higikorretan deribatuta, honako espresioa lortzen da: <span
+class="math display">\[\begin{split}
+                \left\{\mathbf{V}_{_{Dis}}{\small
+(\mathbf{J_g})}\right\}_{_{123}}&amp;=\frac{d}{dt}{\left\{\begin{matrix}\overline{\mathbf{CJ_g}}\end{matrix}\right\}}_{_{123}}+\left\{\boldsymbol{\Omega}_{_{Dis}}{\small
+(123)}\right\}_{_{123}}\times
+{\left\{\begin{matrix}\overline{\mathbf{CJ_g}}\end{matrix}\right\}}_{_{123}}
+\\
+                &amp;=\cancel{\frac{d}{dt}{\left\{\begin{matrix}0 \\ 0
+\\ -R\end{matrix}\right\}}_{_{123}}} +{\left\{\begin{matrix}\phantom{-}0
+\\ -{\dot{\theta}}\\ \phantom{-}0\end{matrix}\right\}}_{_{123}}\times
+{\left\{\begin{matrix}0\\ 0\\ -R\end{matrix}\right\}}_{_{123}}=
+{\left\{\begin{matrix}{\dot{\theta}}R\\ 0 \\
+0\end{matrix}\right\}}_{_{123}}
+                \end{split}\]</span></p></li>
+</ol>
+<p>Puntu geometrikoaren abiadura bi erreferentziarekiko kalkulatuta
+izanda, hauek berdinduta, aurretik lortu dugun espresio berdina lortuko
+dugu: <span class="math display">\[\Large{  \boxed{\dot{x} =
+{\dot{\theta}}R}  }\]</span></p></li>
+</ol></li>
+<li><p>Bigarren atal honetan, kalkulatu dezagun <span
+class="math inline">\(\mathbf{A}_{_{Lur}}{\small
+{(\mathbf{J}_{Dis})}}\)</span>.</p>
+<p>Diskaren kontaktu puntuaren azelerazioa kalkulatu behar dugunez,
+kalkulu hau konposizioz egin beharko dugu. Konposizioaren azekeneko
+terminoa zero izan dadin, aukeratu dezagun erreferentzia erlatiboa diska
+izatea, bere jatorria diskaren zentrua <span
+class="math inline">\(\mathbf{C}\)</span> izanda. <span
+class="math display">\[\begin{split}
+    \mathbf{A}_{_{Lur}}{\small {(\mathbf{J}_{Dis})}} &amp;=
+\mathbf{A}_{_{Lur}}{\small {(\mathbf{C})}} +
+\boldsymbol{\Omega}_{_{Lur}}{\small (Dis)}\times
+\left(\boldsymbol{\Omega}_{_{Lur}}{\small (Dis)}\times
+\overline{\mathbf{CJ}} \right)\\
+    &amp;+ \frac{d}{dt}\left.\boldsymbol{\Omega}_{_{Lur}}{\small (Dis)}
+\right|_{_{Lur}} \times \overline{\mathbf{CJ}} +
+\cancel{2\,\boldsymbol{\Omega}_{_{Lur}}{\small (Dis)}\times
+\mathbf{V}_{_{Dis}}{\small (\mathbf{J}_{Dis})} }
+    + \cancel{\mathbf{A}_{_{Dis}}{\small {(\mathbf{J}_{Dis})}}}
+    \end{split}\]</span></p>
+<p>Kalkulu hau egiteko baserik egokiena (eta marrazkian dugun bakarra)
+<span class="math inline">\(123\)</span> basea da. Kalkulatu dezagun
+lehenik diskaren abiadura angeluarraren deribatua. <span
+class="math display">\[{\left\{\begin{matrix}\frac{d}{dt}\left.\boldsymbol{\Omega}_{_{Lur}}{\small
+(Dis)} \right|_{_{Lur}}\end{matrix}\right\}}_{_{123}} =
+\frac{d}{dt}{\left\{\begin{matrix}0 \\ {\dot{\theta}}\\
+0\end{matrix}\right\}}_{_{123}}  = {\left\{\begin{matrix}0 \\
+{\ddot{\theta}}\\ 0\end{matrix}\right\}}_{_{123}}\]</span></p>
+<p>Azelerazioaren kalkulua honakoa izango da:</p>
+<p><span class="math display">\[\begin{split}
+    \left\{\mathbf{A}_{_{Lur}}{\small
+{(\mathbf{J}_{Dis})}}\right\}_{_{123}} &amp;=
+{\left\{\begin{matrix}\ddot{x}\\ 0 \\ 0\end{matrix}\right\}}_{_{123}} +
+    {\left\{\begin{matrix}0 \\ {\dot{\theta}}\\
+0\end{matrix}\right\}}_{_{123}}\times \left({\left\{\begin{matrix}0 \\
+{\dot{\theta}}\\ 0\end{matrix}\right\}}_{_{123}} \times
+{\left\{\begin{matrix}0 \\ 0 \\ -R\end{matrix}\right\}}_{_{123}} \right)
+\\
+    &amp; +{\left\{\begin{matrix}0 \\ {\ddot{\theta}}\\
+0\end{matrix}\right\}}_{_{123}} \times {\left\{\begin{matrix}0 \\ 0 \\
+-R\end{matrix}\right\}}_{_{123}}
+    = {\left\{\begin{matrix}\ddot{x} - {\ddot{\theta}}R\\ 0 \\
+{\dot{\theta}}^2 R\end{matrix}\right\}}_{_{123}}
+    \end{split}\]</span></p>
+<p>Aurreko atalean ikusi dugu abiaduren arteko erlazioa zein den, eta
+hori deribatuz, azelerazioen arteko erlazioa ere lortu daiteke: <span
+class="math display">\[\Large{  \boxed{\dot{x} = {\dot{\theta}}R}  }
+\Longrightarrow   \Large{  \boxed{\ddot{x} =
+{\ddot{\theta}}R}  }\]</span></p>
+<p>Beraz, diskaren kontaktu puntuaren azelerazioa honakoa da: <span
+class="math display">\[\left\{\mathbf{A}_{_{Lur}}{\small
+{(\mathbf{J}_{Dis})}}\right\}_{_{123}} = {\left\{\begin{matrix}  0 \\ 0
+\\ {\dot{\theta}}^2 R\end{matrix}\right\}}_{_{123}}\]</span></p></li>
+</ol>
+<h3 data-number="1.5.2"
+id="adibidea-kontaktuan-dauden-bi-gurpilen-arteko-abiadura-angeluarren-erlazioa"><span
+class="header-section-number">3.5.2</span> Adibidea: Kontaktuan dauden
+bi gurpilen arteko abiadura angeluarren erlazioa</h3>
+<p><strong>Enuntziatua</strong></p>
+<p>Hurrengo irudian bi gurpil agertzen dira. Haien zentruak <span
+class="math inline">\(\mathbf{O}_A\)</span> eta <span
+class="math inline">\(\mathbf{O}_B\)</span> dira, eta lurrean finkatuta
+daude. Gurpilen biraketak <span class="math inline">\(\theta\)</span>
+eta <span class="math inline">\(\varphi\)</span> angeluekin akotatuta
+daude. Bi gurpilen arteko kontaktu puntuan, <span
+class="math inline">\(\mathbf{J}\)</span> puntuan, errodadura perfektua
+dago. Gurpil gorriaren erradioa <span class="math inline">\(R\)</span>
+da eta urdinarena <span class="math inline">\(r\)</span>. Erradioen
+arteko erlazioa <span class="math inline">\(i\)</span> da. <span
+class="math inline">\(\mathbf{J}_A\)</span> eta <span
+class="math inline">\(\mathbf{J}_B\)</span> puntuak, <span
+class="math inline">\(Sol_A\)</span> eta <span
+class="math inline">\(Sol_B\)</span> solidoei zurrunak dira.</p>
+<p>Kalkulatu ezazu gurpilen abiadura angeluarren erlazioa, <span
+class="math inline">\(R\)</span> eta <span
+class="math inline">\(r\)</span> erradioen menpe.</p>
+<p><div id="applet_containervm8uya3a"></div>    <script type="text/javascript">var parametersvm8uya3a = {"width": 600,"height": 450,"material_id": "vm8uya3a","showFullscreenButton": true};var appletvm8uya3a = new GGBApplet(parametersvm8uya3a, true);appletvm8uya3a.inject('applet_containervm8uya3a');</script></p>
+<p><strong>Ebazpena</strong></p>
+<p>Marraztu dezagun, lehenik eta behin, mekanismoaren orientazio
+diagrama. Bi gurpilen biraketak lurraren horizontalarekiko akotatuda
+daudenez, lurretik bi gezi ateratzen dira.</p>
+<p><div id="applet_containervety5nmb"></div>    <script type="text/javascript">var parametersvety5nmb = {"width": 600,"height": 175,"material_id": "vety5nmb","showFullscreenButton": true};var appletvety5nmb = new GGBApplet(parametersvety5nmb, true);appletvety5nmb.inject('applet_containervety5nmb');</script></p>
+<p>Orientazio diagramaren abiadura angeluarrak honakoak dira: <span
+class="math display">\[\left\{\boldsymbol{\Omega}_{_{Lur}}{\small
+(Sol_A)}\right\}_{_{xyz}}={\left\{\begin{matrix}0\\ 0 \\
+{\dot{\theta}}\end{matrix}\right\}}_{_{\quad}}\quad
+\left\{\boldsymbol{\Omega}_{_{Lur}}{\small
+(Sol_B)}\right\}_{_{xyz}}={\left\{\begin{matrix}\phantom{-}0\\
+\phantom{-}0 \\
+-{\dot{\varphi}}\end{matrix}\right\}}_{_{xyz}}\]</span></p>
+<p>Errodadura bermatzeko ekuazioak kalkulatzeko honako kalkuluak egingo
+ditugu: <span class="math display">\[\begin{split}
+     \left\{\mathbf{V}_{_{Lur}}{\small
+(\mathbf{J_A})}\right\}_{_{xyz}}&amp;={\left\{\begin{matrix}\cancel{\mathbf{V}_{_{Lur}}{\small
+(\mathbf{O}_A)}} + \boldsymbol{\Omega}_{_{Lur}}{\small (Sol_A)}\times
+\overline{\mathbf{O_A J_A}}
+    + \cancel{\mathbf{V}_{_{Sol_A}}{\small
+(\mathbf{J_A})}}\end{matrix}\right\}}_{_{xyz}} \\
+    &amp;={\left\{\begin{matrix}0\\ 0 \\
+{\dot{\theta}}\end{matrix}\right\}}_{_{xyz}} \times
+{\left\{\begin{matrix}R \\ 0 \\ 0\end{matrix}\right\}}_{_{xyz}} =
+{\left\{\begin{matrix}0 \\ {\dot{\theta}}R \\
+0\end{matrix}\right\}}_{_{xyz}}
+\end{split}\]</span></p>
+<p><span class="math display">\[\begin{split}
+     \left\{\mathbf{V}_{_{Lur}}{\small
+(\mathbf{J_B})}\right\}_{_{xyz}}&amp;={\left\{\begin{matrix}\cancel{\mathbf{V}_{_{Lur}}{\small
+(\mathbf{O}_B)}} + \boldsymbol{\Omega}_{_{Lur}}{\small (Sol_B)}\times
+\overline{\mathbf{O_B J_B}}
+    + \cancel{\mathbf{V}_{_{Sol_B}}{\small
+(\mathbf{J_B})}}\end{matrix}\right\}}_{_{xyz}} \\
+    &amp;={\left\{\begin{matrix}\phantom{-}0\\ \phantom{-}0 \\
+-{\dot{\varphi}}\end{matrix}\right\}}_{_{xyz}} \times
+{\left\{\begin{matrix}-r \\ 0 \\ 0\end{matrix}\right\}}_{_{xyz}} =
+{\left\{\begin{matrix}0 \\ {\dot{\varphi}}r \\
+0\end{matrix}\right\}}_{_{xyz}}
+\end{split}\]</span></p>
+<p>Honela, bi expresioak berdinduz, honako erlazioa lortzen dugu:</p>
+<p><span class="math display">\[\left\{\mathbf{V}_{_{Lur}}{\small
+(\mathbf{J_A})}\right\}_{_{xyz}}=\left\{\mathbf{V}_{_{Lur}}{\small
+(\mathbf{J_B})}\right\}_{_{xyz}} \Longrightarrow {\dot{\theta}}R =
+{\dot{\varphi}}r
+    \Longrightarrow
+\boxed{\frac{R}{r}=\frac{{\dot{\varphi}}}{{\dot{\theta}}}}\]</span></p>
+<h3 data-number="1.5.3"
+id="adibidea-kontaktuan-eta-irristaduran-dagoen-barra-baten-abiadura-angeluarra"><span
+class="header-section-number">3.5.3</span> Adibidea: Kontaktuan eta
+irristaduran dagoen barra baten abiadura angeluarra</h3>
+<p><strong>Enuntziatua:</strong></p>
+<p>Hurrengo irudian, lurra, biradera bat eta barra bat agertzen dira.
+Lurraren zilindroaren eta barraren artean kontaktua dago, <span
+class="math inline">\(\mathbf{J}\)</span> puntuan, eta barrak irrist
+egiten du zilindroarekiko. Biraderaren luzeera <span
+class="math inline">\(r\)</span> da eta zilindroaren erradioa <span
+class="math inline">\(R\)</span> da. Lurrarekiko finkoa den basea <span
+class="math inline">\(xyz\)</span> da. Aldiz, <span
+class="math inline">\(123\)</span> baseak barraren orientazio berdina
+du. Biraderaren biraketa <span class="math inline">\(\theta\)</span>
+angeluarekin akotatzen da eta barrarena <span
+class="math inline">\(\varphi\)</span> angeluarekin.</p>
+<p>Kalkulatu ezazu zein erlazio dagoen mekanismoko <span
+class="math inline">\({\dot{\theta}}\)</span> eta <span
+class="math inline">\({\dot{\varphi}}\)</span> abiadura angeluarren
+artean.</p>
+<p><div id="applet_containerbxh6xsfy"></div>    <script type="text/javascript">var parametersbxh6xsfy = {"width": 600,"height": 450,"material_id": "bxh6xsfy","showFullscreenButton": true};var appletbxh6xsfy = new GGBApplet(parametersbxh6xsfy, true);appletbxh6xsfy.inject('applet_containerbxh6xsfy');</script></p>
+<p><strong>Ebazpena:</strong></p>
+<p>Marraztu dezagun, lehenik eta behin, mekanismoaren orientazio
+diagrama. Birakariaren eta barraren biraketak lurraren horizontalarekiko
+akotatuda daudenez, lurretik bi gezi ateratzen dira.</p>
+<p><div id="applet_containervu7gu4ae"></div>    <script type="text/javascript">var parametersvu7gu4ae = {"width": 600,"height": 170,"material_id": "vu7gu4ae","showFullscreenButton": true};var appletvu7gu4ae = new GGBApplet(parametersvu7gu4ae, true);appletvu7gu4ae.inject('applet_containervu7gu4ae');</script></p>
+<p>Ariketa honetan abiadura angeluarren erlazioa lortzeko, garatu
+beharreko baldintza kontaktuarena da, irristadura ere egonda. Horrela,
+bete beharreko ekuazioa honakoa da: <span
+class="math display">\[\mathbf{V}_{_{Lur}}{\small (\mathbf{J}_B)}\cdot
+{\mathbf{e}}_2 = \cancel{\mathbf{V}_{_{Lur}}{\small
+(\mathbf{J}_L)}}\cdot {\mathbf{e}}_2 = 0\]</span> Hau da, barraren <span
+class="math inline">\(\mathbf{J}\)</span> puntuaren abiadura, lurraren
+gainazalarekiko elkartzuta den norabidean, zero izan beharko da,
+kontaktua bermatzeko. Aldiz, puntu horren abiadura lurraren
+gainazalarekiko paralelo den norabidean, edozein izan daiteke,
+irristadura egoteak hori ahalbidetzen duelako.</p>
+<p>Ekuazioaren lehenengo terminoa idatzita, honako garapena egin
+daiteke: <span class="math display">\[\begin{split}
+    \mathbf{V}_{_{Lur}}{\small (\mathbf{J}_B)} &amp;=
+\mathbf{V}_{_{Lur}}{\small (\mathbf{A})} +
+\boldsymbol{\Omega}_{_{Lur}}{\small (Bar)} \times \overline{\mathbf{AJ}}
++ \cancel{\mathbf{V}_{_{Bar}}{\small (\mathbf{J}_B)}}\\
+    \mathbf{V}_{_{Lur}}{\small (\mathbf{A})} &amp;=
+\cancel{\mathbf{V}_{_{Lur}}{\small (\mathbf{O})}} +
+\boldsymbol{\Omega}_{_{Lur}}{\small (Bir)} \times \overline{\mathbf{OA}}
++ \cancel{\mathbf{V}_{_{Bir}}{\small (\mathbf{A})}}
+\end{split}\]</span></p>
+<p>Expresioa <span class="math inline">\(xyz\)</span> basean idatzirik,
+honako emaitza ematen du: <span class="math display">\[\begin{split}
+    \left\{\mathbf{V}_{_{Lur}}{\small (\mathbf{J}_B)}\right\}_{_{xyz}}
+&amp;=
+        \left\{\boldsymbol{\Omega}_{_{Lur}}{\small
+(Bir)}\right\}_{_{xyz}} \times
+{\left\{\begin{matrix}\overline{\mathbf{OA}}\end{matrix}\right\}}_{_{xyz}}
++
+        \left\{\boldsymbol{\Omega}_{_{Lur}}{\small
+(Bar)}\right\}_{_{xyz}} \times
+{\left\{\begin{matrix}\overline{\mathbf{AJ}}\end{matrix}\right\}}_{_{xyz}}
+\\
+                               &amp;= {\left\{\begin{matrix}0 \\ 0 \\
+{\dot{\theta}}\end{matrix}\right\}}_{_{xyz}} \times
+{\left\{\begin{matrix}r\cos\theta \\ r\sin\theta \\
+0\end{matrix}\right\}}_{_{xyz}} +
+                               {\left\{\begin{matrix}0 \\ 0 \\
+{\dot{\varphi}}\end{matrix}\right\}}_{_{xyz}} \times
+{\left\{\begin{matrix}L-R\sin\varphi-r\cos\theta \\
+R\cos\varphi-r\sin\theta \\ 0\end{matrix}\right\}}_{_{xyz}} \\
+                               &amp;={\left\{\begin{matrix}-r{\dot{\theta}}\sin\theta
+-{\dot{\varphi}}(R\cos\varphi-r\sin\theta)\\
+                                         r{\dot{\theta}}\cos\theta +
+{\dot{\varphi}}(L-R\sin\varphi-r\cos\theta)\\ 0
+\end{matrix}\right\}}_{_{xyz}}
+\end{split}\]</span></p>
+<p>Kontaktuaren ekuazioa <span class="math inline">\(xyz\)</span> basean
+idatziz: <span class="math display">\[\begin{split}
+    &amp;\left\{\mathbf{V}_{_{Lur}}{\small
+(\mathbf{J}_B)}\right\}_{_{xyz}} \cdot
+{\left\{\begin{matrix}{\mathbf{e}}_2\end{matrix}\right\}}_{_{xyz}}
+        ={\left\{\begin{matrix}-r{\dot{\theta}}\sin\theta
+-{\dot{\varphi}}(R\cos\varphi-r\sin\theta)\\
+            r{\dot{\theta}}\cos\theta +
+{\dot{\varphi}}(L-R\sin\varphi-r\cos\theta)\\ 0
+\end{matrix}\right\}}_{_{xyz}}\cdot {\left\{\begin{matrix}-\sin\varphi
+\\ \phantom{-}\cos\varphi \\ 0\end{matrix}\right\}}_{_{xyz}} \\
+        &amp;= \sin\varphi(r{\dot{\theta}}\sin\theta
++{\dot{\varphi}}(R\cos\varphi-r\sin\theta) )\\
+         &amp;\phantom{-}+\cos\varphi(r{\dot{\theta}}\cos\theta +
+{\dot{\varphi}}(L-R\sin\varphi-r\cos\theta)) \\
+        &amp;=
+{\dot{\varphi}}(\cancel{R\cos\varphi\sin\varphi}-r\sin\varphi\sin\theta+L\cos\varphi-\cancel{R\sin\varphi\cos\varphi}-r\cos\theta\cos\varphi)
+\\
+        &amp; \phantom{-}+ {\dot{\theta}}r(\sin\varphi\sin\theta +
+\cos\varphi\cos\theta)= 0
+\end{split}\]</span></p>
+<p>Abiaduren erlazioa bakanduz, honakoa lortzen da: <span
+class="math display">\[\frac{{\dot{\varphi}}}{{\dot{\theta}}} =
+-\frac{r(\sin\varphi\sin\theta +
+\cos\varphi\cos\theta)}{L\cos\varphi-r(\sin\varphi\sin\theta+\cos\theta\cos\varphi)}\]</span></p>
+<p>Sinplifikatuz, angeluarren arteko erlazioa lortzen da: <span
+class="math display">\[\boxed{\frac{{\dot{\varphi}}}{{\dot{\theta}}} =
+-\frac{r\cos(\varphi-\theta)}{L\cos\varphi-r\cos(\varphi-\theta)}}\]</span></p>
+<h3 data-number="1.5.4"
+id="adibidea-gainazal-zilindriko-baten-eta-gurpil-baten-arteko-errodadura"><span
+class="header-section-number">3.5.4</span> Adibidea: Gainazal zilindriko
+baten eta gurpil baten arteko errodadura</h3>
+<p><div id="applet_containeratpvrzax"></div>    <script type="text/javascript">var parametersatpvrzax = {"width": 600,"height": 500,"material_id": "atpvrzax","showFullscreenButton": true};var appletatpvrzax = new GGBApplet(parametersatpvrzax, true);appletatpvrzax.inject('applet_containeratpvrzax');</script></p>
+</body>
+</html>
